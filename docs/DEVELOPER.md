@@ -32,7 +32,32 @@ Implements what the **Coordinator** delegates. Read this file + `BACKLOG.md` + `
 4. Short summary: what changed, main files, how to test
 5. **Commit + push** the task on the current branch (no `--force`). Do this after every completed task, not in a batch at the end.
 
-Commit message: 1–2 sentences, English, focus on *why*. Include the backlog ID (e.g. `004: add site chrome so later pages share header/footer`). Never commit `.env` or secrets.
+Never commit `.env` or secrets.
+
+### Commit messages — [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/)
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+- **Types:** `feat` (new capability), `fix` (bug), `docs`, `refactor`, `style`, `perf`, `chore`, `build`, `ci`, `test`
+- **Scope (optional):** area of the app, e.g. `layout`, `i18n`, `home`, `projects`
+- Description in English, imperative, lowercase after the colon
+- Include the backlog ID in the body (`Refs: 004`)
+- Breaking changes: `!` after type/scope and/or a `BREAKING CHANGE:` footer
+
+```
+feat(layout): add shared header and footer
+
+Chrome matches the live site so later pages reuse the same shell.
+No Courses nav item.
+
+Refs: 004
+```
 
 ---
 
