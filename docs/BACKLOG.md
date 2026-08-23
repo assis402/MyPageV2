@@ -30,10 +30,8 @@ _(empty)_
 
 ## Next (ready)
 
-### 006 · Home — hero + about
-**Status:** todo | **Dep:** 004 ✓ | **Legacy:** `Views/Home/Index.cshtml`, `home.css`
-
----
+### 007 · Home — skills + certifications
+**Status:** todo | **Dep:** 006 ✓
 
 ---
 
@@ -53,6 +51,9 @@ Images → `public/images/`, CVs → `public/cv/` (`cv-en-US.pdf`, `cv-pt-BR.pdf
 
 ### 004 · Layout — header, mobile menu, footer
 Header (photo, About + Projects, flags), mobile hamburger, footer contacts + email copy, scroll-to-top. No Courses. Verified desktop + mobile in browser; locale switch keeps `/projects`. `yarn build` + `yarn lint`.
+
+### 006 · Home — hero + about
+Hero (greeting, main stack, CTAs) + About (age/experience i18n, CV dropdown). Verified in browser. `yarn build` + `yarn lint`.
 
 ---
 
@@ -96,30 +97,10 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 006 · Home — hero + about
-**Status:** todo | **Dep:** 004 ✓ | **Legacy:** `Views/Home/Index.cshtml`, `home.css`
-
-**Scope:**
-- `src/components/home/HeroSection.tsx` — greeting, name, main stack card (C# / .NET icons), presentation text
-- CTA buttons: scroll to about (`#about-more`), link to Projects page
-- `AboutSection` — 3 paragraphs with i18n; dynamic values:
-  - Age: `currentYear - 1997` (same as legacy)
-  - Experience: months since `2020-11-01` → years + months (port `Utils.MonthDifference` logic to `src/lib/experience.ts`)
-- `CvDownloadButton` — client toggle for PT-BR / EN-US PDF links from `public/cv/`
-- Server Components; client only for CV dropdown
-- Match `home.css` layout and gradient/black sections
-
-**Out of scope:** skills, timeline, Medium, courses
-
-**Done when:**
-- Hero + about sections match legacy visually
-- i18n strings from message files
-- Experience/age computed correctly in both locales
-- CV download links work
-
----
+**Status:** done | **Dep:** 004 ✓
 
 ### 007 · Home — skills + certifications
-**Status:** todo | **Dep:** 006 | **Legacy:** `Views/Home/_Skill.cshtml`, `home.css`, `home.js` (`animateAbout`)
+**Status:** todo | **Dep:** 006 ✓ | **Legacy:** `Views/Home/_Skill.cshtml`, `home.css`, `home.js` (`animateAbout`)
 
 **Scope:**
 - `SkillBar` component — title, 5-level bar, staggered animation delay

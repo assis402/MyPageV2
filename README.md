@@ -77,11 +77,12 @@ MyPageV2
 - Assets estáticos (imagens, favicon, CVs)
 - Header, menu mobile, footer (contato + copiar e-mail) e botão de voltar ao topo
 - Navegação **About** e **Projects** (sem Courses)
+- Home: hero (saudação, stack, CTAs) e seção About (textos + download de CV)
 <br>
 
 ## Ainda não disponível
 
-- Home completa (hero, about, skills, certificações, timeline, Medium, download de CV)
+- Home: skills, certificações, timeline e Medium
 - Página de projetos com busca, tags e dados do GitHub
 - Painel admin (login Google e limpeza de cache)
 - SEO (sitemap, robots, Open Graph)
