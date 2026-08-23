@@ -1,0 +1,167 @@
+@import "tailwindcss";
+@import "./layout.css";
+
+/*
+ * Design tokens — mapped from legacy wwwroot/css (shared, home, projects, admin).
+ *
+ * Colors:
+ *   legacy-bg, legacy-text, legacy-text-soft, legacy-muted, legacy-muted-light,
+ *   legacy-footer-text, legacy-contact, legacy-label, legacy-placeholder
+ *
+ * Accent / gradients (use bg-gradient-accent, bg-gradient-accent-bar, bg-gradient-footer):
+ *   legacy-accent-start, legacy-accent-end,
+ *   legacy-accent-bar-start, legacy-accent-bar-end, legacy-accent-bar-alt-end
+ *
+ * Borders:
+ *   legacy-border, legacy-border-light, legacy-border-input, legacy-border-input-hover,
+ *   legacy-border-form, legacy-border-form-focus, legacy-border-card, legacy-border-timeline
+ *
+ * Menu / chrome:
+ *   legacy-menu-overlay, legacy-menu-border, legacy-scroll-btn-bg, legacy-popup-bg
+ *
+ * Footer:
+ *   legacy-footer-start, legacy-footer-end
+ *
+ * Timeline:
+ *   legacy-timeline-dot-a, legacy-timeline-dot-b, legacy-timeline-card-bg,
+ *   legacy-timeline-text, legacy-timeline-muted, legacy-timeline-skill-bg,
+ *   legacy-timeline-overlay, legacy-skill-track
+ *
+ * Projects:
+ *   legacy-project-overlay, legacy-project-surface, legacy-project-card,
+ *   legacy-project-card-border, legacy-project-tag, legacy-project-tag-hover,
+ *   legacy-project-tag-active, legacy-project-input, legacy-project-title-muted,
+ *   legacy-project-divider, legacy-project-text, legacy-project-text-muted,
+ *   legacy-project-scrollbar-track, legacy-project-scrollbar-thumb
+ *
+ * Hero / cards:
+ *   legacy-hero-card-bg, legacy-hero-muted, legacy-card-bg
+ *
+ * Admin (later):
+ *   legacy-admin-bg, legacy-admin-surface, legacy-admin-border, legacy-admin-muted
+ *
+ * Breakpoints (legacy media queries):
+ *   legacy-xs 570px | legacy-sm 768px | legacy-md 900px | legacy-lg 1200px
+ *   legacy-xl 1430px | legacy-grid-md 870px | legacy-grid-lg 1150px
+ *
+ * Z-index:
+ *   z-header 10000 | z-loader 99999
+ */
+@theme {
+  --font-sans: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+
+  --color-legacy-bg: #000000;
+  --color-legacy-text: #ffffff;
+  --color-legacy-text-soft: #dfdfdf;
+  --color-legacy-muted: #8e9098;
+  --color-legacy-muted-light: #dfe0e8;
+  --color-legacy-footer-text: #c1c1c7;
+  --color-legacy-contact: #aeaebc;
+  --color-legacy-label: #a8a8b9;
+  --color-legacy-placeholder: #585866;
+
+  --color-legacy-accent-start: #8b32e3;
+  --color-legacy-accent-end: #4a18ec;
+  --color-legacy-accent-bar-start: #27006a;
+  --color-legacy-accent-bar-end: #541db1;
+  --color-legacy-accent-bar-alt-end: #7b2dff;
+
+  --color-legacy-border: #53535a4f;
+  --color-legacy-border-light: #efefff8c;
+  --color-legacy-border-input: #323241;
+  --color-legacy-border-input-hover: #a2a3af;
+  --color-legacy-border-form: #4d4d65;
+  --color-legacy-border-form-focus: #b5b5c7;
+  --color-legacy-border-card: #8c8d9d45;
+  --color-legacy-border-timeline: #1b1b20;
+
+  --color-legacy-menu-overlay: rgb(0 0 0 / 35%);
+  --color-legacy-menu-border: rgb(210 213 255 / 30%);
+  --color-legacy-scroll-btn-bg: rgb(11 11 11 / 19%);
+  --color-legacy-popup-bg: rgb(42 48 74 / 80%);
+
+  --color-legacy-footer-start: #060708;
+  --color-legacy-footer-end: #242430;
+
+  --color-legacy-timeline-dot-a: #d500d3;
+  --color-legacy-timeline-dot-b: #4901ef;
+  --color-legacy-timeline-card-bg: #2b30453b;
+  --color-legacy-timeline-text: #d5d5e1;
+  --color-legacy-timeline-muted: #ababab;
+  --color-legacy-timeline-skill-bg: #343445e0;
+  --color-legacy-timeline-overlay: #2e2e3d69;
+  --color-legacy-skill-track: #dfdfdf;
+
+  --color-legacy-project-overlay: rgb(0 0 0 / 80%);
+  --color-legacy-project-surface: #18181c;
+  --color-legacy-project-card: #232332;
+  --color-legacy-project-card-border: #4c4d5e;
+  --color-legacy-project-tag: #323240;
+  --color-legacy-project-tag-hover: #8e8eb0;
+  --color-legacy-project-tag-active: #3d00a7;
+  --color-legacy-project-input: #121218;
+  --color-legacy-project-title-muted: #8a8a9f;
+  --color-legacy-project-divider: #1f1f2a;
+  --color-legacy-project-text: #d2d2d2;
+  --color-legacy-project-text-muted: #808080;
+  --color-legacy-project-scrollbar-track: #0d0e12;
+  --color-legacy-project-scrollbar-thumb: #444456;
+
+  --color-legacy-hero-card-bg: rgb(12 12 14 / 53%);
+  --color-legacy-hero-muted: #63646a;
+  --color-legacy-card-bg: #2b30453b;
+
+  --color-legacy-admin-bg: #121218;
+  --color-legacy-admin-surface: #252531;
+  --color-legacy-admin-border: #4f4e53;
+  --color-legacy-admin-muted: #878792;
+
+  --background-image-gradient-accent: linear-gradient(
+    to right,
+    var(--color-legacy-accent-start),
+    var(--color-legacy-accent-end)
+  );
+  --background-image-gradient-accent-bar: linear-gradient(
+    to right,
+    var(--color-legacy-accent-bar-start),
+    var(--color-legacy-accent-bar-end)
+  );
+  --background-image-gradient-accent-bar-alt: linear-gradient(
+    to right,
+    var(--color-legacy-accent-bar-start),
+    var(--color-legacy-accent-bar-alt-end)
+  );
+  --background-image-gradient-footer: linear-gradient(
+    to right,
+    var(--color-legacy-footer-start),
+    var(--color-legacy-footer-end)
+  );
+
+  --breakpoint-legacy-xs: 570px;
+  --breakpoint-legacy-sm: 768px;
+  --breakpoint-legacy-md: 900px;
+  --breakpoint-legacy-lg: 1200px;
+  --breakpoint-legacy-xl: 1430px;
+  --breakpoint-legacy-grid-md: 870px;
+  --breakpoint-legacy-grid-lg: 1150px;
+
+  --z-index-header: 10000;
+  --z-index-loader: 99999;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-legacy-bg);
+  color: var(--color-legacy-text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
