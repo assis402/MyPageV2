@@ -30,7 +30,7 @@ Implements what the **Coordinator** delegates. Read this file + `BACKLOG.md` + `
 2. Update `BACKLOG.md` → `done`
 3. For UI: note how visual parity was verified
 4. Short summary: what changed, main files, how to test
-5. **Commit + push** the task on the current branch (no `--force`). Do this after every completed task, not in a batch at the end.
+5. **Commit + push** on **`develop`** (no `--force`). Create the branch from `main` if it does not exist. Do this after every completed task, not in a batch at the end. Do not push task work to `main` unless asked.
 
 Never commit `.env` or secrets.
 

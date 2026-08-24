@@ -21,7 +21,7 @@ yarn dev
 - App: [http://localhost:3000](http://localhost:3000) (redireciona para `/en-US`)
 - Português: [http://localhost:3000/pt-BR](http://localhost:3000/pt-BR)
 
-Variáveis de ambiente estão descritas em `.env.example`. Integrações (GitHub, Medium, Google Auth) ainda não estão ligadas — a home completa e a listagem de projetos ainda não estão disponíveis.
+Variáveis de ambiente estão descritas em `.env.example`. Integrações (GitHub na listagem de projetos; Medium na home; Google Auth ainda não).
 
 <br>
 
@@ -55,13 +55,13 @@ MyPageV2
 │   ├── app/[locale]/           // Rotas por idioma (home, projects)
 │   ├── components/
 │   │   ├── layout/             // Header, menu mobile, footer, troca de idioma
-│   │   ├── home/               // Ainda não disponível
-│   │   └── projects/           // Ainda não disponível
+│   │   ├── home/               // Hero, about, skills, timeline, Medium
+│   │   └── projects/           // Busca, tags, cards e modal de vídeo
 │   ├── lib/
 │   │   ├── i18n/               // next-intl, cookie de idioma
 │   │   ├── fonts/              // Poppins via next/font
-│   │   ├── github/             // Ainda não disponível
-│   │   └── medium/             // Ainda não disponível
+│   │   ├── github/             // Fetch + cache dos repositórios com tag mypage
+│   │   └── medium/             // Fetch + cache das publicações (até 10 posts)
 │   ├── messages/               // Copy en-US e pt-BR
 │   └── styles/                 // Tokens de tema + chrome do layout
 │
@@ -78,12 +78,16 @@ MyPageV2
 - Header, menu mobile, footer (contato + copiar e-mail) e botão de voltar ao topo
 - Navegação **About** e **Projects** (sem Courses)
 - Home: hero (saudação, stack, CTAs) e seção About (textos + download de CV)
+- Home: barras de skills (animação ao scroll)
+- Home: timeline de experiência (expandir/recolher)
+- Serviço de projetos GitHub (cache no servidor)
+- Página de projetos com busca, tags, cards e modal de vídeo
+- Serviço de publicações Medium (cache no servidor)
+- Home: seção Medium (cards + link para o perfil)
 <br>
 
 ## Ainda não disponível
 
-- Home: skills, certificações, timeline e Medium
-- Página de projetos com busca, tags e dados do GitHub
 - Painel admin (login Google e limpeza de cache)
 - SEO (sitemap, robots, Open Graph)
 - CI/CD e deploy em produção
@@ -93,7 +97,7 @@ MyPageV2
 ## Padrões de Design e Arquitetura
 
 - App Router do Next.js
-- Server Components por padrão; Client Components só onde há interação (menu, copiar e-mail, scroll)
+- Server Components por padrão; Client Components só onde há interação (menu, copiar e-mail, scroll, timeline)
 - i18n nas strings de interface (`src/messages`)
 - Cache de APIs externas no servidor quando as integrações forem ligadas (`unstable_cache` / ISR)
 - Visual alinhado ao site legado; código interno não replica a arquitetura MVC

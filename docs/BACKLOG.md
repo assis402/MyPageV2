@@ -30,8 +30,8 @@ _(empty)_
 
 ## Next (ready)
 
-### 007 · Home — skills + certifications
-**Status:** todo | **Dep:** 006 ✓
+### 013 · Admin — Google auth (owner only)
+**Status:** todo | **Dep:** 001 ✓
 
 ---
 
@@ -54,6 +54,24 @@ Header (photo, About + Projects, flags), mobile hamburger, footer contacts + ema
 
 ### 006 · Home — hero + about
 Hero (greeting, main stack, CTAs) + About (age/experience i18n, CV dropdown). Verified in browser. `yarn build` + `yarn lint`.
+
+### 007 · Home — skills
+Skill bars (9 skills, staggered fill on scroll). Certifications were dropped from this task. Verified in browser. `yarn build` + `yarn lint`.
+
+### 008 · Home — experience timeline
+Three roles (Labsit/Dotz, FitBank×2), exclusive expand/collapse, LinkedIn link. Verified desktop + ~768px. `yarn build` + `yarn lint`.
+
+### 009 · GitHub projects service + server cache
+Fetch repos tagged `mypage`, load `mypage-props.json`, localize descriptions, cache with `unstable_cache`. Verified live fetch shape (`yarn verify:github`). `yarn build` + `yarn lint`.
+
+### 010 · Projects page — search, tags, video modal
+Search + tag chips (`?search=&tag=`), project cards, video modal, empty state. Verified en-US / pt-BR and mobile in browser. `yarn build` + `yarn lint`.
+
+### 011 · Medium publications service + server cache
+Fetch Medium posts from `MEDIUM_INTEGRATION_URL`, sort by date, take 10, cache with `unstable_cache`. Empty list on failure. Verified parse shape (`yarn verify:medium`). `yarn build` + `yarn lint`.
+
+### 012 · Home — Medium section
+Top 5 Medium cards on home (image, title, description, date), pt-BR subtitle, “more” link if >5 posts. Verified en-US / pt-BR and mobile in browser. `yarn build` + `yarn lint`.
 
 ---
 
@@ -99,25 +117,24 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ### 006 · Home — hero + about
 **Status:** done | **Dep:** 004 ✓
 
-### 007 · Home — skills + certifications
-**Status:** todo | **Dep:** 006 ✓ | **Legacy:** `Views/Home/_Skill.cshtml`, `home.css`, `home.js` (`animateAbout`)
+### 007 · Home — skills
+**Status:** done | **Dep:** 006 ✓ | **Legacy:** `Views/Home/_Skill.cshtml`, `home.css`, `home.js` (`animateAbout`)
 
 **Scope:**
 - `SkillBar` component — title, 5-level bar, staggered animation delay
 - Skills list (same as legacy): C# .NET, Unit Test, Integration Test, TypeScript, Angular, React Native, Azure, React, DevOps — levels 1–4
 - Animate bars on scroll into view — minimal client hook or CSS `@scroll`-based; avoid heavy libs
-- Certifications block: AZ-900 + AZ-204 with Credly links and badge images (`next/image`)
 
-**Out of scope:** timeline, Medium
+**Out of scope:** timeline, Medium, certifications (removed from home)
 
 **Done when:**
-- Visual parity with legacy skill bars + cert cards
+- Visual parity with legacy skill bars
 - Animation triggers on scroll (same feel as legacy)
 
 ---
 
 ### 008 · Home — experience timeline
-**Status:** todo | **Dep:** 006 | **Legacy:** `Views/Home/Index.cshtml` (Background), `home.js` (`seeMoreTimeline` / `seeLessTimeline`)
+**Status:** done | **Dep:** 006 | **Legacy:** `Views/Home/Index.cshtml` (Background), `home.js` (`seeMoreTimeline` / `seeLessTimeline`)
 
 **Scope:**
 - `Timeline` + `TimelineEntry` components — 3 experiences (Dotz/Labsit, FitBank×2)
@@ -135,7 +152,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 009 · GitHub projects service + server cache
-**Status:** todo | **Dep:** 001 ✓ | **Legacy:** `GitHubIntegration.cs`, `ProjectsService.cs`, `GitHubRepositoryModel.cs`, `GitHubCustomPropertiesModel.cs`
+**Status:** done | **Dep:** 001 ✓ | **Legacy:** `GitHubIntegration.cs`, `ProjectsService.cs`, `GitHubRepositoryModel.cs`, `GitHubCustomPropertiesModel.cs`
 
 **Scope:**
 - `src/lib/github/`:
@@ -161,7 +178,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 010 · Projects page — search, tags, video modal
-**Status:** todo | **Dep:** 004, 009 | **Legacy:** `Views/Projects/Index.cshtml`, `projects.css`, `projects.js`
+**Status:** done | **Dep:** 004, 009 | **Legacy:** `Views/Projects/Index.cshtml`, `projects.css`, `projects.js`
 
 **Scope:**
 - Route: `src/app/[locale]/projects/page.tsx`
@@ -184,7 +201,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 011 · Medium publications service + server cache
-**Status:** todo | **Dep:** 001 ✓ | **Legacy:** `MediumIntegration.cs`, `MediumResponseModel.cs`, `PublicationsCacheService.cs`
+**Status:** done | **Dep:** 001 ✓ | **Legacy:** `MediumIntegration.cs`, `MediumResponseModel.cs`, `PublicationsCacheService.cs`
 
 **Scope:**
 - `src/lib/medium/`:
@@ -204,7 +221,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 012 · Home — Medium section
-**Status:** todo | **Dep:** 006, 011 | **Legacy:** `Views/Home/Index.cshtml` (Medium section)
+**Status:** done | **Dep:** 006, 011 | **Legacy:** `Views/Home/Index.cshtml` (Medium section)
 
 **Scope:**
 - `MediumSection` Server Component — top 5 posts from `getPublications()`
@@ -337,7 +354,7 @@ When ready, reopen as new tasks (may get new IDs).
 006,010,012 ─── 016
 ```
 
-**Parallel now:** 009 + 011 (after 001). **004** is unblocked (002 ✓, 003 ✓, 005 ✓).
+**Next ready:** 013 (admin Google auth).
 
 ---
 
