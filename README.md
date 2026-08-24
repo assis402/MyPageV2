@@ -55,7 +55,7 @@ MyPageV2
 │   ├── app/[locale]/           // Rotas por idioma (home, projects)
 │   ├── components/
 │   │   ├── layout/             // Header, menu mobile, footer, troca de idioma
-│   │   ├── home/               // Ainda não disponível
+│   │   ├── home/               // Hero, about, skills, certificações
 │   │   └── projects/           // Ainda não disponível
 │   ├── lib/
 │   │   ├── i18n/               // next-intl, cookie de idioma
@@ -78,11 +78,12 @@ MyPageV2
 - Header, menu mobile, footer (contato + copiar e-mail) e botão de voltar ao topo
 - Navegação **About** e **Projects** (sem Courses)
 - Home: hero (saudação, stack, CTAs) e seção About (textos + download de CV)
+- Home: barras de skills (animação ao scroll) e certificações AZ-900 / AZ-204
 <br>
 
 ## Ainda não disponível
 
-- Home: skills, certificações, timeline e Medium
+- Home: timeline e Medium
 - Página de projetos com busca, tags e dados do GitHub
 - Painel admin (login Google e limpeza de cache)
 - SEO (sitemap, robots, Open Graph)

@@ -30,7 +30,7 @@ _(empty)_
 
 ## Next (ready)
 
-### 007 · Home — skills + certifications
+### 008 · Home — experience timeline
 **Status:** todo | **Dep:** 006 ✓
 
 ---
@@ -54,6 +54,9 @@ Header (photo, About + Projects, flags), mobile hamburger, footer contacts + ema
 
 ### 006 · Home — hero + about
 Hero (greeting, main stack, CTAs) + About (age/experience i18n, CV dropdown). Verified in browser. `yarn build` + `yarn lint`.
+
+### 007 · Home — skills + certifications
+Skill bars (9 skills, staggered fill on scroll) + AZ-900/AZ-204 Credly badges. Verified in browser. `yarn build` + `yarn lint`.
 
 ---
 
@@ -100,7 +103,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 **Status:** done | **Dep:** 004 ✓
 
 ### 007 · Home — skills + certifications
-**Status:** todo | **Dep:** 006 ✓ | **Legacy:** `Views/Home/_Skill.cshtml`, `home.css`, `home.js` (`animateAbout`)
+**Status:** done | **Dep:** 006 ✓ | **Legacy:** `Views/Home/_Skill.cshtml`, `home.css`, `home.js` (`animateAbout`)
 
 **Scope:**
 - `SkillBar` component — title, 5-level bar, staggered animation delay

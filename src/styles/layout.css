@@ -283,6 +283,16 @@ header {
   text-align: center;
 }
 
+.mini-sub-title {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  color: var(--color-legacy-muted);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
 .contact {
   position: relative;
   display: flex;
