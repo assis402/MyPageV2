@@ -30,8 +30,8 @@ _(empty)_
 
 ## Next (ready)
 
-### 009 · GitHub projects service + server cache
-**Status:** todo | **Dep:** 001 ✓
+### 010 · Projects page — search, tags, video modal
+**Status:** todo | **Dep:** 004, 009 ✓
 
 ---
 
@@ -60,6 +60,9 @@ Skill bars (9 skills, staggered fill on scroll). Certifications were dropped fro
 
 ### 008 · Home — experience timeline
 Three roles (Labsit/Dotz, FitBank×2), exclusive expand/collapse, LinkedIn link. Verified desktop + ~768px. `yarn build` + `yarn lint`.
+
+### 009 · GitHub projects service + server cache
+Fetch repos tagged `mypage`, load `mypage-props.json`, localize descriptions, cache with `unstable_cache`. Verified live fetch shape (`yarn verify:github`). `yarn build` + `yarn lint`.
 
 ---
 
@@ -140,7 +143,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 009 · GitHub projects service + server cache
-**Status:** todo | **Dep:** 001 ✓ | **Legacy:** `GitHubIntegration.cs`, `ProjectsService.cs`, `GitHubRepositoryModel.cs`, `GitHubCustomPropertiesModel.cs`
+**Status:** done | **Dep:** 001 ✓ | **Legacy:** `GitHubIntegration.cs`, `ProjectsService.cs`, `GitHubRepositoryModel.cs`, `GitHubCustomPropertiesModel.cs`
 
 **Scope:**
 - `src/lib/github/`:

@@ -60,7 +60,7 @@ MyPageV2
 │   ├── lib/
 │   │   ├── i18n/               // next-intl, cookie de idioma
 │   │   ├── fonts/              // Poppins via next/font
-│   │   ├── github/             // Ainda não disponível
+│   │   ├── github/             // Fetch + cache dos repositórios com tag mypage
 │   │   └── medium/             // Ainda não disponível
 │   ├── messages/               // Copy en-US e pt-BR
 │   └── styles/                 // Tokens de tema + chrome do layout
@@ -80,6 +80,7 @@ MyPageV2
 - Home: hero (saudação, stack, CTAs) e seção About (textos + download de CV)
 - Home: barras de skills (animação ao scroll)
 - Home: timeline de experiência (expandir/recolher)
+- Serviço de projetos GitHub (cache no servidor; a página ainda não lista os cards)
 <br>
 
 ## Ainda não disponível

@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "verify:github": "node scripts/verify-github.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
