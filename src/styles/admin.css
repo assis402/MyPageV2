@@ -1,0 +1,191 @@
+.admin-external-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.admin-container {
+  position: relative;
+  display: flex;
+  height: 380px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 60px;
+  margin-top: 150px;
+  margin-bottom: 100px;
+  background: var(--color-legacy-admin-bg);
+  padding: 0 60px;
+  font-weight: 200;
+}
+
+.admin-gradient-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-image: var(--background-image-gradient-accent-bar);
+}
+
+.admin-container h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+.admin-container span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-container span img {
+  height: 40px;
+  filter: invert(1);
+}
+
+.admin-container h5 {
+  margin-top: 0;
+  margin-bottom: 35px;
+  color: var(--color-legacy-admin-muted);
+  font-weight: 300;
+}
+
+.admin-container p {
+  max-width: 300px;
+}
+
+.admin-error {
+  margin-top: 16px;
+  color: #e07070;
+}
+
+.admin-success {
+  margin-top: 16px;
+  color: #7dbe8a;
+}
+
+.admin-first-div {
+  padding-right: 60px;
+}
+
+.admin-divisor {
+  height: 80%;
+  width: 2px;
+  background-color: var(--color-legacy-admin-surface);
+}
+
+.admin-container img {
+  height: 35px;
+}
+
+.google-button,
+.option-button {
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  border: 1px solid transparent;
+  background-color: var(--color-legacy-admin-surface);
+  color: inherit;
+  font: inherit;
+  font-weight: 500;
+  transition: border 0.2s linear;
+}
+
+.google-button {
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 15px 10px 10px;
+}
+
+.google-button:hover,
+.google-button:focus,
+.option-button:hover,
+.option-button:focus {
+  border: 1px solid var(--color-legacy-admin-border);
+}
+
+.admin-options {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.option-button {
+  width: 180px;
+  justify-content: flex-start;
+  padding: 10px 13px;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.option-button img {
+  height: 20px;
+  margin-right: 15px;
+  filter: invert(1);
+}
+
+@media (max-width: 950px) {
+  .admin-container {
+    height: auto;
+    flex-direction: column;
+    gap: 40px;
+    margin-bottom: 100px;
+    padding: 60px 40px;
+  }
+
+  .admin-container h1 {
+    font-size: 2rem;
+  }
+
+  .admin-divisor {
+    height: 1px;
+    width: 105%;
+  }
+
+  .admin-options {
+    width: 80%;
+  }
+
+  .admin-container p {
+    margin: 0;
+  }
+
+  .admin-error,
+  .admin-success {
+    margin-top: 16px;
+  }
+
+  .admin-first-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-right: 0;
+  }
+
+  .option-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-container p {
+    margin: 0;
+    font-size: 13px;
+  }
+
+  .option-button {
+    font-size: 11px;
+  }
+
+  .option-button img {
+    height: 17px;
+    margin-right: 10px;
+  }
+
+  .admin-container span img {
+    height: 25px;
+  }
+}

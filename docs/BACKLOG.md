@@ -30,8 +30,8 @@ _(empty)_
 
 ## Next (ready)
 
-### 013 · Admin — Google auth (owner only)
-**Status:** todo | **Dep:** 001 ✓
+### 015 · SEO, metadata, legacy URL redirects
+**Status:** todo | **Dep:** 004 ✓
 
 ---
 
@@ -72,6 +72,12 @@ Fetch Medium posts from `MEDIUM_INTEGRATION_URL`, sort by date, take 10, cache w
 
 ### 012 · Home — Medium section
 Top 5 Medium cards on home (image, title, description, date), pt-BR subtitle, “more” link if >5 posts. Verified en-US / pt-BR and mobile in browser. `yarn build` + `yarn lint`.
+
+### 013 · Admin — Google auth (owner only)
+Google login on `/[locale]/admin`, owner email allowlist (`ADMIN_EMAIL`), logout. Non-owner sees rejection message. Cache buttons are 014. Verified login UI and rejected state in browser. `yarn build` + `yarn lint`.
+
+### 014 · Admin — cache invalidation UI
+Clear projects and articles caches (auth-guarded), inline success/error, logout. No courses. Verified login UI still matches; cache buttons require owner session. `yarn build` + `yarn lint`.
 
 ---
 
@@ -239,7 +245,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 013 · Admin — Google auth (owner only)
-**Status:** todo | **Dep:** 001 ✓ | **Legacy:** `AdminController.cs`, `AdminService.cs`
+**Status:** done | **Dep:** 001 ✓ | **Legacy:** `AdminController.cs`, `AdminService.cs`
 
 **Scope:**
 - Auth.js (or NextAuth v5) with Google provider
@@ -259,7 +265,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 014 · Admin — cache invalidation UI
-**Status:** todo | **Dep:** 013, 009, 011 | **Legacy:** `Views/Admin/Index.cshtml`, `AdminController` Clear* actions
+**Status:** done | **Dep:** 013, 009, 011 | **Legacy:** `Views/Admin/Index.cshtml`, `AdminController` Clear* actions
 
 **Scope:**
 - Admin panel options (no courses):
@@ -354,7 +360,7 @@ When ready, reopen as new tasks (may get new IDs).
 006,010,012 ─── 016
 ```
 
-**Next ready:** 013 (admin Google auth).
+**Next ready:** 015 (SEO, metadata, legacy URL redirects).
 
 ---
 
