@@ -1,6 +1,5 @@
 import { getTranslations } from "next-intl/server";
 
-import { Certifications } from "@/components/home/Certifications";
 import { CvDownloadButton } from "@/components/home/CvDownloadButton";
 import { SkillsSection } from "@/components/home/SkillsSection";
 import { getAge, getWorkExperience } from "@/lib/experience";
@@ -42,7 +41,6 @@ export async function AboutSection() {
             <p className="about-body">{t("AboutBody_03")}</p>
           </div>
           <SkillsSection title={t("SkillsTitle")} skills={skills} />
-          <Certifications title={t("CertificationsTitle")} />
           <div className="presentation-buttons second-buttons">
             <Link href="/projects" className="gradient-button second-button">
               {/* eslint-disable-next-line @next/next/no-img-element */}

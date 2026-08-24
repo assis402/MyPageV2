@@ -55,7 +55,7 @@ MyPageV2
 │   ├── app/[locale]/           // Rotas por idioma (home, projects)
 │   ├── components/
 │   │   ├── layout/             // Header, menu mobile, footer, troca de idioma
-│   │   ├── home/               // Hero, about, skills, certificações
+│   │   ├── home/               // Hero, about, skills, timeline
 │   │   └── projects/           // Ainda não disponível
 │   ├── lib/
 │   │   ├── i18n/               // next-intl, cookie de idioma
@@ -78,12 +78,13 @@ MyPageV2
 - Header, menu mobile, footer (contato + copiar e-mail) e botão de voltar ao topo
 - Navegação **About** e **Projects** (sem Courses)
 - Home: hero (saudação, stack, CTAs) e seção About (textos + download de CV)
-- Home: barras de skills (animação ao scroll) e certificações AZ-900 / AZ-204
+- Home: barras de skills (animação ao scroll)
+- Home: timeline de experiência (expandir/recolher)
 <br>
 
 ## Ainda não disponível
 
-- Home: timeline e Medium
+- Home: Medium
 - Página de projetos com busca, tags e dados do GitHub
 - Painel admin (login Google e limpeza de cache)
 - SEO (sitemap, robots, Open Graph)
@@ -94,7 +95,7 @@ MyPageV2
 ## Padrões de Design e Arquitetura
 
 - App Router do Next.js
-- Server Components por padrão; Client Components só onde há interação (menu, copiar e-mail, scroll)
+- Server Components por padrão; Client Components só onde há interação (menu, copiar e-mail, scroll, timeline)
 - i18n nas strings de interface (`src/messages`)
 - Cache de APIs externas no servidor quando as integrações forem ligadas (`unstable_cache` / ISR)
 - Visual alinhado ao site legado; código interno não replica a arquitetura MVC
