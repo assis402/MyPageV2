@@ -60,6 +60,11 @@
   color: #e07070;
 }
 
+.admin-success {
+  margin-top: 16px;
+  color: #7dbe8a;
+}
+
 .admin-first-div {
   padding-right: 60px;
 }
@@ -148,7 +153,8 @@
     margin: 0;
   }
 
-  .admin-error {
+  .admin-error,
+  .admin-success {
     margin-top: 16px;
   }
 

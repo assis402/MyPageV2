@@ -85,12 +85,11 @@ MyPageV2
 - Página de projetos com busca, tags, cards e modal de vídeo
 - Serviço de publicações Medium (cache no servidor)
 - Home: seção Medium (cards + link para o perfil)
-- Admin: login Google (somente o dono) e logout
+- Admin: login Google (somente o dono), logout e limpeza de cache (projetos e artigos)
 <br>
 
 ## Ainda não disponível
 
-- Admin: limpeza de cache
 - SEO (sitemap, robots, Open Graph)
 - CI/CD e deploy em produção
 - Cutover de DNS de matheusassis.dev

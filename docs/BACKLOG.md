@@ -30,8 +30,8 @@ _(empty)_
 
 ## Next (ready)
 
-### 014 · Admin — cache invalidation UI
-**Status:** todo | **Dep:** 013, 009, 011 ✓
+### 015 · SEO, metadata, legacy URL redirects
+**Status:** todo | **Dep:** 004 ✓
 
 ---
 
@@ -75,6 +75,9 @@ Top 5 Medium cards on home (image, title, description, date), pt-BR subtitle, �
 
 ### 013 · Admin — Google auth (owner only)
 Google login on `/[locale]/admin`, owner email allowlist (`ADMIN_EMAIL`), logout. Non-owner sees rejection message. Cache buttons are 014. Verified login UI and rejected state in browser. `yarn build` + `yarn lint`.
+
+### 014 · Admin — cache invalidation UI
+Clear projects and articles caches (auth-guarded), inline success/error, logout. No courses. Verified login UI still matches; cache buttons require owner session. `yarn build` + `yarn lint`.
 
 ---
 
@@ -262,7 +265,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 014 · Admin — cache invalidation UI
-**Status:** todo | **Dep:** 013, 009, 011 | **Legacy:** `Views/Admin/Index.cshtml`, `AdminController` Clear* actions
+**Status:** done | **Dep:** 013, 009, 011 | **Legacy:** `Views/Admin/Index.cshtml`, `AdminController` Clear* actions
 
 **Scope:**
 - Admin panel options (no courses):
@@ -357,7 +360,7 @@ When ready, reopen as new tasks (may get new IDs).
 006,010,012 ─── 016
 ```
 
-**Next ready:** 014 (admin cache invalidation).
+**Next ready:** 015 (SEO, metadata, legacy URL redirects).
 
 ---
 
