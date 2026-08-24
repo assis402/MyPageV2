@@ -21,7 +21,7 @@ yarn dev
 - App: [http://localhost:3000](http://localhost:3000) (redireciona para `/en-US`)
 - Português: [http://localhost:3000/pt-BR](http://localhost:3000/pt-BR)
 
-Variáveis de ambiente estão descritas em `.env.example`. Integrações (GitHub, Medium, Google Auth) ainda não estão ligadas — a home completa e a listagem de projetos ainda não estão disponíveis.
+Variáveis de ambiente estão descritas em `.env.example`. Integrações (GitHub já na listagem de projetos; Medium e Google Auth ainda não).
 
 <br>
 
@@ -56,7 +56,7 @@ MyPageV2
 │   ├── components/
 │   │   ├── layout/             // Header, menu mobile, footer, troca de idioma
 │   │   ├── home/               // Hero, about, skills, timeline
-│   │   └── projects/           // Ainda não disponível
+│   │   └── projects/           // Busca, tags, cards e modal de vídeo
 │   ├── lib/
 │   │   ├── i18n/               // next-intl, cookie de idioma
 │   │   ├── fonts/              // Poppins via next/font
@@ -80,13 +80,13 @@ MyPageV2
 - Home: hero (saudação, stack, CTAs) e seção About (textos + download de CV)
 - Home: barras de skills (animação ao scroll)
 - Home: timeline de experiência (expandir/recolher)
-- Serviço de projetos GitHub (cache no servidor; a página ainda não lista os cards)
+- Serviço de projetos GitHub (cache no servidor)
+- Página de projetos com busca, tags, cards e modal de vídeo
 <br>
 
 ## Ainda não disponível
 
 - Home: Medium
-- Página de projetos com busca, tags e dados do GitHub
 - Painel admin (login Google e limpeza de cache)
 - SEO (sitemap, robots, Open Graph)
 - CI/CD e deploy em produção

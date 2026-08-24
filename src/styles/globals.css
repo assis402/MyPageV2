@@ -1,6 +1,7 @@
 @import "tailwindcss";
 @import "./layout.css";
 @import "./home.css";
+@import "./projects.css";
 
 /*
  * Design tokens — mapped from legacy wwwroot/css (shared, home, projects, admin).

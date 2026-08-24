@@ -30,8 +30,8 @@ _(empty)_
 
 ## Next (ready)
 
-### 010 · Projects page — search, tags, video modal
-**Status:** todo | **Dep:** 004, 009 ✓
+### 011 · Medium publications service + server cache
+**Status:** todo | **Dep:** 001 ✓
 
 ---
 
@@ -63,6 +63,9 @@ Three roles (Labsit/Dotz, FitBank×2), exclusive expand/collapse, LinkedIn link.
 
 ### 009 · GitHub projects service + server cache
 Fetch repos tagged `mypage`, load `mypage-props.json`, localize descriptions, cache with `unstable_cache`. Verified live fetch shape (`yarn verify:github`). `yarn build` + `yarn lint`.
+
+### 010 · Projects page — search, tags, video modal
+Search + tag chips (`?search=&tag=`), project cards, video modal, empty state. Verified en-US / pt-BR and mobile in browser. `yarn build` + `yarn lint`.
 
 ---
 
@@ -169,7 +172,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 010 · Projects page — search, tags, video modal
-**Status:** todo | **Dep:** 004, 009 | **Legacy:** `Views/Projects/Index.cshtml`, `projects.css`, `projects.js`
+**Status:** done | **Dep:** 004, 009 | **Legacy:** `Views/Projects/Index.cshtml`, `projects.css`, `projects.js`
 
 **Scope:**
 - Route: `src/app/[locale]/projects/page.tsx`
