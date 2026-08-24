@@ -3,6 +3,7 @@ import "server-only";
 import type { Publication } from "@/types/medium";
 
 export const DEFAULT_MEDIUM_INTEGRATION_URL = "https://medium-posts.assis402.workers.dev/";
+export const DEFAULT_MEDIUM_USER_URL = "https://medium.com/@assis4002";
 const PUBLICATION_LIMIT = 10;
 
 function asRecord(value: unknown): Record<string, unknown> | null {
@@ -68,14 +69,70 @@ export function parsePublications(payload: unknown): Publication[] {
   const posts = readValue(data, ["posts"]);
   if (!Array.isArray(posts)) return [];
 
-  return posts
-    .map(mapPublication)
+  return finalizePublications(posts.map(mapPublication));
+}
+
+function decodeXmlText(value: string) {
+  return value
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1")
+    .replace(/&nbsp;/gi, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function xmlTag(xml: string, tag: string) {
+  const match = xml.match(new RegExp(`<${tag}(?:\\s[^>]*)?>([\\s\\S]*?)</${tag}>`, "i"));
+  return match ? decodeXmlText(match[1]) : "";
+}
+
+function firstImageUrl(html: string) {
+  const match = html.match(/<img[^>]+src=["']([^"']+)["']/i);
+  return match?.[1] ?? "";
+}
+
+function firstParagraph(html: string) {
+  const match = html.match(/<p\b[^>]*>([\s\S]*?)<\/p>/i);
+  if (!match) return "";
+  return decodeXmlText(match[1].replace(/<[^>]+>/g, " "));
+}
+
+function mapRssItem(itemXml: string): Publication | null {
+  const content = xmlTag(itemXml, "content:encoded") || xmlTag(itemXml, "description");
+  const url = (xmlTag(itemXml, "link") || "").split("?")[0];
+  const title = xmlTag(itemXml, "title");
+  if (!url || !title) return null;
+
+  return {
+    id: xmlTag(itemXml, "guid") || url,
+    title,
+    description: firstParagraph(content),
+    imageUrl: firstImageUrl(content),
+    url,
+    createdAt: parseCreatedAt(xmlTag(itemXml, "pubDate") || xmlTag(itemXml, "atom:updated")),
+  };
+}
+
+export function parseRssPublications(xml: string): Publication[] {
+  return finalizePublications(xml.split(/<item>/i).slice(1).map(mapRssItem));
+}
+
+function finalizePublications(items: (Publication | null)[]) {
+  return items
     .filter((item): item is Publication => item !== null)
     .sort((a, b) => (Date.parse(b.createdAt) || 0) - (Date.parse(a.createdAt) || 0))
     .slice(0, PUBLICATION_LIMIT);
 }
 
-export async function fetchPublications(): Promise<Publication[]> {
+function mediumRssUrl(userUrl: string) {
+  return userUrl.replace(/\/$/, "").replace("://medium.com/", "://medium.com/feed/");
+}
+
+async function fetchFromIntegration(): Promise<Publication[]> {
   const url = process.env.MEDIUM_INTEGRATION_URL?.trim() || DEFAULT_MEDIUM_INTEGRATION_URL;
 
   try {
@@ -93,4 +150,30 @@ export async function fetchPublications(): Promise<Publication[]> {
   } catch {
     return [];
   }
+}
+
+async function fetchFromRss(): Promise<Publication[]> {
+  const userUrl = process.env.MEDIUM_USER_URL?.trim() || DEFAULT_MEDIUM_USER_URL;
+
+  try {
+    const response = await fetch(mediumRssUrl(userUrl), {
+      headers: {
+        Accept: "application/rss+xml, application/xml, text/xml",
+        "User-Agent": "Mozilla/5.0 (compatible; MyPageUI/1.0)",
+      },
+      cache: "no-store",
+    });
+
+    if (!response.ok) return [];
+
+    return parseRssPublications(await response.text());
+  } catch {
+    return [];
+  }
+}
+
+export async function fetchPublications(): Promise<Publication[]> {
+  const fromApi = await fetchFromIntegration();
+  if (fromApi.length > 0) return fromApi;
+  return fetchFromRss();
 }

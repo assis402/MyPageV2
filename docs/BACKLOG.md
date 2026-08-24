@@ -30,8 +30,8 @@ _(empty)_
 
 ## Next (ready)
 
-### 012 · Home — Medium section
-**Status:** todo | **Dep:** 006, 011 ✓
+### 013 · Admin — Google auth (owner only)
+**Status:** todo | **Dep:** 001 ✓
 
 ---
 
@@ -69,6 +69,9 @@ Search + tag chips (`?search=&tag=`), project cards, video modal, empty state. V
 
 ### 011 · Medium publications service + server cache
 Fetch Medium posts from `MEDIUM_INTEGRATION_URL`, sort by date, take 10, cache with `unstable_cache`. Empty list on failure. Verified parse shape (`yarn verify:medium`). `yarn build` + `yarn lint`.
+
+### 012 · Home — Medium section
+Top 5 Medium cards on home (image, title, description, date), pt-BR subtitle, “more” link if >5 posts. Verified en-US / pt-BR and mobile in browser. `yarn build` + `yarn lint`.
 
 ---
 
@@ -218,7 +221,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 012 · Home — Medium section
-**Status:** todo | **Dep:** 006, 011 | **Legacy:** `Views/Home/Index.cshtml` (Medium section)
+**Status:** done | **Dep:** 006, 011 | **Legacy:** `Views/Home/Index.cshtml` (Medium section)
 
 **Scope:**
 - `MediumSection` Server Component — top 5 posts from `getPublications()`
@@ -351,7 +354,7 @@ When ready, reopen as new tasks (may get new IDs).
 006,010,012 ─── 016
 ```
 
-**Next ready:** 012 (home Medium section). 013 is unblocked after 001.
+**Next ready:** 013 (admin Google auth).
 
 ---
 
