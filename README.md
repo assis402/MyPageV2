@@ -21,7 +21,7 @@ yarn dev
 - App: [http://localhost:3000](http://localhost:3000) (redireciona para `/en-US`)
 - Português: [http://localhost:3000/pt-BR](http://localhost:3000/pt-BR)
 
-Variáveis de ambiente estão descritas em `.env.example`. Integrações (GitHub na listagem de projetos; Medium na home; Google Auth ainda não).
+Variáveis de ambiente estão descritas em `.env.example`. Integrações (GitHub na listagem de projetos; Medium na home; Google Auth no admin — preencha `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` / `AUTH_SECRET`).
 
 <br>
 
@@ -52,7 +52,7 @@ MyPageV2
 │   └── cv/                     // PDFs do currículo (pt-BR / en-US)
 │
 ├── src/
-│   ├── app/[locale]/           // Rotas por idioma (home, projects)
+│   ├── app/[locale]/           // Rotas por idioma (home, projects, admin)
 │   ├── components/
 │   │   ├── layout/             // Header, menu mobile, footer, troca de idioma
 │   │   ├── home/               // Hero, about, skills, timeline, Medium
@@ -61,7 +61,8 @@ MyPageV2
 │   │   ├── i18n/               // next-intl, cookie de idioma
 │   │   ├── fonts/              // Poppins via next/font
 │   │   ├── github/             // Fetch + cache dos repositórios com tag mypage
-│   │   └── medium/             // Fetch + cache das publicações (até 10 posts)
+│   │   ├── medium/             // Fetch + cache das publicações (até 10 posts)
+│   │   └── auth/               // Allowlist do admin (e-mail do dono)
 │   ├── messages/               // Copy en-US e pt-BR
 │   └── styles/                 // Tokens de tema + chrome do layout
 │
@@ -84,11 +85,12 @@ MyPageV2
 - Página de projetos com busca, tags, cards e modal de vídeo
 - Serviço de publicações Medium (cache no servidor)
 - Home: seção Medium (cards + link para o perfil)
+- Admin: login Google (somente o dono) e logout
 <br>
 
 ## Ainda não disponível
 
-- Painel admin (login Google e limpeza de cache)
+- Admin: limpeza de cache
 - SEO (sitemap, robots, Open Graph)
 - CI/CD e deploy em produção
 - Cutover de DNS de matheusassis.dev
