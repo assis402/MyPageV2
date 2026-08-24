@@ -30,8 +30,8 @@ _(empty)_
 
 ## Next (ready)
 
-### 011 · Medium publications service + server cache
-**Status:** todo | **Dep:** 001 ✓
+### 012 · Home — Medium section
+**Status:** todo | **Dep:** 006, 011 ✓
 
 ---
 
@@ -66,6 +66,9 @@ Fetch repos tagged `mypage`, load `mypage-props.json`, localize descriptions, ca
 
 ### 010 · Projects page — search, tags, video modal
 Search + tag chips (`?search=&tag=`), project cards, video modal, empty state. Verified en-US / pt-BR and mobile in browser. `yarn build` + `yarn lint`.
+
+### 011 · Medium publications service + server cache
+Fetch Medium posts from `MEDIUM_INTEGRATION_URL`, sort by date, take 10, cache with `unstable_cache`. Empty list on failure. Verified parse shape (`yarn verify:medium`). `yarn build` + `yarn lint`.
 
 ---
 
@@ -195,7 +198,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 011 · Medium publications service + server cache
-**Status:** todo | **Dep:** 001 ✓ | **Legacy:** `MediumIntegration.cs`, `MediumResponseModel.cs`, `PublicationsCacheService.cs`
+**Status:** done | **Dep:** 001 ✓ | **Legacy:** `MediumIntegration.cs`, `MediumResponseModel.cs`, `PublicationsCacheService.cs`
 
 **Scope:**
 - `src/lib/medium/`:
@@ -348,7 +351,7 @@ When ready, reopen as new tasks (may get new IDs).
 006,010,012 ─── 016
 ```
 
-**Parallel now:** 009 + 011 (after 001). **004** is unblocked (002 ✓, 003 ✓, 005 ✓).
+**Next ready:** 012 (home Medium section). 013 is unblocked after 001.
 
 ---
 

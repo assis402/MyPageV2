@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "verify:github": "node scripts/verify-github.mjs",
+    "verify:medium": "node scripts/verify-medium.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

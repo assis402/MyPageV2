@@ -21,7 +21,7 @@ yarn dev
 - App: [http://localhost:3000](http://localhost:3000) (redireciona para `/en-US`)
 - Português: [http://localhost:3000/pt-BR](http://localhost:3000/pt-BR)
 
-Variáveis de ambiente estão descritas em `.env.example`. Integrações (GitHub já na listagem de projetos; Medium e Google Auth ainda não).
+Variáveis de ambiente estão descritas em `.env.example`. Integrações (GitHub na listagem de projetos; serviço Medium no servidor; Google Auth ainda não).
 
 <br>
 
@@ -61,7 +61,7 @@ MyPageV2
 │   │   ├── i18n/               // next-intl, cookie de idioma
 │   │   ├── fonts/              // Poppins via next/font
 │   │   ├── github/             // Fetch + cache dos repositórios com tag mypage
-│   │   └── medium/             // Ainda não disponível
+│   │   └── medium/             // Fetch + cache das publicações (até 10 posts)
 │   ├── messages/               // Copy en-US e pt-BR
 │   └── styles/                 // Tokens de tema + chrome do layout
 │
@@ -82,6 +82,7 @@ MyPageV2
 - Home: timeline de experiência (expandir/recolher)
 - Serviço de projetos GitHub (cache no servidor)
 - Página de projetos com busca, tags, cards e modal de vídeo
+- Serviço de publicações Medium (cache no servidor; a home ainda não lista os cards)
 <br>
 
 ## Ainda não disponível
