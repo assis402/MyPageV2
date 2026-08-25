@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -41,11 +41,15 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
 
   const messages = await getMessages();
+  const t = await getTranslations();
 
   return (
     <html lang={locale} suppressHydrationWarning className={poppins.variable}>
       <body className={poppins.className}>
         <NextIntlClientProvider messages={messages}>
+          <a href="#main-content" className="skip-link">
+            {t("SkipToContent")}
+          </a>
           <Header />
           <div className="body-footer-container">
             {children}

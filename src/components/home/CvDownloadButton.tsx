@@ -1,18 +1,12 @@
-"use client";
+import { getTranslations } from "next-intl/server";
 
-import { useState } from "react";
-import { useTranslations } from "next-intl";
-
-export function CvDownloadButton() {
-  const t = useTranslations();
-  const [open, setOpen] = useState(false);
+export async function CvDownloadButton() {
+  const t = await getTranslations();
 
   return (
-    <div className="outlined-button second-button curriculum-button">
-      <button type="button" className="inner-button" onClick={() => setOpen(true)}>
-        {t("DownloadCV")}
-      </button>
-      <div className={`curriculum-options${open ? " is-open" : ""}`}>
+    <details className="outlined-button second-button curriculum-button">
+      <summary className="inner-button">{t("DownloadCV")}</summary>
+      <div className="curriculum-options">
         <a href="/cv/cv-pt-BR.pdf" target="_blank" rel="noreferrer">
           PT-BR
         </a>
@@ -21,6 +15,6 @@ export function CvDownloadButton() {
           EN-US
         </a>
       </div>
-    </div>
+    </details>
   );
 }

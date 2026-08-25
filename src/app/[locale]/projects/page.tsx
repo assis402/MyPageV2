@@ -45,7 +45,7 @@ export default async function ProjectsPage({
   const { projects, tags } = await loadProjects(locale, search, tag);
 
   return (
-    <main>
+    <main id="main-content">
       <VideoModalProvider>
         <div className="projects-external-container">
           <ProjectsSearch

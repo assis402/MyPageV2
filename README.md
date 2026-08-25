@@ -90,6 +90,7 @@ MyPageV2
 - Admin: login Google (somente o dono), logout e limpeza de cache (projetos e artigos)
 - SEO: metadata por locale, Open Graph, Twitter, sitemap.xml, robots.txt
 - Redirects das URLs do site legado (`/Projects`, `/Courses`, `/Admin`) para rotas `en-US`
+- Performance e acessibilidade (Lighthouse mobile ≥ 90 na home e em projects)
 <br>
 
 ## Ainda não disponível
@@ -101,7 +102,7 @@ MyPageV2
 ## Padrões de Design e Arquitetura
 
 - App Router do Next.js
-- Server Components por padrão; Client Components só onde há interação (menu, copiar e-mail, scroll, timeline)
+- Server Components por padrão; Client Components só onde há interação (menu, copiar e-mail, scroll, timeline, busca de projetos)
 - i18n nas strings de interface (`src/messages`)
 - Cache de APIs externas no servidor quando as integrações forem ligadas (`unstable_cache` / ISR)
 - Visual alinhado ao site legado; código interno não replica a arquitetura MVC

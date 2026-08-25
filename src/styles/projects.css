@@ -121,6 +121,10 @@
   transition: border-bottom 0.2s linear;
 }
 
+.search-box:focus-visible {
+  border-bottom-color: var(--color-legacy-border-form-focus);
+}
+
 .search-box::placeholder {
   color: var(--color-legacy-placeholder);
   font-weight: 300;
@@ -316,19 +320,23 @@
 
 .project-link:hover,
 .project-link:focus,
+.project-link:focus-visible,
 .project-link:active {
   color: var(--color-legacy-text);
 }
 
-.project-link:hover .project-link-img {
+.project-link:hover .project-link-img,
+.project-link:focus-visible .project-link-img {
   filter: grayscale(0);
 }
 
-.project-link:hover .project-link-img-nuget {
+.project-link:hover .project-link-img-nuget,
+.project-link:focus-visible .project-link-img-nuget {
   filter: grayscale(0) brightness(2.5);
 }
 
-.project-link:hover .project-link-img-invert {
+.project-link:hover .project-link-img-invert,
+.project-link:focus-visible .project-link-img-invert {
   filter: grayscale(0) invert(1);
 }
 

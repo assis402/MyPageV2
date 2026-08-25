@@ -8,7 +8,17 @@ export async function HeroSection() {
 
   return (
     <section className="about-external-container">
-      <div className="hero-background" />
+      <div className="hero-background" aria-hidden="true">
+        <Image
+          src="/images/background.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          quality={65}
+          className="hero-background-img"
+        />
+      </div>
       <div className="about-container">
         <div className="about-minified">
           <p className="about-title">
@@ -22,8 +32,22 @@ export async function HeroSection() {
               <p className="main-stack-body">{t("MainStackBody")}</p>
             </div>
             <div className="main-stack-footer">
-              <Image className="tech-icon" src="/images/c-sharp.png" alt="C#" width={50} height={50} />
-              <Image className="tech-icon" src="/images/dotnet.png" alt=".NET" width={50} height={50} />
+              <Image
+                className="tech-icon"
+                src="/images/c-sharp.png"
+                alt="C#"
+                width={50}
+                height={50}
+                sizes="50px"
+              />
+              <Image
+                className="tech-icon"
+                src="/images/dotnet.png"
+                alt=".NET"
+                width={50}
+                height={50}
+                sizes="50px"
+              />
             </div>
           </div>
         </div>

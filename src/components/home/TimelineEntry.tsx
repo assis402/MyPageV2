@@ -76,6 +76,8 @@ export function TimelineEntry({
             type="button"
             className={`more more-timeline${expanded ? " is-hidden" : ""}`}
             onClick={onExpand}
+            aria-expanded={expanded}
+            aria-controls={`timeline-exp-internal-${id}`}
           >
             <p className="more-text more-text-exp">{seeMore}</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -97,6 +99,8 @@ export function TimelineEntry({
             type="button"
             className={`more more-timeline timeline-exp-details${expanded ? " is-open" : ""}`}
             onClick={onCollapse}
+            aria-expanded={expanded}
+            aria-controls={`timeline-exp-internal-${id}`}
           >
             <p className="more-text more-text-exp">{seeLess}</p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
