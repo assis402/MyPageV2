@@ -1,8 +1,9 @@
 import type { Metadata, Viewport } from "next";
 
+import { getSiteUrl } from "@/lib/seo";
+
 export const metadata: Metadata = {
-  title: "Matheus de Assis Developer",
-  description: "My professional page (portfolio)",
+  metadataBase: getSiteUrl(),
   icons: {
     icon: [
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },

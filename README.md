@@ -52,7 +52,8 @@ MyPageV2
 │   └── cv/                     // PDFs do currículo (pt-BR / en-US)
 │
 ├── src/
-│   ├── app/[locale]/           // Rotas por idioma (home, projects, admin)
+│   ├── app/                    // sitemap.ts, robots.ts, rotas por idioma
+│   │   └── [locale]/           // home, projects, admin
 │   ├── components/
 │   │   ├── layout/             // Header, menu mobile, footer, troca de idioma
 │   │   ├── home/               // Hero, about, skills, timeline, Medium
@@ -62,7 +63,8 @@ MyPageV2
 │   │   ├── fonts/              // Poppins via next/font
 │   │   ├── github/             // Fetch + cache dos repositórios com tag mypage
 │   │   ├── medium/             // Fetch + cache das publicações (até 10 posts)
-│   │   └── auth/               // Allowlist do admin (e-mail do dono)
+│   │   ├── auth/               // Allowlist do admin (e-mail do dono)
+│   │   └── seo.ts              // metadataBase, Open Graph, Twitter
 │   ├── messages/               // Copy en-US e pt-BR
 │   └── styles/                 // Tokens de tema + chrome do layout
 │
@@ -86,11 +88,12 @@ MyPageV2
 - Serviço de publicações Medium (cache no servidor)
 - Home: seção Medium (cards + link para o perfil)
 - Admin: login Google (somente o dono), logout e limpeza de cache (projetos e artigos)
+- SEO: metadata por locale, Open Graph, Twitter, sitemap.xml, robots.txt
+- Redirects das URLs do site legado (`/Projects`, `/Courses`, `/Admin`) para rotas `en-US`
 <br>
 
 ## Ainda não disponível
 
-- SEO (sitemap, robots, Open Graph)
 - CI/CD e deploy em produção
 - Cutover de DNS de matheusassis.dev
 <br>
@@ -107,6 +110,8 @@ MyPageV2
 ## Environments
 
 - Variáveis ficam em `.env` (não versionado). O modelo está em `.env.example`.
+- `NEXT_PUBLIC_SITE_URL` alimenta `metadataBase`, sitemap e robots.
+- Bookmarks do ASP.NET (`/Projects`, `/Courses`, `/Admin`, e as variantes em minúsculas) redirecionam para o locale padrão **en-US**, não para o cookie `NEXT_LOCALE`.
 - Tokens de GitHub e Google **não** devem ser reaproveitados do repositório legado.
 <br>
 

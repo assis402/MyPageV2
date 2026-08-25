@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 
@@ -6,7 +7,17 @@ import { ProjectsSearch } from "@/components/projects/ProjectsSearch";
 import { VideoModalProvider } from "@/components/projects/VideoModal";
 import { getProjectsPageData } from "@/lib/github";
 import { isValidLocale, type Locale } from "@/lib/i18n/locale";
+import { localePageMetadata } from "@/lib/seo";
 import type { ProjectsPageData } from "@/types/github";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return localePageMetadata(locale, "projects");
+}
 
 async function loadProjects(locale: Locale, search: string, tag: string): Promise<ProjectsPageData> {
   try {
