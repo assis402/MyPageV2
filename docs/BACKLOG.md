@@ -30,8 +30,8 @@ _(empty)_
 
 ## Next (ready)
 
-### 015 · SEO, metadata, legacy URL redirects
-**Status:** todo | **Dep:** 004 ✓
+### 016 · Performance + accessibility pass
+**Status:** todo | **Dep:** 006, 007, 008, 010, 012 ✓
 
 ---
 
@@ -78,6 +78,9 @@ Google login on `/[locale]/admin`, owner email allowlist (`ADMIN_EMAIL`), logout
 
 ### 014 · Admin — cache invalidation UI
 Clear projects and articles caches (auth-guarded), inline success/error, logout. No courses. Verified login UI still matches; cache buttons require owner session. `yarn build` + `yarn lint`.
+
+### 015 · SEO, metadata, legacy URL redirects
+Locale `generateMetadata` (title, description, Open Graph, Twitter), sitemap/robots, `metadataBase` from `NEXT_PUBLIC_SITE_URL`. Legacy `/Projects`, `/Courses`, `/Admin` (and lowercase) redirect to **en-US** routes, not the locale cookie. Verified meta per page, 308 redirects, `/sitemap.xml` and `/robots.txt`. `yarn build` + `yarn lint`.
 
 ---
 
@@ -285,7 +288,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 015 · SEO, metadata, legacy URL redirects
-**Status:** todo | **Dep:** 004 | **Legacy:** `_Layout.cshtml` meta tags
+**Status:** done | **Dep:** 004 | **Legacy:** `_Layout.cshtml` meta tags
 
 **Scope:**
 - `generateMetadata` per locale for home, projects, admin
@@ -293,10 +296,10 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 - Description, `theme-color`, Open Graph, Twitter cards
 - `src/app/sitemap.ts` — locale routes
 - `src/app/robots.ts`
-- Redirects in `next.config`:
-  - `/Projects` → `/en-US/projects` (or locale-aware — document choice)
-  - `/Courses` → `/en-US` (removed feature)
-  - `/Admin` → `/en-US/admin`
+- Redirects in `next.config` (fixed **en-US**, not the `NEXT_LOCALE` cookie):
+  - `/Projects` and `/projects` → `/en-US/projects`
+  - `/Courses` and `/courses` → `/en-US` (removed feature)
+  - `/Admin` and `/admin` → `/en-US/admin`
 - `metadataBase` from `NEXT_PUBLIC_SITE_URL`
 
 **Out of scope:** OG image generation pipeline (static default OK)
@@ -356,11 +359,11 @@ When ready, reopen as new tasks (may get new IDs).
        ├─ 011
        └─ 013 ─── 014
 
-004 ─── 015
+004 ─── 015 ✓
 006,010,012 ─── 016
 ```
 
-**Next ready:** 015 (SEO, metadata, legacy URL redirects).
+**Next ready:** 016 (Performance + accessibility pass).
 
 ---
 
@@ -380,6 +383,6 @@ When ready, reopen as new tasks (may get new IDs).
 - [x] i18n en/pt
 - [x] Footer — contact links + email copy
 - [ ] Admin — Google auth + cache clear (projects + publications)
-- [ ] SEO + legacy URL redirects
+- [x] SEO + legacy URL redirects
 - [ ] Performance ≥ 90 Lighthouse (mobile)
 - [ ] ~~Production deploy + DNS~~ (deferred)

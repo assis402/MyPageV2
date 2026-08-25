@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { connection } from "next/server";
 import { notFound } from "next/navigation";
@@ -5,6 +6,16 @@ import { notFound } from "next/navigation";
 import { clearArticlesCache, clearProjectsCache, loginWithGoogle, logoutAdmin } from "./actions";
 import { getAdminSession } from "@/lib/auth/session";
 import { isValidLocale } from "@/lib/i18n/locale";
+import { localePageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  return localePageMetadata(locale, "admin");
+}
 
 export const dynamic = "force-dynamic";
 
