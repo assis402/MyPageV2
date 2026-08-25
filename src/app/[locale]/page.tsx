@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
+import dynamic from "next/dynamic";
 
 import { AboutSection } from "@/components/home/AboutSection";
 import { HeroSection } from "@/components/home/HeroSection";
 import { MediumSection } from "@/components/home/MediumSection";
-import { TimelineSection } from "@/components/home/TimelineSection";
 import { localePageMetadata } from "@/lib/seo";
+
+const TimelineSection = dynamic(() =>
+  import("@/components/home/TimelineSection").then((mod) => ({ default: mod.TimelineSection })),
+);
 
 export async function generateMetadata({
   params,
@@ -17,7 +21,7 @@ export async function generateMetadata({
 
 export default function HomePage() {
   return (
-    <main>
+    <main id="main-content">
       <HeroSection />
       <AboutSection />
       <TimelineSection />

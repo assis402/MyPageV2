@@ -47,6 +47,7 @@ export function ProjectsSearch({
           name="search"
           defaultValue={search}
           placeholder={placeholder}
+          aria-label={searchLabel}
         />
         <input type="hidden" name="tag" value={tagFilter} />
         <div className="search-buttons">
@@ -61,6 +62,7 @@ export function ProjectsSearch({
             type="button"
             className={`project-tag-search${selected.includes(item.name) ? " tag-selected" : ""}`}
             onClick={() => toggleTag(item.name)}
+            aria-pressed={selected.includes(item.name)}
           >
             {item.name}
           </button>

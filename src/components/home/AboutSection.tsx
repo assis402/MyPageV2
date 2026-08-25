@@ -1,9 +1,13 @@
+import dynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
 
 import { CvDownloadButton } from "@/components/home/CvDownloadButton";
-import { SkillsSection } from "@/components/home/SkillsSection";
 import { getAge, getWorkExperience } from "@/lib/experience";
 import { Link } from "@/lib/i18n/navigation";
+
+const SkillsSection = dynamic(() =>
+  import("@/components/home/SkillsSection").then((mod) => ({ default: mod.SkillsSection })),
+);
 
 function withValues(template: string, values: Record<string, string | number>) {
   return template.replace(/\{(\w+)\}/g, (_, key: string) => String(values[key] ?? ""));

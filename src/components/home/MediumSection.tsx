@@ -27,7 +27,7 @@ export async function MediumSection() {
               <a className="medium-card" href={publication.url} target="_blank" rel="noreferrer">
                 <div className="medium-card-img">
                   {publication.imageUrl ? (
-                    <Image src={publication.imageUrl} alt="" fill sizes="6rem" />
+                    <Image src={publication.imageUrl} alt={publication.title} fill sizes="6rem" />
                   ) : null}
                 </div>
                 <div className="medium-card-content">

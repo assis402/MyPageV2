@@ -48,7 +48,7 @@ export default async function AdminPage({
       : null;
 
   return (
-    <main>
+    <main id="main-content">
       <div className="admin-external-container">
         <div className="admin-container">
           <div className="admin-gradient-bar" />

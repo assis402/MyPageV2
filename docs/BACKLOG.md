@@ -30,8 +30,7 @@ _(empty)_
 
 ## Next (ready)
 
-### 016 · Performance + accessibility pass
-**Status:** todo | **Dep:** 006, 007, 008, 010, 012 ✓
+_(empty — remaining work is hosting/DNS, deferred)_
 
 ---
 
@@ -81,6 +80,9 @@ Clear projects and articles caches (auth-guarded), inline success/error, logout.
 
 ### 015 · SEO, metadata, legacy URL redirects
 Locale `generateMetadata` (title, description, Open Graph, Twitter), sitemap/robots, `metadataBase` from `NEXT_PUBLIC_SITE_URL`. Legacy `/Projects`, `/Courses`, `/Admin` (and lowercase) redirect to **en-US** routes, not the locale cookie. Verified meta per page, 308 redirects, `/sitemap.xml` and `/robots.txt`. `yarn build` + `yarn lint`.
+
+### 016 · Performance + accessibility pass
+Hero background via `next/image`, smaller client islands (header chrome, copy-email, skills/timeline split), skip link, focus-visible, CV `<details>`. Lighthouse mobile: home Performance 99 / a11y 100; projects Performance 96 / a11y 100. `yarn build` + `yarn lint`.
 
 ---
 
@@ -312,7 +314,7 @@ Full specs below. Move task to **In progress** when starting; to **Done** when m
 ---
 
 ### 016 · Performance + accessibility pass
-**Status:** todo | **Dep:** 006, 007, 008, 010, 012 | **Legacy:** —
+**Status:** done | **Dep:** 006, 007, 008, 010, 012 | **Legacy:** —
 
 **Scope:**
 - Lighthouse mobile audit on `/en-US` and `/en-US/projects` — target **≥ 90** Performance
@@ -360,10 +362,10 @@ When ready, reopen as new tasks (may get new IDs).
        └─ 013 ─── 014
 
 004 ─── 015 ✓
-006,010,012 ─── 016
+006,010,012 ─── 016 ✓
 ```
 
-**Next ready:** 016 (Performance + accessibility pass).
+**Next ready:** none (hosting/DNS deferred).
 
 ---
 
@@ -384,5 +386,5 @@ When ready, reopen as new tasks (may get new IDs).
 - [x] Footer — contact links + email copy
 - [ ] Admin — Google auth + cache clear (projects + publications)
 - [x] SEO + legacy URL redirects
-- [ ] Performance ≥ 90 Lighthouse (mobile)
+- [x] Performance ≥ 90 Lighthouse (mobile)
 - [ ] ~~Production deploy + DNS~~ (deferred)

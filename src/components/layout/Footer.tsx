@@ -1,28 +1,17 @@
-"use client";
+import { getTranslations } from "next-intl/server";
 
-import { useState } from "react";
-import { useTranslations } from "next-intl";
-
-import { usePathname } from "@/lib/i18n/navigation";
+import { CopyEmailButton } from "@/components/layout/CopyEmailButton";
 
 const GITHUB_URL = "https://github.com/assis402";
 const LINKEDIN_URL = "https://linkedin.com/in/assisdematheus/";
 const MEDIUM_URL = "https://medium.com/@assis4002";
 
-export function Footer() {
-  const t = useTranslations();
-  const pathname = usePathname();
-  const [copyTick, setCopyTick] = useState(0);
+export async function Footer() {
+  const t = await getTranslations();
   const email = t("Email");
-  const isHome = pathname === "/";
-
-  function copyEmail() {
-    void navigator.clipboard.writeText(email);
-    setCopyTick((tick) => tick + 1);
-  }
 
   return (
-    <footer className={`contact-external-container${isHome ? "" : " secundary-footer"}`}>
+    <footer className="contact-external-container">
       <div className="mini-title">{t("Contact")}</div>
       <div className="contact-container">
         <a className="contact" href={GITHUB_URL} target="_blank" rel="noreferrer">
@@ -40,14 +29,7 @@ export function Footer() {
           <img className="contact-logo" src="/images/medium.svg" alt="" />
           <span>Medium</span>
         </a>
-        <button type="button" className="contact email" onClick={copyEmail}>
-          <span key={copyTick} className={`copy-popup${copyTick > 0 ? " fade-animation" : ""}`}>
-            {t("Copied")}
-          </span>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="contact-logo" src="/images/email.svg" alt="" />
-          <span>{email}</span>
-        </button>
+        <CopyEmailButton email={email} copiedLabel={t("Copied")} />
       </div>
     </footer>
   );

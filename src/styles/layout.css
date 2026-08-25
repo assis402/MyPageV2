@@ -35,8 +35,9 @@ header {
     border 0.2s linear;
 }
 
-.scroll-up-button.is-visible {
-  bottom: 20px;
+.scroll-up-button:focus-visible {
+  outline: 2px solid var(--color-legacy-text);
+  outline-offset: 4px;
 }
 
 .scroll-up-button img {
@@ -107,6 +108,11 @@ header {
   -webkit-tap-highlight-color: transparent;
 }
 
+.menu-btn:focus-visible {
+  outline: 2px solid var(--color-legacy-text);
+  outline-offset: 4px;
+}
+
 .menu-btn .bar {
   display: block;
   width: 23px;
@@ -162,8 +168,26 @@ header {
   -webkit-tap-highlight-color: transparent;
 }
 
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -48px;
+  z-index: 200;
+  padding: 8px 12px;
+  border: 1px solid var(--color-legacy-border);
+  background: var(--color-legacy-bg);
+  color: var(--color-legacy-text);
+  text-decoration: none;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  top: 12px;
+}
+
 .menu-item:hover,
-.menu-item:active {
+.menu-item:active,
+.menu-item:focus-visible {
   opacity: 0.6;
 }
 
@@ -206,7 +230,7 @@ header {
     margin 0.2s ease-in-out;
 }
 
-.my-photo.is-scrolled {
+.menu-container.is-scrolled .my-photo {
   height: 0;
   width: 0;
   margin-right: 5px;
@@ -244,6 +268,7 @@ header {
   transition: opacity 0.2s linear;
 }
 
+.language-link:focus-visible .menu-language-flag,
 .menu-language-flag:hover,
 .menu-language-flag:active,
 .menu-language-flag-active {
@@ -262,6 +287,10 @@ header {
 }
 
 .secundary-footer {
+  background: var(--background-image-gradient-footer);
+}
+
+.body-footer-container:not(:has(#main-content .about-external-container)) .contact-external-container {
   background: var(--background-image-gradient-footer);
 }
 
@@ -309,11 +338,13 @@ header {
   -webkit-tap-highlight-color: transparent;
 }
 
-.contact:hover {
+.contact:hover,
+.contact:focus-visible {
   color: var(--color-legacy-text);
 }
 
-.contact:hover > .contact-logo {
+.contact:hover > .contact-logo,
+.contact:focus-visible > .contact-logo {
   filter: invert(1);
 }
 

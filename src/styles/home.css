@@ -11,13 +11,18 @@
   z-index: -2;
   height: 100%;
   width: 100%;
-  background-image: url("/images/background.webp");
+  overflow: hidden;
   background-position: bottom;
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: inset 0 120px 120px -20px rgb(0 0 0 / 80%);
+}
+
+.hero-background-img {
+  object-fit: cover;
+  object-position: bottom;
   opacity: 0.48;
   filter: blur(0.7px);
-  box-shadow: inset 0 120px 120px -20px rgb(0 0 0 / 80%);
 }
 
 .about-container {
@@ -157,7 +162,9 @@
 }
 
 .gradient-button:hover,
-.outlined-button:hover {
+.gradient-button:focus-visible,
+.outlined-button:hover,
+.outlined-button:focus-visible {
   border-color: var(--color-legacy-border-input-hover);
 }
 
@@ -183,6 +190,14 @@
   background: none;
   color: inherit;
   font: inherit;
+  cursor: pointer;
+  list-style: none;
+}
+
+.curriculum-button .inner-button::-webkit-details-marker,
+.curriculum-button .inner-button::marker {
+  display: none;
+  content: "";
 }
 
 .curriculum-options {
@@ -197,6 +212,7 @@
     width 0.5s ease;
 }
 
+.curriculum-button[open] .curriculum-options,
 .curriculum-options.is-open {
   z-index: 1;
   width: 130px;
@@ -585,7 +601,8 @@
 }
 
 .more:hover,
-.more:focus {
+.more:focus,
+.more:focus-visible {
   border: 1px solid var(--color-legacy-border-card);
 }
 
@@ -636,7 +653,8 @@
 }
 
 .medium-card:hover,
-.medium-card:focus {
+.medium-card:focus,
+.medium-card:focus-visible {
   opacity: 0.6;
 }
 
