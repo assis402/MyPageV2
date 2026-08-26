@@ -70,6 +70,12 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+.gradient-button img,
+.outlined-button img {
+  display: block;
+  flex-shrink: 0;
+}
+
 .gradient-button {
   border-color: transparent;
   background-image: var(--background-image-gradient-accent-bar);

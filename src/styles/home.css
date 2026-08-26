@@ -200,15 +200,19 @@
 
 .about-icon,
 .projects-icon {
-  height: 25px;
-  width: 25px;
+  display: block;
+  height: 1.25rem;
+  width: 1.25rem;
+  flex-shrink: 0;
   filter: invert(0.8);
 }
 
 .inner-button {
+  display: inline-flex;
+  align-items: center;
   cursor: pointer;
   font-size: 15px;
-  line-height: 12px;
+  line-height: 1.25;
 }
 
 .black-external-container {
