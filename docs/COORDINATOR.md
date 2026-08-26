@@ -10,7 +10,7 @@ Rebuilding **matheusassis.dev**: legacy C# → Next.js.
 
 | Topic | Decision |
 |-------|----------|
-| **Visual** | Same external appearance as the legacy site (layout, colors, typography, spacing, animations) |
+| **Visual** | Modernized layout — **preserve brand**: Poppins, dark base, purple gradient, white text (task 017) |
 | **Code** | Modern structure internally — do not mirror legacy MVC folders or copy-paste CSS/JS |
 | **Performance** | High priority — fast LCP, minimal JS on public pages, aggressive caching for external APIs |
 | **Courses** | **Out of scope** — no courses page, no home preview, no Firestore, no admin CRUD for courses |
@@ -104,7 +104,8 @@ src/
 ├── components/
 │   ├── layout/             # header, footer, mobile menu
 │   ├── home/               # hero, timeline, medium section, ...
-│   └── projects/           # project card, filters, search
+│   ├── projects/           # project card, filters, search
+│   └── ui/                 # section, buttons, card, tag
 ├── lib/
 │   ├── github/             # fetch + cache + types
 │   ├── medium/             # fetch + cache + types

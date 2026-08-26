@@ -1,5 +1,6 @@
 import { VideoButton } from "@/components/projects/VideoModal";
-import type { Project } from "@/types/github";
+import { Card, Tag } from "@/components/ui";
+import type { Project } from "@/types";
 
 type ProjectCardProps = {
   project: Project;
@@ -8,15 +9,13 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project, videoLabel }: ProjectCardProps) {
   return (
-    <article className="project">
+    <Card as="article" className="project">
       <div className="project-content">
         <div className="project-header">
           <span className="project-title">{project.title}</span>
           <div className="project-tags">
             {project.tags.map((tag) => (
-              <div key={tag} className="project-tag">
-                {tag}
-              </div>
+              <Tag key={tag}>{tag}</Tag>
             ))}
           </div>
         </div>
@@ -47,6 +46,6 @@ export function ProjectCard({ project, videoLabel }: ProjectCardProps) {
         </div>
       </div>
       <div className="project-gradient-bar" />
-    </article>
+    </Card>
   );
 }

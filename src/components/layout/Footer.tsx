@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import { CopyEmailButton } from "@/components/layout/CopyEmailButton";
+import { SectionTitle } from "@/components/ui";
 
 const GITHUB_URL = "https://github.com/assis402";
 const LINKEDIN_URL = "https://linkedin.com/in/assisdematheus/";
@@ -12,7 +13,7 @@ export async function Footer() {
 
   return (
     <footer className="contact-external-container">
-      <div className="mini-title">{t("Contact")}</div>
+      <SectionTitle>{t("Contact")}</SectionTitle>
       <div className="contact-container">
         <a className="contact" href={GITHUB_URL} target="_blank" rel="noreferrer">
           {/* eslint-disable-next-line @next/next/no-img-element */}

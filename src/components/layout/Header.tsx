@@ -3,6 +3,7 @@ import { getTranslations } from "next-intl/server";
 
 import { HeaderChrome } from "@/components/layout/HeaderChrome";
 import { LocaleSwitcher } from "@/components/layout/LocaleSwitcher";
+import { NavLink } from "@/components/layout/NavLink";
 import { Link } from "@/lib/i18n/navigation";
 
 export async function Header() {
@@ -31,23 +32,15 @@ export async function Header() {
       }
       nav={
         <nav className="menu-items" aria-label={t("MainNav")}>
-          <Link href="/" className="menu-item">
-            {t("AboutMenu")}
-          </Link>
-          <Link href="/projects" className="menu-item">
-            {t("ProjectsMenu")}
-          </Link>
+          <NavLink href="/">{t("AboutMenu")}</NavLink>
+          <NavLink href="/projects">{t("ProjectsMenu")}</NavLink>
           <LocaleSwitcher variant="desktop" />
         </nav>
       }
       mobileNav={
         <nav className="menu-items-mobile" aria-label={t("MainNav")}>
-          <Link href="/" className="menu-item">
-            {t("AboutMenu")}
-          </Link>
-          <Link href="/projects" className="menu-item">
-            {t("ProjectsMenu")}
-          </Link>
+          <NavLink href="/">{t("AboutMenu")}</NavLink>
+          <NavLink href="/projects">{t("ProjectsMenu")}</NavLink>
         </nav>
       }
       mobileFlags={<LocaleSwitcher variant="mobile" />}

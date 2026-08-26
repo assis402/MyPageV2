@@ -2,8 +2,8 @@ import dynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
 
 import { CvDownloadButton } from "@/components/home/CvDownloadButton";
+import { GradientButton, Section, SectionTitle } from "@/components/ui";
 import { getAge, getWorkExperience } from "@/lib/experience";
-import { Link } from "@/lib/i18n/navigation";
 
 const SkillsSection = dynamic(() =>
   import("@/components/home/SkillsSection").then((mod) => ({ default: mod.SkillsSection })),
@@ -30,31 +30,34 @@ export async function AboutSection() {
   ].map((skill, index) => ({ ...skill, delay: (index + 1) * 200 }));
 
   return (
-    <section className="black-external-container">
-      <div className="black-container">
-        <div className="mini-title">{t("AboutTitle")}</div>
-        <div id="about-body-container">
-          <div className="about-body-internal-container">
-            <p className="about-body">{t("AboutBody_01", { years: age })}</p>
-            <p
-              className="about-body"
-              dangerouslySetInnerHTML={{
-                __html: withValues(t.raw("AboutBody_02"), { years, months }),
-              }}
-            />
-            <p className="about-body">{t("AboutBody_03")}</p>
-          </div>
-          <SkillsSection title={t("SkillsTitle")} skills={skills} />
-          <div className="presentation-buttons second-buttons">
-            <Link href="/projects" className="gradient-button second-button">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
+    <Section>
+      <SectionTitle as="h2">{t("AboutTitle")}</SectionTitle>
+      <div id="about-body-container">
+        <div className="about-body-internal-container">
+          <p className="about-body">{t("AboutBody_01", { years: age })}</p>
+          <p
+            className="about-body"
+            dangerouslySetInnerHTML={{
+              __html: withValues(t.raw("AboutBody_02"), { years, months }),
+            }}
+          />
+          <p className="about-body">{t("AboutBody_03")}</p>
+        </div>
+        <SkillsSection title={t("SkillsTitle")} skills={skills} />
+        <div className="presentation-buttons second-buttons">
+          <GradientButton
+            href="/projects"
+            wide
+            icon={
+              // eslint-disable-next-line @next/next/no-img-element
               <img className="projects-icon" src="/images/projects.svg" alt="" />
-              <span className="inner-button">{t("SecondProjectsButton")}</span>
-            </Link>
-            <CvDownloadButton />
-          </div>
+            }
+          >
+            {t("SecondProjectsButton")}
+          </GradientButton>
+          <CvDownloadButton />
         </div>
       </div>
-    </section>
+    </Section>
   );
 }

@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 
 import { TimelineEntry, type TimelineId } from "@/components/home/TimelineEntry";
+import { Section, SectionTitle } from "@/components/ui";
 
 const COLLAPSED_BAR_PX = 255;
 const LINKEDIN_URL = "https://linkedin.com/in/assisdematheus/";
@@ -43,10 +44,9 @@ export function TimelineSection() {
   };
 
   return (
-    <section className="gradient-external-container">
-      <div className="gradient-container">
-        <div className="mini-title">{t("Background")}</div>
-        <div className="timeline-body">
+    <Section tone="tinted">
+      <SectionTitle as="h2">{t("Background")}</SectionTitle>
+      <div className="timeline-body">
           <div className="timeline">
             <TimelineEntry
               id="exp3"
@@ -158,7 +158,6 @@ export function TimelineSection() {
           <img className="material-symbols-outlined" src="/images/more_horiz.svg" alt="" />
           <p className="more-text">{t("BackgroundMore")}</p>
         </a>
-      </div>
-    </section>
+    </Section>
   );
 }

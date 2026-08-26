@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./ui.css";
 @import "./layout.css";
 @import "./home.css";
 @import "./projects.css";
@@ -150,6 +151,9 @@
 
   --z-index-header: 10000;
   --z-index-loader: 99999;
+
+  --radius-card: 1rem;
+  --radius-pill: 999px;
 }
 
 html {
