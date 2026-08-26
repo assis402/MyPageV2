@@ -178,7 +178,8 @@ a {
   .curriculum-options,
   .scroll-up-button,
   .menu-container,
-  .my-photo {
+  .my-photo,
+  .route-background {
     transition: none;
   }
 }
