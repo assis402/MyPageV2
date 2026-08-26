@@ -6,6 +6,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { RouteBackground } from "@/components/layout/RouteBackground";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { poppins } from "@/lib/fonts/poppins";
 import { isValidLocale, locales } from "@/lib/i18n/locale";
@@ -52,6 +53,7 @@ export default async function LocaleLayout({
           </a>
           <Header />
           <div className="body-footer-container">
+            <RouteBackground />
             {children}
             <ScrollToTop />
             <Footer />

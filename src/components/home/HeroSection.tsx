@@ -8,17 +8,6 @@ export async function HeroSection() {
 
   return (
     <section className="about-external-container">
-      <div className="hero-background" aria-hidden="true">
-        <Image
-          src="/images/background.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          quality={65}
-          className="hero-background-img"
-        />
-      </div>
       <div className="about-container">
         <div className="about-minified">
           <p className="about-title">
