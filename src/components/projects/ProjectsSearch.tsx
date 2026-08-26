@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 
 import { selectedTagsFromFilter } from "@/lib/github/filters";
 import { Link } from "@/lib/i18n/navigation";
-import type { ProjectTag } from "@/types/github";
+import { Tag } from "@/components/ui";
+import type { ProjectTag } from "@/types";
 
 type ProjectsSearchProps = {
   locale: string;
@@ -57,15 +58,15 @@ export function ProjectsSearch({
       </div>
       <div className="tag-list">
         {tags.map((item) => (
-          <button
+          <Tag
             key={item.name}
-            type="button"
-            className={`project-tag-search${selected.includes(item.name) ? " tag-selected" : ""}`}
+            interactive
+            selected={selected.includes(item.name)}
+            className="project-tag-search"
             onClick={() => toggleTag(item.name)}
-            aria-pressed={selected.includes(item.name)}
           >
             {item.name}
-          </button>
+          </Tag>
         ))}
       </div>
     </form>

@@ -3,9 +3,9 @@
 
 ## Resumo do Projeto
 
-O **MyPageV2** é a reescrita do meu site profissional ([matheusassis.dev](https://matheusassis.dev)): mesma aparência pública, stack moderna e foco em performance.
+O **MyPageV2** é a reescrita do meu site profissional ([matheusassis.dev](https://matheusassis.dev)): stack moderna, foco em performance e identidade visual preservada (Poppins, tema escuro, gradiente roxo).
 
-A versão em produção hoje foi feita em **ASP.NET MVC** (repositório [MyPage](https://github.com/assis402/MyPage)). Este projeto reconstrói o portfólio em **Next.js**, mantendo o visual, o conteúdo em **en-US / pt-BR** e a listagem de projetos pessoais via GitHub. A área de cursos da versão anterior **não entra** neste rebuild.
+A versão em produção hoje foi feita em **ASP.NET MVC** (repositório [MyPage](https://github.com/assis402/MyPage)). Este projeto reconstrói o portfólio em **Next.js**, com conteúdo em **en-US / pt-BR** e projetos pessoais via GitHub. A área de cursos da versão anterior **não entra** neste rebuild.
 
 O site ao vivo continua sendo o legado até o cutover de DNS (ainda não disponível).
 
@@ -57,8 +57,10 @@ MyPageV2
 │   ├── components/
 │   │   ├── layout/             // Header, menu mobile, footer, troca de idioma
 │   │   ├── home/               // Hero, about, skills, timeline, Medium
-│   │   └── projects/           // Busca, tags, cards e modal de vídeo
+│   │   ├── projects/           // Busca, tags, cards e modal de vídeo
+│   │   └── ui/                 // Section, botões, card, tag
 │   ├── lib/
+│   │   ├── cn.ts               // clsx + tailwind-merge
 │   │   ├── i18n/               // next-intl, cookie de idioma
 │   │   ├── fonts/              // Poppins via next/font
 │   │   ├── github/             // Fetch + cache dos repositórios com tag mypage
@@ -91,7 +93,12 @@ MyPageV2
 - SEO: metadata por locale, Open Graph, Twitter, sitemap.xml, robots.txt
 - Redirects das URLs do site legado (`/Projects`, `/Courses`, `/Admin`) para rotas `en-US`
 - Performance e acessibilidade (Lighthouse mobile ≥ 90 na home e em projects)
+- Layout modernizado com primitives em `components/ui/` (Poppins, fundo preto e gradiente roxo mantidos)
 <br>
+
+## Próximo (backlog)
+
+- Deploy / DNS — adiado até escolher o provedor de hospedagem
 
 ## Ainda não disponível
 
@@ -105,7 +112,7 @@ MyPageV2
 - Server Components por padrão; Client Components só onde há interação (menu, copiar e-mail, scroll, timeline, busca de projetos)
 - i18n nas strings de interface (`src/messages`)
 - Cache de APIs externas no servidor quando as integrações forem ligadas (`unstable_cache` / ISR)
-- Visual alinhado ao site legado; código interno não replica a arquitetura MVC
+- Visual modernizado mantendo a marca; código interno não replica a arquitetura MVC
 <br>
 
 ## Environments

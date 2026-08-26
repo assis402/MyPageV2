@@ -7,16 +7,27 @@
 .admin-container {
   position: relative;
   display: flex;
-  height: 380px;
+  height: auto;
+  min-height: 22rem;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   gap: 60px;
-  margin-top: 150px;
-  margin-bottom: 100px;
+  margin-top: 9rem;
+  margin-bottom: 6rem;
+  border: 1px solid var(--color-legacy-admin-border);
+  border-radius: 1.25rem;
   background: var(--color-legacy-admin-bg);
-  padding: 0 60px;
+  padding: 2.5rem 3.5rem;
   font-weight: 200;
+  overflow: hidden;
+}
+
+.admin-container.ui-card:hover,
+.admin-container.ui-card:focus-visible {
+  transform: none;
+  box-shadow: none;
+  border-color: var(--color-legacy-admin-border);
 }
 
 .admin-gradient-bar {
@@ -85,11 +96,12 @@
   cursor: pointer;
   align-items: center;
   border: 1px solid transparent;
+  border-radius: 0.75rem;
   background-color: var(--color-legacy-admin-surface);
   color: inherit;
   font: inherit;
   font-weight: 500;
-  transition: border 0.2s linear;
+  transition: border 0.2s linear, background-color 0.2s ease;
 }
 
 .google-button {

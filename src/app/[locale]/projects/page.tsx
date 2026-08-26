@@ -8,7 +8,7 @@ import { VideoModalProvider } from "@/components/projects/VideoModal";
 import { getProjectsPageData } from "@/lib/github";
 import { isValidLocale, type Locale } from "@/lib/i18n/locale";
 import { localePageMetadata } from "@/lib/seo";
-import type { ProjectsPageData } from "@/types/github";
+import type { ProjectsPageData } from "@/types";
 
 export async function generateMetadata({
   params,

@@ -4,6 +4,7 @@ import { connection } from "next/server";
 import { notFound } from "next/navigation";
 
 import { clearArticlesCache, clearProjectsCache, loginWithGoogle, logoutAdmin } from "./actions";
+import { Card } from "@/components/ui";
 import { getAdminSession } from "@/lib/auth/session";
 import { isValidLocale } from "@/lib/i18n/locale";
 import { localePageMetadata } from "@/lib/seo";
@@ -50,7 +51,7 @@ export default async function AdminPage({
   return (
     <main id="main-content">
       <div className="admin-external-container">
-        <div className="admin-container">
+        <Card className="admin-container">
           <div className="admin-gradient-bar" />
           <div className="admin-first-div">
             <span>
@@ -103,7 +104,7 @@ export default async function AdminPage({
               </button>
             </form>
           )}
-        </div>
+        </Card>
       </div>
     </main>
   );

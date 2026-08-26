@@ -142,9 +142,9 @@ header {
   flex-direction: row;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 0 15px 25px;
+  padding: 0.5rem 1.25rem 1.75rem;
   opacity: 0;
-  transition: opacity 0.3s linear;
+  transition: opacity 0.3s ease;
 }
 
 .menu-mobile.is-mounted {
@@ -161,11 +161,26 @@ header {
 }
 
 .menu-item {
-  padding: 8px 12px;
-  font-size: 18px;
+  position: relative;
+  padding: 0.5rem 0.875rem;
+  border-radius: 999px;
+  font-size: 1rem;
   font-weight: 400;
-  transition: opacity 0.2s linear;
+  transition:
+    opacity 0.2s ease,
+    background-color 0.2s ease;
   -webkit-tap-highlight-color: transparent;
+}
+
+.menu-item.is-active::after {
+  content: "";
+  position: absolute;
+  right: 0.875rem;
+  bottom: 0.25rem;
+  left: 0.875rem;
+  height: 2px;
+  border-radius: 2px;
+  background-image: var(--background-image-gradient-accent);
 }
 
 .skip-link {
@@ -280,10 +295,8 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  row-gap: 30px;
-  column-gap: 40px;
-  padding-top: 40px;
-  padding-bottom: 60px;
+  gap: 2rem;
+  padding: 3.5rem 1.5rem 4rem;
 }
 
 .secundary-footer {
@@ -300,46 +313,35 @@ header {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  column-gap: 50px;
-  row-gap: 30px;
-}
-
-.mini-title {
-  color: var(--color-legacy-muted-light);
-  font-size: 15px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-align: center;
-}
-
-.mini-sub-title {
-  margin-top: 20px;
-  margin-bottom: 15px;
-  color: var(--color-legacy-muted);
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 2px;
-  text-align: center;
+  column-gap: 1.25rem;
+  row-gap: 1rem;
 }
 
 .contact {
   position: relative;
   display: flex;
-  height: 45px;
+  height: 2.75rem;
   cursor: pointer;
   user-select: none;
   align-items: center;
   justify-content: center;
-  gap: 20px;
-  padding: 0 12px;
+  gap: 0.75rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0 1rem;
   color: var(--color-legacy-contact);
   font-weight: 500;
-  transition: color 0.2s linear;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background-color 0.2s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .contact:hover,
 .contact:focus-visible {
+  border-color: var(--color-legacy-border);
+  background-color: rgb(255 255 255 / 4%);
   color: var(--color-legacy-text);
 }
 

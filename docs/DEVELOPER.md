@@ -9,7 +9,7 @@ Implements what the **Coordinator** delegates. Read this file + `BACKLOG.md` + `
 ## Role
 
 - Implement **one task at a time** (backlog ID)
-- **Same look** as legacy externally; **modern code** internally
+- **Same brand** (colors, font, dark mood) — **modern layout** is OK (task 017)
 - Use legacy C# / CSS / assets only as **reference** — do not port architecture or monolithic files
 - **No courses** — never add course pages, nav links, Firestore, or course admin
 - **Projects = GitHub only** (personal repos, tag `mypage`)
@@ -86,7 +86,7 @@ Refs: 004
 
 ## Visual parity rules
 
-- Compare against legacy `wwwroot/css/` and live layout before marking UI done
+- Compare against **brand tokens** in `globals.css` — modernize spacing/cards, do not change palette or font
 - Reuse legacy SVGs and images from `public/`
 - Nav: **About + Projects** only (no Courses)
 - Home: no courses section

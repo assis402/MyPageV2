@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 
-import { Link } from "@/lib/i18n/navigation";
+import { GradientButton, OutlinedButton } from "@/components/ui";
 
 export async function HeroSection() {
   const t = await getTranslations();
@@ -54,16 +54,24 @@ export async function HeroSection() {
         <div className="presentation">
           <p className="presentation-text">{t("PresentationText")}</p>
           <div className="presentation-buttons">
-            <a href="#about-more" className="gradient-button">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="about-icon" src="/images/info.svg" alt="" />
-              <span className="inner-button">{t("AboutButton")}</span>
-            </a>
-            <Link href="/projects" className="outlined-button">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="projects-icon" src="/images/projects.svg" alt="" />
-              <span className="inner-button">{t("ProjectsButton")}</span>
-            </Link>
+            <GradientButton
+              href="#about-more"
+              icon={
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="about-icon" src="/images/info.svg" alt="" />
+              }
+            >
+              {t("AboutButton")}
+            </GradientButton>
+            <OutlinedButton
+              href="/projects"
+              icon={
+                // eslint-disable-next-line @next/next/no-img-element
+                <img className="projects-icon" src="/images/projects.svg" alt="" />
+              }
+            >
+              {t("ProjectsButton")}
+            </OutlinedButton>
           </div>
         </div>
       </div>
