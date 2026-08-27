@@ -366,3 +366,27 @@
     margin: 0 30px;
   }
 }
+
+.ux-preview-c .project.ui-card {
+  border-color: rgb(255 255 255 / 8%);
+  background-color: rgb(255 255 255 / 3%);
+}
+
+.ux-preview-c .project.ui-card:hover,
+.ux-preview-c .project.ui-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgb(255 255 255 / 14%);
+  box-shadow: none;
+}
+
+.ux-preview-c .project-title {
+  font-weight: 500;
+}
+
+.ux-preview-c .project .ui-tag {
+  height: 1.5rem;
+  border-color: rgb(255 255 255 / 8%);
+  padding: 0.15rem 0.55rem;
+  font-size: 0.6875rem;
+  opacity: 0.7;
+}

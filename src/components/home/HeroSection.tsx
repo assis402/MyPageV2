@@ -3,8 +3,30 @@ import { getTranslations } from "next-intl/server";
 
 import { GradientButton, OutlinedButton } from "@/components/ui";
 
-export async function HeroSection() {
+type HeroSectionProps = {
+  previewC?: boolean;
+};
+
+export async function HeroSection({ previewC = false }: HeroSectionProps) {
   const t = await getTranslations();
+  const aboutCta = {
+    href: "#about-more",
+    icon: (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img className="about-icon" src="/images/info.svg" alt="" />
+    ),
+    label: t("AboutButton"),
+  };
+  const projectsCta = {
+    href: "/projects",
+    icon: (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img className="projects-icon" src="/images/projects.svg" alt="" />
+    ),
+    label: t("ProjectsButton"),
+  };
+  const primary = previewC ? projectsCta : aboutCta;
+  const secondary = previewC ? aboutCta : projectsCta;
 
   return (
     <section className="about-external-container">
@@ -43,23 +65,11 @@ export async function HeroSection() {
         <div className="presentation">
           <p className="presentation-text">{t("PresentationText")}</p>
           <div className="presentation-buttons">
-            <GradientButton
-              href="#about-more"
-              icon={
-                // eslint-disable-next-line @next/next/no-img-element
-                <img className="about-icon" src="/images/info.svg" alt="" />
-              }
-            >
-              {t("AboutButton")}
+            <GradientButton href={primary.href} icon={primary.icon}>
+              {primary.label}
             </GradientButton>
-            <OutlinedButton
-              href="/projects"
-              icon={
-                // eslint-disable-next-line @next/next/no-img-element
-                <img className="projects-icon" src="/images/projects.svg" alt="" />
-              }
-            >
-              {t("ProjectsButton")}
+            <OutlinedButton href={secondary.href} icon={secondary.icon}>
+              {secondary.label}
             </OutlinedButton>
           </div>
         </div>

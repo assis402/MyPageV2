@@ -19,18 +19,19 @@ Dev picks **one task at a time** from **Next (ready)**, top to bottom.
 - **Projects:** personal GitHub repos only (tag `mypage`)
 - **Nav:** About + Projects (no Courses link)
 - **Deploy / hosting:** out of scope for now (hosting provider TBD)
+- **UX preview:** layout changes may ship behind a toggle until Matheus approves (task 018)
 
 ---
 
 ## In progress
 
-_(empty)_
+_(none)_
 
 ---
 
 ## Next (ready)
 
-_(empty — hosting deferred until a provider is chosen)_
+_(empty — 019 only after Matheus approves Direction C)_
 
 ---
 
@@ -87,6 +88,9 @@ Hero background via `next/image`, smaller client islands (header chrome, copy-em
 ### 017 · Modernization pass — code quality + layout refresh
 Shared `components/ui/` (`Section`, `SectionTitle`, buttons, `Card`, `Tag`) + `cn()`. Spacing, cards, nav underline, footer pills, and admin panel refreshed while keeping Poppins and purple brand tokens. Lighthouse mobile: home Performance 96 / a11y 100; projects Performance 97 / a11y 100. Responsive ~375 / ~768 / desktop. `yarn build` + `yarn lint`.
 
+### 018 · UX preview — Direction C (temporary, layout 3)
+Reversible preview behind `UX_PREVIEW_DIRECTION=c` or `?ux_preview=c` (cookie 30 days; `?ux_preview=off` wins over env). Default layout unchanged. Inverted hero CTAs, featured-projects strip (placeholders), calmer project cards. Spec: [`docs/ux/direcao-c-projects-ritmo.md`](ux/direcao-c-projects-ritmo.md). Lighthouse mobile (preview on): home Performance 96 / a11y 100; projects Performance 97 / a11y 100. `yarn build` + `yarn lint`.
+
 ---
 
 ## Removed from scope
@@ -112,10 +116,11 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
        └─ 013 ─── 014
 
 004 ─── 015 ✓
-006,010,012 ─── 016 ✓ ─── 017 ✓
+006,010,012 ─── 016 ✓ ─── 017 ✓ ─── 018 (preview)
+                                      └── 019 (promote C — if approved)
 ```
 
-**Next ready:** none (hosting deferred).
+**Next ready:** none — 019 only after Matheus approves Direction C.
 
 ---
 
@@ -131,4 +136,6 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] Feature parity (home, projects, admin, i18n, SEO)
 - [x] Performance ≥ 90 Lighthouse (mobile) — must not regress after 017
 - [x] **017** — Modern layout while keeping brand tokens
+- [x] **018** — UX Direction C preview (temporary toggle)
+- [ ] **019** — Promote C to default _(only if Matheus approves)_
 - [ ] ~~Production deploy + DNS~~ (deferred)
