@@ -1,8 +1,14 @@
 import createMiddleware from "next-intl/middleware";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 
 import { routing } from "@/lib/i18n/routing";
-import { UX_PREVIEW_COOKIE, UX_PREVIEW_DIRECTION_C } from "@/lib/ux-preview";
+import {
+  UX_PREVIEW_COOKIE,
+  UX_PREVIEW_HEADER,
+  UX_PREVIEW_OFF,
+  UX_PREVIEW_DIRECTION_C,
+  normalizeUxPreview,
+} from "@/lib/ux-preview";
 
 const intlMiddleware = createMiddleware(routing);
 
@@ -13,16 +19,19 @@ const PREVIEW_COOKIE = {
 };
 
 export default function middleware(request: NextRequest) {
-  const preview = request.nextUrl.searchParams.get("ux_preview");
-  if (preview === UX_PREVIEW_DIRECTION_C || preview === "off") {
-    const url = request.nextUrl.clone();
-    url.searchParams.delete("ux_preview");
-    const response = NextResponse.redirect(url);
-    response.cookies.set(UX_PREVIEW_COOKIE, preview, PREVIEW_COOKIE);
-    return response;
+  const queryPreview = normalizeUxPreview(request.nextUrl.searchParams.get("ux_preview"));
+  const cookiePreview = normalizeUxPreview(request.cookies.get(UX_PREVIEW_COOKIE)?.value);
+  const resolved = queryPreview ?? cookiePreview;
+
+  request.headers.set(UX_PREVIEW_HEADER, resolved ?? "");
+
+  const response = intlMiddleware(request);
+
+  if (queryPreview === UX_PREVIEW_DIRECTION_C || queryPreview === UX_PREVIEW_OFF) {
+    response.cookies.set(UX_PREVIEW_COOKIE, queryPreview, PREVIEW_COOKIE);
   }
 
-  return intlMiddleware(request);
+  return response;
 }
 
 export const config = {
