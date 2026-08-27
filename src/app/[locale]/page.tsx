@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 import { AboutSection } from "@/components/home/AboutSection";
+import { FeaturedProjectsStrip } from "@/components/home/FeaturedProjectsStrip";
 import { HeroSection } from "@/components/home/HeroSection";
 import { MediumSection } from "@/components/home/MediumSection";
 import { localePageMetadata } from "@/lib/seo";
+import { isDirectionCPreview } from "@/lib/ux-preview-server";
 
 const TimelineSection = dynamic(() =>
   import("@/components/home/TimelineSection").then((mod) => ({ default: mod.TimelineSection })),
@@ -19,10 +21,13 @@ export async function generateMetadata({
   return localePageMetadata(locale, "home");
 }
 
-export default function HomePage() {
+export default async function HomePage() {
+  const previewC = await isDirectionCPreview();
+
   return (
     <main id="main-content">
-      <HeroSection />
+      <HeroSection previewC={previewC} />
+      {previewC ? <FeaturedProjectsStrip /> : null}
       <AboutSection />
       <TimelineSection />
       <MediumSection />

@@ -8,10 +8,14 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { RouteBackground } from "@/components/layout/RouteBackground";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
+import { cn } from "@/lib/cn";
 import { poppins } from "@/lib/fonts/poppins";
 import { isValidLocale, locales } from "@/lib/i18n/locale";
 import { localePageMetadata } from "@/lib/seo";
+import { isDirectionCPreview } from "@/lib/ux-preview-server";
 import "@/styles/globals.css";
+
+export const dynamic = "force-dynamic";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -43,10 +47,11 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
   const t = await getTranslations();
+  const previewC = await isDirectionCPreview();
 
   return (
     <html lang={locale} suppressHydrationWarning className={poppins.variable}>
-      <body className={poppins.className}>
+      <body className={cn(poppins.className, previewC && "ux-preview-c")}>
         <NextIntlClientProvider messages={messages}>
           <a href="#main-content" className="skip-link">
             {t("SkipToContent")}
