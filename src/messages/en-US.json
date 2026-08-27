@@ -7,6 +7,8 @@
   "AboutTitle": "ABOUT",
   "AboutTitle_Greeting": "Hello, my name is",
   "AboutTitle_Name": "Matheus de Assis",
+  "HeroEyebrow": "Hello, I am",
+  "HeroTagline": "Software developer focused on building scalable, intuitive, high-impact solutions.",
   "AdminClearArticles": "clear articles cache",
   "AdminClearProjects": "clear projects cache",
   "AdminEnglishOnly": "*English page only.",
