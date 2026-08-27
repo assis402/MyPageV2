@@ -33,7 +33,7 @@ export async function HeroSection({ previewC = false }: HeroSectionProps) {
         <div className="about-container">
           <p className="about-title">
             <span className="about-title-greeting">{t("HeroEyebrow")}</span>
-            <b>{t("AboutTitle_Name")}</b>
+            <b>{t("HeroName")}</b>
           </p>
           <p className="presentation-text">{t("HeroTagline")}</p>
           <div className="presentation-buttons">

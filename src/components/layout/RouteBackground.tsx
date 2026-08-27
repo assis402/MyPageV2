@@ -15,10 +15,16 @@ type RouteBackgroundProps = {
 export function RouteBackground({ nebula = false }: RouteBackgroundProps) {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [mounted, setMounted] = useState(isHome);
-  const [visible, setVisible] = useState(isHome);
+  const [mounted, setMounted] = useState(isHome || nebula);
+  const [visible, setVisible] = useState(isHome || nebula);
 
   useEffect(() => {
+    if (nebula) {
+      setMounted(true);
+      setVisible(true);
+      return;
+    }
+
     if (isHome) {
       setMounted(true);
       let inner = 0;
@@ -34,23 +40,25 @@ export function RouteBackground({ nebula = false }: RouteBackgroundProps) {
     setVisible(false);
     const timeout = window.setTimeout(() => setMounted(false), FADE_MS);
     return () => window.clearTimeout(timeout);
-  }, [isHome]);
+  }, [isHome, nebula]);
 
   if (!mounted) return null;
 
+  if (nebula) {
+    return <div className="route-background is-visible is-nebula is-nebula-page" aria-hidden="true" />;
+  }
+
   return (
-    <div className={cn("route-background", visible && "is-visible", nebula && "is-nebula")} aria-hidden="true">
-      {nebula ? null : (
-        <Image
-          src="/images/background.webp"
-          alt=""
-          fill
-          priority={isHome}
-          sizes="100vw"
-          quality={65}
-          className="hero-background-img"
-        />
-      )}
+    <div className={cn("route-background", visible && "is-visible")} aria-hidden="true">
+      <Image
+        src="/images/background.webp"
+        alt=""
+        fill
+        priority={isHome}
+        sizes="100vw"
+        quality={65}
+        className="hero-background-img"
+      />
     </div>
   );
 }

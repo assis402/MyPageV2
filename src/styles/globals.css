@@ -4,6 +4,7 @@
 @import "./home.css";
 @import "./projects.css";
 @import "./admin.css";
+@import "./ux-preview-c.css";
 
 /*
  * Design tokens — mapped from legacy wwwroot/css (shared, home, projects, admin).
