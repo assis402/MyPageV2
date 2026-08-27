@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 
 import { AboutSection } from "@/components/home/AboutSection";
-import { FeaturedProjectsStrip } from "@/components/home/FeaturedProjectsStrip";
 import { HeroSection } from "@/components/home/HeroSection";
 import { MediumSection } from "@/components/home/MediumSection";
 import { localePageMetadata } from "@/lib/seo";
@@ -27,7 +26,6 @@ export default async function HomePage() {
   return (
     <main id="main-content">
       <HeroSection previewC={previewC} />
-      {previewC ? <FeaturedProjectsStrip /> : null}
       <AboutSection />
       <TimelineSection />
       <MediumSection />

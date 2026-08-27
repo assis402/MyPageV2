@@ -58,7 +58,7 @@ export default async function LocaleLayout({
           </a>
           <Header />
           <div className="body-footer-container">
-            <RouteBackground />
+            <RouteBackground nebula={previewC} />
             {children}
             <ScrollToTop />
             <Footer />

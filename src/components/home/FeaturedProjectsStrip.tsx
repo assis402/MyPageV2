@@ -23,8 +23,8 @@ export async function FeaturedProjectsStrip() {
             </li>
           ))}
         </ul>
-        <Link href="/projects" className="featured-projects-strip__all">
-          {t("FeaturedProjectsViewAll")}
+        <Link href="/projects" className="featured-projects-strip__all" aria-label={t("FeaturedProjectsViewAll")}>
+          →
         </Link>
       </div>
     </section>
