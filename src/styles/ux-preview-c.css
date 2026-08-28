@@ -9,13 +9,6 @@
   background-color: transparent;
 }
 
-.ux-preview-c .route-background.is-nebula-page {
-  position: fixed;
-  top: 0;
-  height: 100%;
-  width: 100%;
-}
-
 .ux-preview-c .route-background.is-nebula::before {
   content: "";
   position: absolute;

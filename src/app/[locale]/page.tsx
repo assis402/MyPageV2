@@ -26,9 +26,11 @@ export default async function HomePage() {
   return (
     <main id="main-content">
       <HeroSection previewC={previewC} />
-      <AboutSection />
-      <TimelineSection />
-      <MediumSection />
+      <div className="home-content-zone">
+        <AboutSection />
+        <TimelineSection />
+        <MediumSection />
+      </div>
     </main>
   );
 }

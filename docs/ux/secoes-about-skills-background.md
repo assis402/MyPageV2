@@ -3,7 +3,8 @@
 **Status:** proposta UX (v2 — stacks com ícones + fundo distinto)  
 **Data:** 2026-08-28  
 **Contexto:** hero com nebula/bolas roxas já implementado (Direções A/C)  
-**Protótipos:** [Stacks com ícones](./prototypes/proto-skills-icons-flat-bg.png) · [Background fundo plano](./prototypes/proto-background-flat-bg.png)
+**Protótipos:** [About + Skills](./prototypes/proto-about-skills-dev-reference.png) · [Background](./prototypes/proto-background-dev-reference.png)  
+**Ícones SVG:** só Hard Skills — [`assets/README.md`](./assets/README.md) · `public/images/stacks/`
 
 ---
 
@@ -188,19 +189,23 @@ HARD SKILLS
 
 ### Stacks e ícones
 
-| Skill (atual) | Ícone sugerido | Já no repo? |
-|---------------|----------------|-------------|
-| C# .NET | `c-sharp.png` + `dotnet.png` (tile único ou dois) | ✓ |
-| Unit test | ícone flask/check (adicionar SVG) | — |
-| Integration test | ícone pipeline (adicionar SVG) | — |
-| Typescript | devicon ou SVG | — |
-| Angular | devicon ou SVG | — |
-| React Native | devicon ou SVG | — |
-| Cloud (Azure) | `az900.webp` / logo Azure | ✓ parcial |
-| React | devicon ou SVG | — |
-| Devops | ícone genérico CI/CD | — |
+Ícones **minimalistas monocromáticos** (line style, `currentColor`) — ver inventário em [`docs/ux/assets/README.md`](./assets/README.md).
 
-**Recomendação:** pacote `simple-icons` ou SVGs em `public/images/stacks/` — **não** depender de URLs externas.
+| Skill (atual) | SVG | Label |
+|---------------|-----|-------|
+| C# .NET | `csharp.svg` + `dotnet.svg` | C# · .NET (dois tiles) |
+| Unit test | `unit-test.svg` | Unit tests |
+| Integration test | `integration-test.svg` | Integration tests |
+| Typescript | `typescript.svg` | TypeScript |
+| Angular | `angular.svg` | Angular |
+| React Native | `react-native.svg` | React Native |
+| Cloud (Azure) | `azure.svg` | Azure |
+| React | `react.svg` | React |
+| Devops | `devops.svg` | DevOps |
+
+**Protótipo dev:** ![About + Skills — referência](./prototypes/proto-about-skills-dev-reference.png)
+
+Arquivos prontos em `public/images/stacks/`; manifesto em `src/lib/stacks.ts`.
 
 ### O que remover
 
@@ -229,6 +234,10 @@ Lista em `AboutSection.tsx` ou `src/lib/stacks.ts` (preferível extrair).
 ---
 
 ## 5. BACKGROUND — especificação
+
+> **Assets:** apenas protótipo PNG — **sem SVGs** nesta seção. Reutilizar ícones existentes (`work.svg`) só se já estiverem no layout atual.
+
+**Protótipo dev:** ![Background — referência](./prototypes/proto-background-dev-reference.png)
 
 ### Fundo
 
@@ -278,7 +287,7 @@ Cards full width; linha vertical à esquerda; sem `position: absolute` com `left
 | `src/components/home/TimelineSection.tsx` | Cards; `tone` sem tinted |
 | `src/components/home/TimelineEntry.tsx` | Markup card |
 | `src/components/layout/RouteBackground.tsx` | Nebula só `100vh` |
-| `public/images/stacks/*` | SVGs novos |
+| `public/images/stacks/*` | SVGs — **só Hard Skills** |
 
 ### Fases
 

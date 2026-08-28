@@ -24,6 +24,33 @@
   opacity: 1;
 }
 
+.route-background::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--color-content-zone-bg));
+  pointer-events: none;
+}
+
+.home-content-zone {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-content-zone-bg);
+}
+
+.home-content-zone::before {
+  content: "";
+  display: block;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgb(255 255 255 / 10%) 50%,
+    transparent
+  );
+}
+
 .hero-background-img {
   object-fit: cover;
   object-position: bottom;

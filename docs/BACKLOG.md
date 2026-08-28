@@ -19,7 +19,8 @@ Dev picks **one task at a time** from **Next (ready)**, top to bottom.
 - **Projects:** personal GitHub repos only (tag `mypage`)
 - **Nav:** About + Projects (no Courses link)
 - **Deploy / hosting:** out of scope for now (hosting provider TBD)
-- **UX preview:** layout changes may ship behind a toggle until Matheus approves (task 018)
+- **UX preview:** Direction C behind toggle (018 ✓); promote to default only via 019 after approval
+- **Home v2 (UX rodada 2):** Zone B flat bg, skills icon grid, timeline cards — [`docs/ux/secoes-about-skills-background.md`](ux/secoes-about-skills-background.md)
 
 ---
 
@@ -31,7 +32,77 @@ _(none)_
 
 ## Next (ready)
 
-_(empty — 019 only after Matheus approves Direction C)_
+### 021 · Home — About layout + Hard Skills icon grid
+**Status:** todo | **Dep:** 020 | **UX:** [`secoes-about-skills-background.md`](ux/secoes-about-skills-background.md) §3–4 · [proto](ux/prototypes/proto-about-skills-dev-reference.png)
+
+**Goal:** Remove progress bars; show stacks as **icon tiles** in a grid. Desktop: About text left + Skills grid right.
+
+**Scope:**
+- `StackIcon` component + use `src/lib/stacks.ts` + SVGs in `public/images/stacks/` (already copied)
+- Rewrite `SkillsSection.tsx` — icon grid, no levels, no scroll animation
+- **Remove** `SkillBar.tsx` and bar-related CSS (`.skill-bar`, `.skill-gaps`, etc.)
+- `AboutSection.tsx`: desktop grid `1.2fr / 0.8fr` ≥900px; mobile stack Sobre → Skills → CTAs
+- Typography: body left-aligned, `rgb(255 255 255 / 72%)` per spec
+- Tile styles from [`docs/ux/assets/README.md`](ux/assets/README.md)
+- i18n: keep `SkillsTitle`; labels can stay English literals from `STACK_ITEMS` for now
+
+**Out of scope:** timeline cards (022), hero changes
+
+**Done when:**
+- [ ] Zero skill progress bars in UI
+- [ ] 10 stack tiles with accessible `alt` + hover/focus
+- [ ] Desktop split layout matches proto reference
+- [ ] PT-BR / EN-US section titles ok
+- [ ] Lighthouse a11y not regressed
+
+---
+
+### 022 · Home — Experience timeline cards
+**Status:** todo | **Dep:** 020 | **UX:** [`secoes-about-skills-background.md`](ux/secoes-about-skills-background.md) §5 · [proto](ux/prototypes/proto-background-dev-reference.png)
+
+**Goal:** Background section = card-based timeline on Zone B — no purple `ui-section-tinted` gradient.
+
+**Scope:**
+- Refactor `TimelineEntry.tsx` / `TimelineSection.tsx` — each role in a card (`rgb(255 255 255 / 3%)` surface, subtle border, hover accent)
+- Vertical line + dots on the left; cards to the right (desktop)
+- **Preserve** expand/collapse (technologies + attributions), exclusive open, LinkedIn link
+- Remove / replace tinted gradient wrapper on timeline section (`tone="content"` or equivalent)
+- **Mobile:** full-width cards, line on left — **no** `position: absolute; left: 153px` layout
+
+**Out of scope:** Medium section redesign, projects page
+
+**Done when:**
+- [ ] Timeline matches card proto; expand/collapse still works
+- [ ] Section bg is flat Zone B (no nebula/tinted purple)
+- [ ] Mobile ~375px readable, no horizontal overflow
+- [ ] `yarn build` + `yarn lint` pass
+
+---
+
+## Queue
+
+| ID | Title | Dep | UX ref |
+|----|-------|-----|--------|
+| 023 | Projects page — flat Zone B bg | 020 | secoes §7 #5 |
+| 019 | Promote Direction C to default | 018 + Matheus OK | direcao-c |
+
+### 023 · Projects page — flat content zone (detail)
+
+**Status:** todo | **Dep:** 020 | **UX:** secoes §7 decision #5
+
+- Apply `--color-content-zone-bg` to projects route (match home Zone B)
+- Keep search/tags/cards behavior; align card surfaces with 022 if already merged
+- Preview C calmer cards (018) should still work on flat bg
+
+**Done when:** `/projects` visually consistent with home content zone; no nebula on page bg.
+
+---
+
+### 019 · Promote Direction C to default _(blocked — Matheus approval)_
+
+Remove `UX_PREVIEW_DIRECTION` / cookie toggle; inverted CTAs + featured strip + calmer project cards become **default**. Delete or merge redundant non-preview hero CSS. Only open after Matheus confirms preview C.
+
+**Dep:** 018 ✓ + explicit approval.
 
 ---
 
@@ -91,6 +162,9 @@ Shared `components/ui/` (`Section`, `SectionTitle`, buttons, `Card`, `Tag`) + `c
 ### 018 · UX preview — Direction C (temporary, layout 3)
 Reversible preview behind `UX_PREVIEW_DIRECTION=c` or `?ux_preview=c` (cookie 30 days; `?ux_preview=off` wins over env). Default layout unchanged. Inverted hero CTAs, featured-projects strip (placeholders), calmer project cards. Spec: [`docs/ux/direcao-c-projects-ritmo.md`](ux/direcao-c-projects-ritmo.md). Lighthouse mobile (preview on): home Performance 96 / a11y 100; projects Performance 97 / a11y 100. `yarn build` + `yarn lint`.
 
+### 020 · Home — content zone background (Zone B)
+Hero stays nebula/photo (`height: 100vh`, not full-page). About → Medium wrapped in `.home-content-zone` on `#0a0a0f` with 80px fade + hairline. Preview C on/off. `yarn build` + `yarn lint`.
+
 ---
 
 ## Removed from scope
@@ -116,11 +190,13 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
        └─ 013 ─── 014
 
 004 ─── 015 ✓
-006,010,012 ─── 016 ✓ ─── 017 ✓ ─── 018 (preview)
-                                      └── 019 (promote C — if approved)
+006,010,012 ─── 016 ✓ ─── 017 ✓ ─── 018 ✓ ─┬─ 019 (if approved)
+                                            └─ 020 ✓ ─┬─ 021
+                                                      ├─ 022
+                                                      └─ 023
 ```
 
-**Next ready:** none — 019 only after Matheus approves Direction C.
+**Next ready:** 021 → 022 (023 after 020). **019** blocked on approval.
 
 ---
 
@@ -137,5 +213,9 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] Performance ≥ 90 Lighthouse (mobile) — must not regress after 017
 - [x] **017** — Modern layout while keeping brand tokens
 - [x] **018** — UX Direction C preview (temporary toggle)
+- [x] **020** — Zone B flat background + hero/content split
+- [ ] **021** — About + skills icon grid (no bars)
+- [ ] **022** — Timeline cards
+- [ ] **023** — Projects flat zone bg
 - [ ] **019** — Promote C to default _(only if Matheus approves)_
 - [ ] ~~Production deploy + DNS~~ (deferred)
