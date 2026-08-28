@@ -176,7 +176,6 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .skill-bar,
   .curriculum-options,
   .scroll-up-button,
   .menu-container,

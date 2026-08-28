@@ -32,31 +32,6 @@ _(none)_
 
 ## Next (ready)
 
-### 021 · Home — About layout + Hard Skills icon grid
-**Status:** todo | **Dep:** 020 | **UX:** [`secoes-about-skills-background.md`](ux/secoes-about-skills-background.md) §3–4 · [proto](ux/prototypes/proto-about-skills-dev-reference.png)
-
-**Goal:** Remove progress bars; show stacks as **icon tiles** in a grid. Desktop: About text left + Skills grid right.
-
-**Scope:**
-- `StackIcon` component + use `src/lib/stacks.ts` + SVGs in `public/images/stacks/` (already copied)
-- Rewrite `SkillsSection.tsx` — icon grid, no levels, no scroll animation
-- **Remove** `SkillBar.tsx` and bar-related CSS (`.skill-bar`, `.skill-gaps`, etc.)
-- `AboutSection.tsx`: desktop grid `1.2fr / 0.8fr` ≥900px; mobile stack Sobre → Skills → CTAs
-- Typography: body left-aligned, `rgb(255 255 255 / 72%)` per spec
-- Tile styles from [`docs/ux/assets/README.md`](ux/assets/README.md)
-- i18n: keep `SkillsTitle`; labels can stay English literals from `STACK_ITEMS` for now
-
-**Out of scope:** timeline cards (022), hero changes
-
-**Done when:**
-- [ ] Zero skill progress bars in UI
-- [ ] 10 stack tiles with accessible `alt` + hover/focus
-- [ ] Desktop split layout matches proto reference
-- [ ] PT-BR / EN-US section titles ok
-- [ ] Lighthouse a11y not regressed
-
----
-
 ### 022 · Home — Experience timeline cards
 **Status:** todo | **Dep:** 020 | **UX:** [`secoes-about-skills-background.md`](ux/secoes-about-skills-background.md) §5 · [proto](ux/prototypes/proto-background-dev-reference.png)
 
@@ -165,6 +140,9 @@ Reversible preview behind `UX_PREVIEW_DIRECTION=c` or `?ux_preview=c` (cookie 30
 ### 020 · Home — content zone background (Zone B)
 Hero stays nebula/photo (`height: 100vh`, not full-page). About → Medium wrapped in `.home-content-zone` on `#0a0a0f` with 80px fade + hairline. Preview C on/off. `yarn build` + `yarn lint`.
 
+### 021 · Home — About layout + Hard Skills icon grid
+Replaced skill bars with 10 stack tiles (`StackIcon` + `STACK_ITEMS`). Desktop About/Skills split `1.2fr / 0.8fr` ≥900px; mobile Sobre → Skills → CTAs. Removed `SkillBar.tsx`. `yarn build` + `yarn lint`.
+
 ---
 
 ## Removed from scope
@@ -191,12 +169,12 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 
 004 ─── 015 ✓
 006,010,012 ─── 016 ✓ ─── 017 ✓ ─── 018 ✓ ─┬─ 019 (if approved)
-                                            └─ 020 ✓ ─┬─ 021
+                                            └─ 020 ✓ ─┬─ 021 ✓
                                                       ├─ 022
                                                       └─ 023
 ```
 
-**Next ready:** 021 → 022 (023 after 020). **019** blocked on approval.
+**Next ready:** 022 (023 after 020). **019** blocked on approval.
 
 ---
 
@@ -214,7 +192,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **017** — Modern layout while keeping brand tokens
 - [x] **018** — UX Direction C preview (temporary toggle)
 - [x] **020** — Zone B flat background + hero/content split
-- [ ] **021** — About + skills icon grid (no bars)
+- [x] **021** — About + skills icon grid (no bars)
 - [ ] **022** — Timeline cards
 - [ ] **023** — Projects flat zone bg
 - [ ] **019** — Promote C to default _(only if Matheus approves)_
