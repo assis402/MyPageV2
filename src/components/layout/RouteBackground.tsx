@@ -15,18 +15,17 @@ type RouteBackgroundProps = {
 export function RouteBackground({ nebula = false }: RouteBackgroundProps) {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const [mounted, setMounted] = useState(isHome || nebula);
-  const [visible, setVisible] = useState(isHome || nebula);
+  const [mounted, setMounted] = useState(isHome);
+  const [visible, setVisible] = useState(isHome);
 
   useEffect(() => {
-    if (nebula) {
-      setMounted(true);
-      setVisible(true);
-      return;
-    }
-
     if (isHome) {
       setMounted(true);
+      if (nebula) {
+        setVisible(true);
+        return;
+      }
+
       let inner = 0;
       const outer = requestAnimationFrame(() => {
         inner = requestAnimationFrame(() => setVisible(true));
@@ -45,7 +44,9 @@ export function RouteBackground({ nebula = false }: RouteBackgroundProps) {
   if (!mounted) return null;
 
   if (nebula) {
-    return <div className="route-background is-visible is-nebula is-nebula-page" aria-hidden="true" />;
+    return (
+      <div className={cn("route-background", "is-nebula", visible && "is-visible")} aria-hidden="true" />
+    );
   }
 
   return (

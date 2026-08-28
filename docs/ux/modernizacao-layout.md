@@ -210,6 +210,10 @@ Evitar: glow roxo forte, particles, hover exagerado em tudo.
 
 **Próximo passo:** coordenador revisa os dois briefs; dev implementa (recomendado: **A primeiro**, depois **C**).
 
+### Rodada 2 — seções internas
+
+- **[About + Hard Skills + Background](./secoes-about-skills-background.md)** — layout do meio da Home (protótipos em `prototypes/`).
+
 ---
 
 ## Referência rápida do que NÃO mexer (nesta rodada)
