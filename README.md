@@ -99,7 +99,6 @@ MyPageV2
 
 ## Próximo (backlog)
 
-- **022** — Timeline em cards
 - **023** — Projects com mesmo fundo plano
 - **019** — Promover Direção C ao default — só se você aprovar o preview
 - Deploy / DNS — adiado
