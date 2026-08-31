@@ -17,7 +17,6 @@ export function TimelineSection() {
     attributions: t("Attributions"),
     seeMore: t("SeeMore"),
     seeLess: t("SeeLess"),
-    company: t("Company"),
   };
 
   return (
@@ -27,12 +26,11 @@ export function TimelineSection() {
         <div className="timeline">
           <TimelineEntry
             id="exp3"
-            variant="company02"
-            circle="full"
-            dateTop={t("Company02Date_01_1")}
-            dateBottom={t("Company02Date_01")}
+            dateFrom={t("Company02Date_01")}
+            dateTo={t("Company02Date_01_1")}
             title={t("Company02Title_01")}
-            subtitle={{
+            company={{ name: "Labsit", href: "https://labsit.io/" }}
+            allocation={{
               label: t("CompanySubTitle"),
               href: "https://ri.dotz.com.br/quem-somos/",
               name: "Dotz Inc.",
@@ -48,45 +46,29 @@ export function TimelineSection() {
             onExpand={() => setExpandedId("exp3")}
             onCollapse={() => setExpandedId(null)}
           />
-          <a className="timeline-company" href="https://labsit.io/" target="_blank" rel="noreferrer">
-            <span className="timeline-company-arrow company02-arrow" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="material-symbols-outlined company-icon"
-              src="/images/work.svg"
-              title={labels.company}
-              alt=""
-            />
-            <span title={labels.company}>Labsit</span>
-          </a>
-        </div>
-        <TimelineEntry
-          id="exp2"
-          variant="company01"
-          circle="full"
-          className="margin-top"
-          dateTop={t("Company01Date_02")}
-          dateBottom={t("Company01Date_02_1")}
-          title={t("Company01Title_02")}
-          resume={t("Company01Resume_02")}
-          techs={t("Company01Techs_02")}
-          attributionsHtml={t.raw("Company01Attri_02")}
-          technologiesLabel={labels.technologies}
-          attributionsLabel={labels.attributions}
-          seeMore={labels.seeMore}
-          seeLess={labels.seeLess}
-          expanded={expandedId === "exp2"}
-          onExpand={() => setExpandedId("exp2")}
-          onCollapse={() => setExpandedId(null)}
-        />
-        <div className="timeline-exp-wrapper">
+          <TimelineEntry
+            id="exp2"
+            dateFrom={t("Company01Date_02_1")}
+            dateTo={t("Company01Date_02")}
+            title={t("Company01Title_02")}
+            company={{ name: "FitBank", href: "https://fitbank.com.br/" }}
+            resume={t("Company01Resume_02")}
+            techs={t("Company01Techs_02")}
+            attributionsHtml={t.raw("Company01Attri_02")}
+            technologiesLabel={labels.technologies}
+            attributionsLabel={labels.attributions}
+            seeMore={labels.seeMore}
+            seeLess={labels.seeLess}
+            expanded={expandedId === "exp2"}
+            onExpand={() => setExpandedId("exp2")}
+            onCollapse={() => setExpandedId(null)}
+          />
           <TimelineEntry
             id="exp1"
-            variant="company01"
-            circle="border"
-            dateTop={t("Company01Date_01")}
-            dateBottom={t("Company01Date_01_1")}
+            dateFrom={t("Company01Date_01_1")}
+            dateTo={t("Company01Date_01")}
             title={t("Company01Title_01")}
+            company={{ name: "FitBank", href: "https://fitbank.com.br/" }}
             resume={t("Company01Resume_01")}
             attributionsHtml={t.raw("Company01Attri_01")}
             technologiesLabel={labels.technologies}
@@ -97,22 +79,9 @@ export function TimelineSection() {
             onExpand={() => setExpandedId("exp1")}
             onCollapse={() => setExpandedId(null)}
           />
-          <a className="timeline-company" href="https://fitbank.com.br/" target="_blank" rel="noreferrer">
-            <span className="timeline-company-arrow company01-arrow" />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="material-symbols-outlined company-icon"
-              src="/images/work.svg"
-              title={labels.company}
-              alt=""
-            />
-            <span title={labels.company}>FitBank</span>
-          </a>
         </div>
-        <a className="more" href={LINKEDIN_URL} target="_blank" rel="noreferrer">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img className="material-symbols-outlined" src="/images/more_horiz.svg" alt="" />
-          <p className="more-text">{t("BackgroundMore")}</p>
+        <a className="timeline-linkedin" href={LINKEDIN_URL} target="_blank" rel="noreferrer">
+          {t("BackgroundMore")}
         </a>
       </div>
     </Section>
