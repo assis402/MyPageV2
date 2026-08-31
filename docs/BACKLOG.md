@@ -32,25 +32,14 @@ _(none)_
 
 ## Next (ready)
 
-### 022 · Home — Experience timeline cards
-**Status:** todo | **Dep:** 020 | **UX:** [`secoes-about-skills-background.md`](ux/secoes-about-skills-background.md) §5 · [proto](ux/prototypes/proto-background-dev-reference.png)
+### 023 · Projects page — flat content zone
+**Status:** todo | **Dep:** 020 ✓ · 022 ✓ | **UX:** secoes §7 decision #5
 
-**Goal:** Background section = card-based timeline on Zone B — no purple `ui-section-tinted` gradient.
+- Apply `--color-content-zone-bg` to projects route (match home Zone B)
+- Keep search/tags/cards behavior; align card surfaces with 022
+- Preview C calmer cards (018) should still work on flat bg
 
-**Scope:**
-- Refactor `TimelineEntry.tsx` / `TimelineSection.tsx` — each role in a card (`rgb(255 255 255 / 3%)` surface, subtle border, hover accent)
-- Vertical line + dots on the left; cards to the right (desktop)
-- **Preserve** expand/collapse (technologies + attributions), exclusive open, LinkedIn link
-- Remove / replace tinted gradient wrapper on timeline section (`tone="content"` or equivalent)
-- **Mobile:** full-width cards, line on left — **no** `position: absolute; left: 153px` layout
-
-**Out of scope:** Medium section redesign, projects page
-
-**Done when:**
-- [ ] Timeline matches card proto; expand/collapse still works
-- [ ] Section bg is flat Zone B (no nebula/tinted purple)
-- [ ] Mobile ~375px readable, no horizontal overflow
-- [ ] `yarn build` + `yarn lint` pass
+**Done when:** `/projects` visually consistent with home content zone; no nebula on page bg.
 
 ---
 
@@ -58,20 +47,7 @@ _(none)_
 
 | ID | Title | Dep | UX ref |
 |----|-------|-----|--------|
-| 023 | Projects page — flat Zone B bg | 020 | secoes §7 #5 |
 | 019 | Promote Direction C to default | 018 + Matheus OK | direcao-c |
-
-### 023 · Projects page — flat content zone (detail)
-
-**Status:** todo | **Dep:** 020 | **UX:** secoes §7 decision #5
-
-- Apply `--color-content-zone-bg` to projects route (match home Zone B)
-- Keep search/tags/cards behavior; align card surfaces with 022 if already merged
-- Preview C calmer cards (018) should still work on flat bg
-
-**Done when:** `/projects` visually consistent with home content zone; no nebula on page bg.
-
----
 
 ### 019 · Promote Direction C to default _(blocked — Matheus approval)_
 
@@ -143,6 +119,9 @@ Hero stays nebula/photo (`height: 100vh`, not full-page). About → Medium wrapp
 ### 021 · Home — About layout + Hard Skills icon grid
 Replaced skill bars with 10 stack tiles (`StackIcon` + `STACK_ITEMS`). Desktop About/Skills split `1.2fr / 0.8fr` ≥900px; mobile Sobre → Skills → CTAs. Removed `SkillBar.tsx`. `yarn build` + `yarn lint`.
 
+### 022 · Home — Experience timeline cards
+Roles as cards on a left rail (date, company chip, resume, expand/collapse). Flat Zone B — no `ui-section-tinted`. Mobile full-width cards, no `left: 153px`. `yarn build` + `yarn lint`.
+
 ---
 
 ## Removed from scope
@@ -170,11 +149,11 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 004 ─── 015 ✓
 006,010,012 ─── 016 ✓ ─── 017 ✓ ─── 018 ✓ ─┬─ 019 (if approved)
                                             └─ 020 ✓ ─┬─ 021 ✓
-                                                      ├─ 022
+                                                      ├─ 022 ✓
                                                       └─ 023
 ```
 
-**Next ready:** 022 (023 after 020). **019** blocked on approval.
+**Next ready:** 023. **019** blocked on approval.
 
 ---
 
@@ -193,7 +172,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **018** — UX Direction C preview (temporary toggle)
 - [x] **020** — Zone B flat background + hero/content split
 - [x] **021** — About + skills icon grid (no bars)
-- [ ] **022** — Timeline cards
+- [x] **022** — Timeline cards
 - [ ] **023** — Projects flat zone bg
 - [ ] **019** — Promote C to default _(only if Matheus approves)_
 - [ ] ~~Production deploy + DNS~~ (deferred)

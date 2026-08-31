@@ -185,28 +185,7 @@
   margin-top: 3rem;
 }
 
-.ux-preview-c .timeline-exp-title {
-  font-weight: 500;
-}
-
-.ux-preview-c .timeline-company {
-  border-color: rgb(255 255 255 / 8%);
-  background-color: rgb(255 255 255 / 4%);
-  color: var(--color-legacy-text);
-}
-
-.ux-preview-c .timeline-company:hover {
-  border-color: rgb(192 132 252 / 0.35);
-}
-
-.ux-preview-c .company02-full-circle {
-  border-color: #c084fc;
-  background: #c084fc;
-  box-shadow: 0 0 16px 6px rgb(192 132 252 / 0.28);
-}
-
-.ux-preview-c .more,
-.ux-preview-c .more-timeline {
+.ux-preview-c .more {
   border-color: rgb(255 255 255 / 10%);
   background-color: rgb(255 255 255 / 3%);
 }
