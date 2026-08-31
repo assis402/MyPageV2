@@ -1,5 +1,3 @@
-import type { RefObject } from "react";
-
 export type TimelineId = "exp1" | "exp2" | "exp3";
 
 type TimelineEntryProps = {
@@ -25,7 +23,6 @@ type TimelineEntryProps = {
   expanded: boolean;
   onExpand: () => void;
   onCollapse: () => void;
-  internalRef: RefObject<HTMLDivElement | null>;
 };
 
 export function TimelineEntry({
@@ -47,7 +44,6 @@ export function TimelineEntry({
   expanded,
   onExpand,
   onCollapse,
-  internalRef,
 }: TimelineEntryProps) {
   const circleClass = circle === "full" ? `${variant}-full-circle` : `${variant}-border-circle`;
 
@@ -61,7 +57,7 @@ export function TimelineEntry({
           <img className="timeline-arrow" src="/images/line.svg" alt="" />
           {dateBottom}
         </div>
-        <div className="timeline-exp-internal" id={`timeline-exp-internal-${id}`} ref={internalRef}>
+        <div className="timeline-exp-internal" id={`timeline-exp-internal-${id}`}>
           <span className="timeline-exp-title">{title}</span>
           {subtitle ? (
             <div className="timeline-exp-subtitle">

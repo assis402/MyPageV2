@@ -507,15 +507,6 @@
   border-left: 0;
 }
 
-.timeline-bar {
-  position: relative;
-  left: 125.6px;
-  height: 255px;
-  width: 2px;
-  background-color: var(--color-legacy-skill-track);
-  transition: all 0.6s ease;
-}
-
 .timeline-arrow {
   height: 11px;
   width: 11px;
@@ -525,16 +516,8 @@
   transform: rotate(90deg);
 }
 
-.company02-bar {
-  background-color: var(--color-legacy-timeline-dot-a);
-}
-
 .company02-arrow {
   border-right: 11px solid var(--color-legacy-timeline-dot-a);
-}
-
-.company01-bar {
-  background-color: var(--color-legacy-timeline-dot-b);
 }
 
 .company01-arrow {
@@ -824,10 +807,6 @@
   .timeline-body {
     max-width: 400px;
     padding: 0 6%;
-  }
-
-  .timeline-bar {
-    left: 16px;
   }
 
   .timeline-company {
