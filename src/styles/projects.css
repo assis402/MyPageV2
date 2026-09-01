@@ -198,11 +198,16 @@
   height: 20.5rem;
   width: 16.5rem;
   overflow: hidden;
+  border-color: rgb(255 255 255 / 8%);
+  background: rgb(255 255 255 / 3%);
 }
 
 .project:hover,
 .project:focus-within {
   transform: translateY(-4px);
+  border-color: rgb(192 132 252 / 35%);
+  background: rgb(192 132 252 / 6%);
+  box-shadow: none;
 }
 
 .project-content {
