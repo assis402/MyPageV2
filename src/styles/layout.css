@@ -20,6 +20,11 @@ header {
   z-index: 1;
 }
 
+.projects-page {
+  flex: 1 0 auto;
+  background-color: var(--color-content-zone-bg);
+}
+
 .scroll-up-button {
   position: fixed;
   right: 20px;

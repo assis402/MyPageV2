@@ -32,14 +32,7 @@ _(none)_
 
 ## Next (ready)
 
-### 023 · Projects page — flat content zone
-**Status:** todo | **Dep:** 020 ✓ · 022 ✓ | **UX:** secoes §7 decision #5
-
-- Apply `--color-content-zone-bg` to projects route (match home Zone B)
-- Keep search/tags/cards behavior; align card surfaces with 022
-- Preview C calmer cards (018) should still work on flat bg
-
-**Done when:** `/projects` visually consistent with home content zone; no nebula on page bg.
+_(empty — **019** blocked on Matheus approving Direction C)_
 
 ---
 
@@ -122,6 +115,9 @@ Replaced skill bars with 10 stack tiles (`StackIcon` + `STACK_ITEMS`). Desktop A
 ### 022 · Home — Experience timeline cards
 Roles as cards on a left rail (date, company chip, resume, expand/collapse). Flat Zone B — no `ui-section-tinted`. Mobile full-width cards, no `left: 153px`. `yarn build` + `yarn lint`.
 
+### 023 · Projects page — flat content zone
+Projects route uses `--color-content-zone-bg` (`#0a0a0f`); no nebula. Card surfaces match 022; preview C calmer cards still apply. `yarn build` + `yarn lint`.
+
 ---
 
 ## Removed from scope
@@ -150,10 +146,10 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 006,010,012 ─── 016 ✓ ─── 017 ✓ ─── 018 ✓ ─┬─ 019 (if approved)
                                             └─ 020 ✓ ─┬─ 021 ✓
                                                       ├─ 022 ✓
-                                                      └─ 023
+                                                      └─ 023 ✓
 ```
 
-**Next ready:** 023. **019** blocked on approval.
+**Next ready:** none. **019** blocked on approval.
 
 ---
 
@@ -173,6 +169,6 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **020** — Zone B flat background + hero/content split
 - [x] **021** — About + skills icon grid (no bars)
 - [x] **022** — Timeline cards
-- [ ] **023** — Projects flat zone bg
+- [x] **023** — Projects flat zone bg
 - [ ] **019** — Promote C to default _(only if Matheus approves)_
 - [ ] ~~Production deploy + DNS~~ (deferred)
