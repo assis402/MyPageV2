@@ -51,30 +51,8 @@ _(none)_
 
 ## Next (ready)
 
-### 024 · Promote new layout as default (remove preview)
-**Status:** todo | **Dep:** 018 ✓, 020–023 ✓ | **UX:** Direction C + [`secoes-about-skills-background.md`](ux/secoes-about-skills-background.md)
-
-**Goal:** Single layout — no `?ux_preview=c`, no env toggle, no dual code paths. What was preview + home v2 becomes **the only UI**.
-
-**Scope:**
-- Remove: `lib/ux-preview*.ts`, preview cookie/query in `middleware.ts`, `ux-preview-c.css`, `body.ux-preview-c`, `previewC` props, legacy hero branch in `HeroSection`
-- **Default hero:** Direction C (eyebrow, name, tagline, Projects primary CTA, About secondary, `FeaturedProjectsStrip`)
-- Keep: Zone B (020), icon skills grid (021), timeline cards (022), projects flat zone (023)
-- Merge calmer project card styles from preview into main `projects.css` / `ui.css`
-- Update `.env.example` — remove `UX_PREVIEW_DIRECTION`
-- Docs: mark 019 cancelled (superseded by 024)
-
-**Out of scope:** icon library (025), spacing/hover fixes (026–028)
-
-**Done when:**
-- [ ] Site works with zero preview flags; old default layout code removed
-- [ ] Quality gate passed
-- [ ] Playwright: home + projects smoke specs green
-
----
-
 ### 025 · Hard Skills — icons from library
-**Status:** todo | **Dep:** 024 | **UX:** [`assets/README.md`](ux/assets/README.md)
+**Status:** todo | **Dep:** 024 ✓ | **UX:** [`assets/README.md`](ux/assets/README.md)
 
 **Goal:** Replace custom `public/images/stacks/*.svg` tiles with **consistent brand icons** from an icon library.
 
@@ -95,7 +73,7 @@ _(none)_
 ---
 
 ### 026 · About — section title spacing
-**Status:** todo | **Dep:** 024 | **UX:** stakeholder feedback
+**Status:** todo | **Dep:** 024 ✓ | **UX:** stakeholder feedback
 
 **Goal:** `AboutTitle` spacing matches **Background**, **Medium**, and other sections — title not glued to body text.
 
@@ -111,7 +89,7 @@ _(none)_
 ---
 
 ### 027 · Background — timeline dot / rail alignment
-**Status:** todo | **Dep:** 024 | **UX:** stakeholder feedback
+**Status:** todo | **Dep:** 024 ✓ | **UX:** stakeholder feedback
 
 **Goal:** Purple dots on the left are **centered on the vertical line** (`.timeline::before`).
 
@@ -127,7 +105,7 @@ _(none)_
 ---
 
 ### 028 · Card lift hover — Skills + Background (match Medium)
-**Status:** todo | **Dep:** 024 | **UX:** Medium `.ui-card` behavior
+**Status:** todo | **Dep:** 024 ✓ | **UX:** Medium `.ui-card` behavior
 
 **Goal:** `.stack-tile` and `.timeline-card` use the **same lift** as Medium cards: `translateY(-4px)`, border highlight, subtle shadow (`ui.css`).
 
@@ -154,7 +132,7 @@ _(none)_
 | 033 | Performance audit & remediation queue | 031 |
 
 ### 029 · Projects page — full new layout alignment
-**Status:** todo | **Dep:** 024, 028
+**Status:** todo | **Dep:** 024 ✓, 028
 
 **Goal:** `/projects` feels like the same design system as the new home — not just flat bg (023).
 
@@ -173,7 +151,7 @@ _(none)_
 ---
 
 ### 030 · Admin pages — new layout alignment
-**Status:** todo | **Dep:** 024
+**Status:** todo | **Dep:** 024 ✓
 
 **Goal:** `/admin` matches Zone B + shared UI primitives (cards, buttons, spacing).
 
@@ -354,6 +332,9 @@ Roles as cards on a left rail (date, company chip, resume, expand/collapse). Fla
 ### 023 · Projects page — flat content zone
 Projects route uses `--color-content-zone-bg` (`#0a0a0f`); no nebula. Card surfaces match 022; preview C calmer cards still apply. `yarn build` + `yarn lint`.
 
+### 024 · Promote new layout as default (remove preview)
+Direction C is the only UI: hero (eyebrow, name, tagline, Projects primary + About secondary, featured strip), nebula background, calmer cards. Removed `ux-preview*` libs, query/cookie/env toggle, and the legacy hero branch. Theme CSS in `src/styles/theme.css`. Playwright smoke: `e2e/home.spec.ts`, `e2e/projects.spec.ts`. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
+
 ---
 
 ## Removed from scope
@@ -388,7 +369,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
                                                                                       └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** 024 → … → 031 → **032** and **033** (can run in parallel after 031).
+**Next ready:** 025 → … → 031 → **032** and **033** (can run in parallel after 031).
 
 ---
 
@@ -409,7 +390,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **021** — About + skills icon grid (no bars)
 - [x] **022** — Timeline cards
 - [x] **023** — Projects flat zone bg
-- [ ] **024** — New layout default (no preview)
+- [x] **024** — New layout default (no preview)
 - [ ] **025** — Stack icons from library
 - [ ] **026** — About title spacing
 - [ ] **027** — Timeline dot alignment

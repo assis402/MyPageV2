@@ -1,15 +1,11 @@
-/* Direction C preview — proto-c-projects-ritmo. Scoped to body.ux-preview-c. */
+/* Direction C — default theme (promoted from the reversible preview). */
 
-.ux-preview-c {
-  background-color: #050508;
-}
-
-.ux-preview-c .route-background {
+.route-background {
   box-shadow: none;
   background-color: transparent;
 }
 
-.ux-preview-c .route-background.is-nebula::before {
+.route-background.is-nebula::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -20,39 +16,39 @@
   pointer-events: none;
 }
 
-.ux-preview-c .site-name::after {
+.site-name::after {
   content: none;
 }
 
-.ux-preview-c .menu-item {
+.menu-item {
   color: rgb(255 255 255 / 0.72);
   font-size: 0.9375rem;
   font-weight: 400;
 }
 
-.ux-preview-c .menu-item.is-active {
+.menu-item.is-active {
   color: #c084fc;
   font-weight: 500;
 }
 
-.ux-preview-c .menu-item.is-active::after {
+.menu-item.is-active::after {
   display: none;
 }
 
-.ux-preview-c .about-external-container {
+.about-external-container {
   min-height: 100dvh;
   flex-direction: column;
   justify-content: stretch;
 }
 
-.ux-preview-c .about-container {
+.about-container {
   flex: 1 1 auto;
   justify-content: center;
   gap: 1.75rem;
   padding: 7.5rem 6% 2rem;
 }
 
-.ux-preview-c .about-title {
+.about-title {
   align-items: center;
   gap: 0.9rem;
   padding-bottom: 0;
@@ -63,7 +59,7 @@
   line-height: 1.05;
 }
 
-.ux-preview-c .about-title-greeting {
+.about-title-greeting {
   display: block;
   color: #c084fc;
   font-size: 0.75rem;
@@ -72,7 +68,7 @@
   text-transform: uppercase;
 }
 
-.ux-preview-c .presentation-text {
+.presentation-text {
   max-width: 36rem;
   margin: 0 auto;
   color: rgb(255 255 255 / 0.68);
@@ -81,30 +77,30 @@
   line-height: 1.7;
 }
 
-.ux-preview-c .presentation-buttons {
+.presentation-buttons {
   gap: 1rem;
 }
 
-.ux-preview-c .gradient-button {
+.gradient-button {
   min-width: 11rem;
   border-color: transparent;
   background-image: var(--background-image-gradient-accent);
 }
 
-.ux-preview-c .outlined-button {
+.outlined-button {
   min-width: 11rem;
   border-color: #c084fc;
   color: var(--color-legacy-text);
 }
 
-.ux-preview-c .outlined-button:hover,
-.ux-preview-c .outlined-button:focus-visible {
+.outlined-button:hover,
+.outlined-button:focus-visible {
   border-color: var(--color-legacy-accent-start);
   background-color: rgb(139 50 227 / 0.12);
   color: var(--color-legacy-text);
 }
 
-.ux-preview-c .featured-projects-strip {
+.featured-projects-strip {
   margin-top: auto;
   border-top: 1px solid rgb(192 132 252 / 0.22);
   border-bottom: none;
@@ -112,11 +108,11 @@
   background: rgb(5 5 8 / 0.45);
 }
 
-.ux-preview-c .featured-projects-strip__inner {
+.featured-projects-strip__inner {
   max-width: 78rem;
 }
 
-.ux-preview-c .featured-projects-strip__label {
+.featured-projects-strip__label {
   color: #c084fc;
   font-size: 0.9375rem;
   font-weight: 500;
@@ -124,145 +120,145 @@
   text-transform: none;
 }
 
-.ux-preview-c .featured-projects-strip__list a {
+.featured-projects-strip__list a {
   color: rgb(255 255 255 / 0.88);
 }
 
-.ux-preview-c .featured-projects-strip__list li:not(:last-child)::after {
+.featured-projects-strip__list li:not(:last-child)::after {
   content: "•";
   color: #c084fc;
 }
 
-.ux-preview-c .featured-projects-strip__all {
+.featured-projects-strip__all {
   color: #c084fc;
   font-size: 1.35rem;
   font-weight: 400;
   line-height: 1;
 }
 
-.ux-preview-c .ui-section {
+.ui-section {
   padding-block: 5.5rem 6rem;
 }
 
-.ux-preview-c .ui-section-tinted {
+.ui-section-tinted {
   background: transparent;
 }
 
-.ux-preview-c .ui-section-title,
-.ux-preview-c .mini-title {
+.ui-section-title,
+.mini-title {
   color: #c084fc;
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.28em;
 }
 
-.ux-preview-c .mini-sub-title {
+.mini-sub-title {
   color: rgb(255 255 255 / 0.45);
 }
 
-.ux-preview-c .about-body {
+.about-body {
   line-height: 1.85;
 }
 
-.ux-preview-c .emphasis {
+.emphasis {
   font-weight: 600;
 }
 
-.ux-preview-c .second-buttons {
+.second-buttons {
   gap: 1rem;
 }
 
-.ux-preview-c .second-buttons .gradient-button img,
-.ux-preview-c .second-buttons .outlined-button img {
+.second-buttons .gradient-button img,
+.second-buttons .outlined-button img {
   display: none;
 }
 
-.ux-preview-c .second-button {
+.second-button {
   min-width: 14rem;
 }
 
-.ux-preview-c .timeline-body {
+.timeline-body {
   margin-top: 3rem;
 }
 
-.ux-preview-c .more {
+.more {
   border-color: rgb(255 255 255 / 10%);
   background-color: rgb(255 255 255 / 3%);
 }
 
-.ux-preview-c .more:hover,
-.ux-preview-c .more:focus-visible {
+.more:hover,
+.more:focus-visible {
   border-color: rgb(192 132 252 / 0.4);
 }
 
-.ux-preview-c .medium-body {
+.medium-body {
   gap: 1.25rem;
 }
 
-.ux-preview-c .medium-card.ui-card {
+.medium-card.ui-card {
   border-color: rgb(255 255 255 / 8%);
   background-color: rgb(255 255 255 / 3%);
 }
 
-.ux-preview-c .medium-card.ui-card:hover,
-.ux-preview-c .medium-card.ui-card:focus-visible {
+.medium-card.ui-card:hover,
+.medium-card.ui-card:focus-visible {
   transform: translateY(-2px);
   border-color: rgb(192 132 252 / 0.35);
   box-shadow: none;
 }
 
-.ux-preview-c .medium-card-title {
+.medium-card-title {
   font-weight: 500;
 }
 
-.ux-preview-c .contact-external-container,
-.ux-preview-c .secundary-footer {
+.contact-external-container,
+.secundary-footer {
   background: transparent;
   border-top: 1px solid rgb(192 132 252 / 0.18);
 }
 
-.ux-preview-c .contact {
+.contact {
   border-color: rgb(255 255 255 / 8%);
   background-color: rgb(255 255 255 / 3%);
 }
 
-.ux-preview-c .contact:hover,
-.ux-preview-c .contact:focus-visible {
+.contact:hover,
+.contact:focus-visible {
   border-color: rgb(192 132 252 / 0.4);
   background-color: rgb(139 50 227 / 0.12);
 }
 
-.ux-preview-c .scroll-up-button {
+.scroll-up-button {
   border-color: rgb(192 132 252 / 0.35);
   background-color: rgb(5 5 8 / 0.7);
 }
 
-.ux-preview-c .projects-external-container {
+.projects-external-container {
   gap: 2.5rem;
 }
 
-.ux-preview-c .search-container {
+.search-container {
   border-bottom-color: rgb(192 132 252 / 0.25);
 }
 
-.ux-preview-c .project.ui-card {
+.project.ui-card {
   border-color: rgb(255 255 255 / 8%);
   background-color: rgb(255 255 255 / 3%);
 }
 
-.ux-preview-c .project.ui-card:hover,
-.ux-preview-c .project.ui-card:focus-visible {
+.project.ui-card:hover,
+.project.ui-card:focus-visible {
   transform: translateY(-2px);
   border-color: rgb(192 132 252 / 0.35);
   box-shadow: none;
 }
 
-.ux-preview-c .project-title {
+.project-title {
   font-weight: 500;
 }
 
-.ux-preview-c .project .ui-tag,
-.ux-preview-c .project-tag-search {
+.project .ui-tag,
+.project-tag-search {
   height: 1.5rem;
   border-color: rgb(255 255 255 / 8%);
   padding: 0.15rem 0.55rem;
@@ -270,30 +266,30 @@
   opacity: 0.7;
 }
 
-.ux-preview-c .project-tag-search.is-selected,
-.ux-preview-c .project-tag-search.tag-selected {
+.project-tag-search.is-selected,
+.project-tag-search.tag-selected {
   border-color: var(--color-legacy-accent-start);
   background-color: rgb(139 50 227 / 0.35);
   opacity: 1;
 }
 
 @media (max-width: 768px) {
-  .ux-preview-c .about-container {
+  .about-container {
     margin-top: 0;
     margin-bottom: 0;
     padding: 6.5rem 1.25rem 1.5rem;
   }
 
-  .ux-preview-c .about-title {
+  .about-title {
     font-size: clamp(2.35rem, 12vw, 3.4rem);
   }
 
-  .ux-preview-c .presentation-buttons {
+  .presentation-buttons {
     flex-wrap: wrap;
     gap: 0.85rem;
   }
 
-  .ux-preview-c .featured-projects-strip {
+  .featured-projects-strip {
     padding-inline: 1.25rem;
   }
 }
