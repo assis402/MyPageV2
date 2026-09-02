@@ -35,5 +35,8 @@ package-lock.json
 # vercel
 .vercel
 
-# typescript build info
-*.tsbuildinfo
+# playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/

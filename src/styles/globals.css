@@ -4,7 +4,7 @@
 @import "./home.css";
 @import "./projects.css";
 @import "./admin.css";
-@import "./ux-preview-c.css";
+@import "./theme.css";
 
 /*
  * Design tokens — mapped from legacy wwwroot/css (shared, home, projects, admin).
@@ -164,7 +164,7 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--color-legacy-bg);
+  background-color: #050508;
   color: var(--color-legacy-text);
   font-family: var(--font-sans);
   font-weight: 300;

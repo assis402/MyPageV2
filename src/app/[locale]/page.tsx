@@ -5,7 +5,6 @@ import { AboutSection } from "@/components/home/AboutSection";
 import { HeroSection } from "@/components/home/HeroSection";
 import { MediumSection } from "@/components/home/MediumSection";
 import { localePageMetadata } from "@/lib/seo";
-import { isDirectionCPreview } from "@/lib/ux-preview-server";
 
 const TimelineSection = dynamic(() =>
   import("@/components/home/TimelineSection").then((mod) => ({ default: mod.TimelineSection })),
@@ -20,12 +19,10 @@ export async function generateMetadata({
   return localePageMetadata(locale, "home");
 }
 
-export default async function HomePage() {
-  const previewC = await isDirectionCPreview();
-
+export default function HomePage() {
   return (
     <main id="main-content">
-      <HeroSection previewC={previewC} />
+      <HeroSection />
       <div className="home-content-zone">
         <AboutSection />
         <TimelineSection />

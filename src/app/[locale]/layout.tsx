@@ -8,11 +8,9 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { RouteBackground } from "@/components/layout/RouteBackground";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
-import { cn } from "@/lib/cn";
 import { poppins } from "@/lib/fonts/poppins";
 import { isValidLocale, locales } from "@/lib/i18n/locale";
 import { localePageMetadata } from "@/lib/seo";
-import { isDirectionCPreview } from "@/lib/ux-preview-server";
 import "@/styles/globals.css";
 
 export const dynamic = "force-dynamic";
@@ -45,22 +43,18 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
 
-  const [messages, t, previewC] = await Promise.all([
-    getMessages(),
-    getTranslations(),
-    isDirectionCPreview(),
-  ]);
+  const [messages, t] = await Promise.all([getMessages(), getTranslations()]);
 
   return (
     <html lang={locale} suppressHydrationWarning className={poppins.variable}>
-      <body className={cn(poppins.className, previewC && "ux-preview-c")}>
+      <body className={poppins.className}>
         <NextIntlClientProvider messages={messages}>
           <a href="#main-content" className="skip-link">
             {t("SkipToContent")}
           </a>
           <Header />
           <div className="body-footer-container">
-            <RouteBackground nebula={previewC} />
+            <RouteBackground />
             {children}
             <ScrollToTop />
             <Footer />
