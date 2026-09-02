@@ -99,7 +99,16 @@ MyPageV2
 
 ## Próximo (backlog)
 
-- **019** — Promover Direção C ao default — só se você aprovar o preview
+- **024** — Layout novo como default (remove preview)
+- **025** — Ícones Hard Skills via biblioteca (`react-icons`)
+- **026** — Espaçamento título About
+- **027** — Alinhar bolinhas da timeline com a linha
+- **028** — Hover lift em skills + timeline (igual Medium)
+- **029** — Projects alinhado ao layout novo
+- **030** — Admin alinhado ao layout novo
+- **031** — QA completo (Playwright + React Doctor + React Scan)
+- **032** — Auditoria de segurança → fila de correções (034+)
+- **033** — Auditoria de performance → fila de correções (034+)
 - Deploy / DNS — adiado
 
 ## Ainda não disponível

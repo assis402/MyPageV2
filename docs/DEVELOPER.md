@@ -27,10 +27,11 @@ Implements what the **Coordinator** delegates. Read this file + `BACKLOG.md` + `
 ## On delivery
 
 1. `yarn build` and `yarn lint` pass
-2. Update `BACKLOG.md` → `done`
-3. For UI: note how visual parity was verified
-4. Short summary: what changed, main files, how to test
-5. **Commit + push** on **`develop`** (no `--force`). Create the branch from `main` if it does not exist. Do this after every completed task, not in a batch at the end. Do not push task work to `main` unless asked.
+2. **Tasks 024+:** run [quality gate](BACKLOG.md#quality-gate-tasks-024) (Doctor, React Scan, Playwright for affected routes)
+3. Update `BACKLOG.md` → `done`
+4. For UI: note how visual parity was verified
+5. Short summary: what changed, main files, how to test
+6. **Commit + push** on **`develop`** (no `--force`). Create the branch from `main` if it does not exist. Do this after every completed task, not in a batch at the end. Do not push task work to `main` unless asked.
 
 Never commit `.env` or secrets.
 
