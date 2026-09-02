@@ -1,14 +1,22 @@
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  inset: 0;
   z-index: var(--z-index-header);
   display: none;
+  max-width: none;
+  max-height: none;
   height: 100%;
   width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
   background: var(--color-legacy-project-overlay);
   opacity: 0;
   transition: opacity 0.3s linear;
+}
+
+.modal::backdrop {
+  background: transparent;
 }
 
 .modal.is-visible {

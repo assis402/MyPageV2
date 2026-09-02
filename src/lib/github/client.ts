@@ -118,7 +118,7 @@ export async function fetchRepositories(): Promise<GitHubRepoResponse[]> {
 export async function fetchPortfolioRepositories(): Promise<GitHubRepoWithProps[]> {
   const topicName = process.env.GITHUB_TOPIC_NAME ?? DEFAULT_TOPIC_NAME;
   const repositories = (await fetchRepositories())
-    .filter((repo) => (repo.topics ?? []).includes(topicName))
+    .filter((repo) => new Set(repo.topics ?? []).has(topicName))
     .sort((a, b) => Date.parse(b.created_at) - Date.parse(a.created_at));
 
   const withProps = await Promise.all(

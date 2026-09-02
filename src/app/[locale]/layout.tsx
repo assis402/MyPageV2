@@ -45,9 +45,11 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
 
-  const messages = await getMessages();
-  const t = await getTranslations();
-  const previewC = await isDirectionCPreview();
+  const [messages, t, previewC] = await Promise.all([
+    getMessages(),
+    getTranslations(),
+    isDirectionCPreview(),
+  ]);
 
   return (
     <html lang={locale} suppressHydrationWarning className={poppins.variable}>

@@ -33,8 +33,16 @@
   "Email": "contact@matheusassis.dev",
   "FeaturedProjectsLabel": "Highlights",
   "FeaturedProjectsViewAll": "see all",
-  "Company01Attri_01": "<li>Manual testing on APIs, Workers and UI Admin;</li>\n<li>Test documentation and detailed software flows;</li>\n<li>Collaboration with the development team, providing feedback on the quality of the software;</li>",
-  "Company01Attri_02": "<li>Development of new features, bug fixes and short implementations;</li>\n<li>Code reviews, providing constructive feedback to teammates;</li>\n<li>Maintenance of APIs and Workers for system improvement and elaborate documentation for orientation.</li>",
+  "Company01Attri_01": [
+    "Manual testing on APIs, Workers and UI Admin;",
+    "Test documentation and detailed software flows;",
+    "Collaboration with the development team, providing feedback on the quality of the software;"
+  ],
+  "Company01Attri_02": [
+    "Development of new features, bug fixes and short implementations;",
+    "Code reviews, providing constructive feedback to teammates;",
+    "Maintenance of APIs and Workers for system improvement and elaborate documentation for orientation."
+  ],
   "Company01Date_01": "Apr 2021",
   "Company01Date_01_1": "Nov 2020",
   "Company01Date_02": "Aug 2021",
@@ -46,7 +54,16 @@
   "Company01Title_02": "Junior Backend Developer",
   "HardSkillsObs": "This is a purely illustrative representation of a self-assessment of my technical skills.",
   "IntegrationTest": "Integration Tests",
-  "Company02Attri_01": "<li>Development of new functionalities in diverse projects, bug fixes and short implementations;</li>\n<li>Working in support team, investigating and diagnosing errors in production;</li>\n<li>Bug fixes and spot implementations;</li>\n<li>Creating and monitoring change management in production;</li>\n<li>Elaborate documentation for orientation and for new deliveries;</li>\n<li>Code reviews, providing constructive feedback to teammates;</li>\n<li>Development and maintenance of APIs, Workers and Consumers for system and service integration;</li>\n<li>Participation in the planning process of new projects, helping with the technical definitions.</li>",
+  "Company02Attri_01": [
+    "Development of new functionalities in diverse projects, bug fixes and short implementations;",
+    "Working in support team, investigating and diagnosing errors in production;",
+    "Bug fixes and spot implementations;",
+    "Creating and monitoring change management in production;",
+    "Elaborate documentation for orientation and for new deliveries;",
+    "Code reviews, providing constructive feedback to teammates;",
+    "Development and maintenance of APIs, Workers and Consumers for system and service integration;",
+    "Participation in the planning process of new projects, helping with the technical definitions."
+  ],
   "Company02Date_01": "Aug 2021",
   "Company02Date_01_1": "Today",
   "Company02Resume_01": "Backend with C# .NET and frontend with Angular (UI Admin).",

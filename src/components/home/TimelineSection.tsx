@@ -6,6 +6,11 @@ import { useTranslations } from "next-intl";
 import { TimelineEntry, type TimelineId } from "@/components/home/TimelineEntry";
 import { Section, SectionTitle } from "@/components/ui";
 
+function attributionItems(value: unknown): string[] {
+  if (!Array.isArray(value)) return [];
+  return value.filter((item): item is string => typeof item === "string");
+}
+
 const LINKEDIN_URL = "https://linkedin.com/in/assisdematheus/";
 
 export function TimelineSection() {
@@ -37,7 +42,7 @@ export function TimelineSection() {
             }}
             resume={t("Company02Resume_01")}
             techs={t("Company02Techs_01")}
-            attributionsHtml={t.raw("Company02Attri_01")}
+            attributions={attributionItems(t.raw("Company02Attri_01"))}
             technologiesLabel={labels.technologies}
             attributionsLabel={labels.attributions}
             seeMore={labels.seeMore}
@@ -54,7 +59,7 @@ export function TimelineSection() {
             company={{ name: "FitBank", href: "https://fitbank.com.br/" }}
             resume={t("Company01Resume_02")}
             techs={t("Company01Techs_02")}
-            attributionsHtml={t.raw("Company01Attri_02")}
+            attributions={attributionItems(t.raw("Company01Attri_02"))}
             technologiesLabel={labels.technologies}
             attributionsLabel={labels.attributions}
             seeMore={labels.seeMore}
@@ -70,7 +75,7 @@ export function TimelineSection() {
             title={t("Company01Title_01")}
             company={{ name: "FitBank", href: "https://fitbank.com.br/" }}
             resume={t("Company01Resume_01")}
-            attributionsHtml={t.raw("Company01Attri_01")}
+            attributions={attributionItems(t.raw("Company01Attri_01"))}
             technologiesLabel={labels.technologies}
             attributionsLabel={labels.attributions}
             seeMore={labels.seeMore}

@@ -1,9 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 
 import { usePathname } from "@/lib/i18n/navigation";
-import { getLocaleSwitchHref, withLocalePrefix } from "@/lib/i18n/switch-locale";
+import { withLocalePrefix } from "@/lib/i18n/switch-locale";
 import type { Locale } from "@/lib/i18n/locale";
 
 type LocaleSwitcherProps = {
@@ -24,19 +25,20 @@ export function LocaleSwitcher({ variant }: LocaleSwitcherProps) {
   return (
     <div className={variant === "desktop" ? "menu-languages" : "menu-languages-mobile"}>
       {flags.map((flag) => (
-        <a
-          key={flag.locale}
-          href={getLocaleSwitchHref(returnTo, flag.locale)}
-          className="language-link"
-          aria-label={t(flag.labelKey)}
-        >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            className={`menu-language-flag${currentLocale === flag.locale ? " menu-language-flag-active" : ""}`}
-            src={flag.src}
-            alt=""
-          />
-        </a>
+        <form key={flag.locale} action="/api/locale" method="post" className="language-switch">
+          <input type="hidden" name="locale" value={flag.locale} />
+          <input type="hidden" name="returnTo" value={returnTo} />
+          <button type="submit" className="language-link" aria-label={t(flag.labelKey)}>
+            <Image
+              className={`menu-language-flag${currentLocale === flag.locale ? " menu-language-flag-active" : ""}`}
+              src={flag.src}
+              alt=""
+              width={28}
+              height={28}
+              unoptimized
+            />
+          </button>
+        </form>
       ))}
     </div>
   );

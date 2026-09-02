@@ -22,9 +22,3 @@ export function withLocalePrefix(locale: Locale, pathname: string): string {
 
   return `/${locale}${pathname}`;
 }
-
-export function getLocaleSwitchHref(pathname: string, locale: Locale): string {
-  const returnTo = replacePathLocale(pathname, locale);
-  const params = new URLSearchParams({ locale, returnTo });
-  return `/api/locale?${params.toString()}`;
-}

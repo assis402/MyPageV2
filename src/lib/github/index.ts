@@ -54,9 +54,10 @@ export async function getProjectsPageData(
 ): Promise<ProjectsPageData> {
   const projects = await getProjects(locale);
   const selected = selectedTagsFromFilter(tagFilter);
+  const selectedSet = new Set(selected);
   const tags = (await getProjectTags(locale)).map((tag) => ({
     ...tag,
-    selected: selected.includes(tag.name),
+    selected: selectedSet.has(tag.name),
   }));
 
   let filtered = projects;

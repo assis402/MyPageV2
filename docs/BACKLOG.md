@@ -19,8 +19,27 @@ Dev picks **one task at a time** from **Next (ready)**, top to bottom.
 - **Projects:** personal GitHub repos only (tag `mypage`)
 - **Nav:** About + Projects (no Courses link)
 - **Deploy / hosting:** out of scope for now (hosting provider TBD)
-- **UX preview:** Direction C behind toggle (018 ✓); promote to default only via 019 after approval
-- **Home v2 (UX rodada 2):** Zone B flat bg, skills icon grid, timeline cards — [`docs/ux/secoes-about-skills-background.md`](ux/secoes-about-skills-background.md)
+- **Layout:** new home v2 (020–023 ✓) + Direction C — **promote to default** (024); no preview toggle after 024
+- **Quality gate (tasks 024+):** every delivery runs **Playwright**, **React Doctor**, **React Scan** — see [Quality gate](#quality-gate-tasks-024) below
+
+---
+
+## Quality gate (tasks 024+)
+
+Required on **every** task 024–031 before marking `done`:
+
+| Tool | Command / action |
+|------|------------------|
+| **Build + lint** | `yarn build` && `yarn lint` |
+| **React Doctor** | `yarn doctor --verbose --scope changed` (031: `--scope full`) — fix errors; document warnings |
+| **React Scan** | `yarn dev` → exercise changed routes; confirm no new unnecessary re-renders on client islands (toolbar in `instrumentation-client.ts`) |
+| **Playwright** | `yarn test:e2e` — run specs covering **this task’s routes** (031 adds/configures suite; 024+ run affected specs once 031 exists, or add minimal spec per task) |
+
+**031** owns Playwright install + baseline e2e config. **024–030** add/update specs for touched pages as they land.
+
+**Tasks 032–033 (audits):** quality gate + audit-specific tools below. Each audit **must** append fix rows to [Audit remediation queue](#audit-remediation-queue) before `done`.
+
+**Fix tasks (034+):** same quality gate as 024+; Playwright must cover affected flows.
 
 ---
 
@@ -32,21 +51,238 @@ _(none)_
 
 ## Next (ready)
 
-_(empty — **019** blocked on Matheus approving Direction C)_
+### 024 · Promote new layout as default (remove preview)
+**Status:** todo | **Dep:** 018 ✓, 020–023 ✓ | **UX:** Direction C + [`secoes-about-skills-background.md`](ux/secoes-about-skills-background.md)
+
+**Goal:** Single layout — no `?ux_preview=c`, no env toggle, no dual code paths. What was preview + home v2 becomes **the only UI**.
+
+**Scope:**
+- Remove: `lib/ux-preview*.ts`, preview cookie/query in `middleware.ts`, `ux-preview-c.css`, `body.ux-preview-c`, `previewC` props, legacy hero branch in `HeroSection`
+- **Default hero:** Direction C (eyebrow, name, tagline, Projects primary CTA, About secondary, `FeaturedProjectsStrip`)
+- Keep: Zone B (020), icon skills grid (021), timeline cards (022), projects flat zone (023)
+- Merge calmer project card styles from preview into main `projects.css` / `ui.css`
+- Update `.env.example` — remove `UX_PREVIEW_DIRECTION`
+- Docs: mark 019 cancelled (superseded by 024)
+
+**Out of scope:** icon library (025), spacing/hover fixes (026–028)
+
+**Done when:**
+- [ ] Site works with zero preview flags; old default layout code removed
+- [ ] Quality gate passed
+- [ ] Playwright: home + projects smoke specs green
+
+---
+
+### 025 · Hard Skills — icons from library
+**Status:** todo | **Dep:** 024 | **UX:** [`assets/README.md`](ux/assets/README.md)
+
+**Goal:** Replace custom `public/images/stacks/*.svg` tiles with **consistent brand icons** from an icon library.
+
+**Scope:**
+- Add **`react-icons`** (use `react-icons/si` Simple Icons — tree-shaken per import)
+- Map `STACK_ITEMS` → icon components (C#, .NET, TypeScript, Angular, React, React Native, Azure, DevOps, test icons)
+- Update `StackIcon` / `SkillsSection` — render `<Icon />` instead of `<Image src=...>`
+- Remove or archive unused stack SVGs from `public/images/stacks/` if no longer referenced
+- Fallback icon if a brand is missing in Simple Icons (document choice)
+
+**Out of scope:** changing skill list or labels
+
+**Done when:**
+- [ ] Icons visually consistent (size, color via `currentColor`)
+- [ ] No broken tiles; accessible names kept
+- [ ] Quality gate + Playwright home spec covers skills section
+
+---
+
+### 026 · About — section title spacing
+**Status:** todo | **Dep:** 024 | **UX:** stakeholder feedback
+
+**Goal:** `AboutTitle` spacing matches **Background**, **Medium**, and other sections — title not glued to body text.
+
+**Scope:**
+- Audit `SectionTitle` + `#about-body-container` / `.about-copy` margins vs `.medium-body`, `.timeline-body`
+- Fix: add consistent gap below `ui-section-title` (prefer shared token/class on `Section` inner, not one-off hack)
+- Verify desktop + mobile; PT-BR / EN-US
+
+**Done when:**
+- [ ] Visual parity of title→content rhythm with Medium/Timeline sections
+- [ ] Quality gate passed
+
+---
+
+### 027 · Background — timeline dot / rail alignment
+**Status:** todo | **Dep:** 024 | **UX:** stakeholder feedback
+
+**Goal:** Purple dots on the left are **centered on the vertical line** (`.timeline::before`).
+
+**Scope:**
+- Fix `.timeline-exp::before` position relative to `.timeline::before` (adjust `left` / `top` / `transform: translateX(-50%)` as needed)
+- Verify all 3 entries + expanded state; desktop and ~375px
+- No layout shift on expand/collapse
+
+**Done when:**
+- [ ] Dots visually centered on rail in screenshots
+- [ ] Quality gate passed
+
+---
+
+### 028 · Card lift hover — Skills + Background (match Medium)
+**Status:** todo | **Dep:** 024 | **UX:** Medium `.ui-card` behavior
+
+**Goal:** `.stack-tile` and `.timeline-card` use the **same lift** as Medium cards: `translateY(-4px)`, border highlight, subtle shadow (`ui.css`).
+
+**Scope:**
+- Prefer reusing `Card` component or shared `.ui-card` class on stack tiles + timeline cards
+- Keep hover disabled on `@media (hover: none)` like existing `ui-card`
+- Match transition timing to Medium
+- Do **not** change Medium section itself
+
+**Done when:**
+- [ ] Hover/focus lift feels identical to Medium cards
+- [ ] Quality gate passed
 
 ---
 
 ## Queue
 
-| ID | Title | Dep | UX ref |
-|----|-------|-----|--------|
-| 019 | Promote Direction C to default | 018 + Matheus OK | direcao-c |
+| ID | Title | Dep |
+|----|-------|-----|
+| 029 | Projects page — full new layout alignment | 024, 028 |
+| 030 | Admin pages — new layout alignment | 024 |
+| 031 | Full layout QA + Playwright baseline | 029, 030 |
+| 032 | Security audit & remediation queue | 031 |
+| 033 | Performance audit & remediation queue | 031 |
 
-### 019 · Promote Direction C to default _(blocked — Matheus approval)_
+### 029 · Projects page — full new layout alignment
+**Status:** todo | **Dep:** 024, 028
 
-Remove `UX_PREVIEW_DIRECTION` / cookie toggle; inverted CTAs + featured strip + calmer project cards become **default**. Delete or merge redundant non-preview hero CSS. Only open after Matheus confirms preview C.
+**Goal:** `/projects` feels like the same design system as the new home — not just flat bg (023).
 
-**Dep:** 018 ✓ + explicit approval.
+**Scope:**
+- Section title + toolbar (search + tags) spacing/typography aligned with home Zone B
+- Project cards: same `ui-card` lift/hover as Medium (028)
+- Search input + tag chips: consistent borders, focus rings, muted colors
+- Page padding/max-width matches `ui-section-inner`
+- Remove any leftover preview-only or legacy project styles
+- Both locales; empty state styled
+
+**Done when:**
+- [ ] Side-by-side with home feels cohesive
+- [ ] Quality gate + Playwright projects spec green
+
+---
+
+### 030 · Admin pages — new layout alignment
+**Status:** todo | **Dep:** 024
+
+**Goal:** `/admin` matches Zone B + shared UI primitives (cards, buttons, spacing).
+
+**Scope:**
+- Flat content zone bg (`#0a0a0f`), consistent with home/projects
+- `admin.css` → use `ui-card`, `gradient-button` / `outlined-button` patterns where possible
+- Login panel + cache buttons: spacing, hover, focus states aligned with new layout
+- English-only UI preserved
+
+**Done when:**
+- [ ] Admin visually consistent with public pages
+- [ ] Quality gate + Playwright admin smoke (login UI, no auth required for layout assertions)
+
+---
+
+### 031 · Full layout QA + Playwright baseline
+**Status:** todo | **Dep:** 029, 030
+
+**Goal:** Automated regression + manual sweep — **no layout bugs** across the app.
+
+**Scope:**
+- **Playwright:** install `@playwright/test`, `playwright.config.ts`, scripts `yarn test:e2e`, `yarn test:e2e:ui`
+- E2e coverage: `/en-US`, `/pt-BR`, `/projects`, `/admin`, locale switch, legacy redirects (`/Projects` → `/en-US/projects`), mobile viewport smoke
+- Optional: screenshot comparison for home hero + about + timeline (baseline in `e2e/snapshots/`)
+- **React Doctor:** `yarn doctor --verbose` full scan — score documented in PR
+- **React Scan:** checklist for header, timeline expand, projects search, copy-email — no render storms
+- Manual matrix: 375px / 768px / 1440px on all public routes + admin
+- Fix any layout issues found (or open follow-up IDs in PR description)
+
+**Done when:**
+- [ ] `yarn test:e2e` passes in CI-ready config
+- [ ] Doctor full scan — no errors
+- [ ] Layout checklist signed off in PR body
+- [ ] Lighthouse mobile home + projects still ≥ 90
+
+---
+
+### 032 · Security audit & remediation queue
+**Status:** todo | **Dep:** 031
+
+**Goal:** Identify security risks in MyPageV2, **document each finding**, and **open fix tasks** in the remediation queue (034+). Do not leave findings only in chat.
+
+**Audit scope (checklist):**
+- **Secrets:** no tokens/keys in repo; `.env.example` complete; `GITHUB_TOKEN` server-only; rotate if legacy secrets were reused
+- **Auth (admin):** Auth.js config, `ADMIN_EMAIL` allowlist, session cookie flags, CSRF on server actions, cache-clear routes guarded
+- **Input / output:** `dangerouslySetInnerHTML` (About i18n), URL params (`search`, `tag`), external links `rel` attributes
+- **Headers:** CSP, `X-Frame-Options`, `Referrer-Policy`, HSTS (document what prod host must set)
+- **Dependencies:** `yarn npm audit` (or `npm audit`) — triage high/critical
+- **API routes:** `/api/auth`, `/api/locale`, admin actions — method allowlist, rate-limit notes
+- **Third-party:** GitHub/Medium fetch — SSRF surface, timeout, no token leak to client
+- **Playwright:** optional security smoke (admin blocked without auth, no secret in HTML)
+
+**Deliverables:**
+1. Findings table in [Audit remediation queue](#audit-remediation-queue)
+2. One **fix backlog row per item** severity ≥ medium (034, 035, …); critical/high fixed immediately **or** first fix task
+3. PR summary: risk summary + what was fixed vs deferred
+
+**Out of scope:** pen-test / paid tooling; hosting WAF (deferred with deploy)
+
+**Done when:**
+- [ ] Audit checklist completed; queue populated
+- [ ] At least one fix task (034+) exists if any medium+ finding
+- [ ] `yarn build` + `yarn lint` + `yarn doctor --verbose --scope full`
+- [ ] No new secrets committed
+
+---
+
+### 033 · Performance audit & remediation queue
+**Status:** todo | **Dep:** 031
+
+**Goal:** Find performance bottlenecks and regressions, **document each finding**, **open fix tasks** in the remediation queue (034+).
+
+**Audit scope (checklist):**
+- **Lighthouse mobile:** `/en-US`, `/en-US/projects`, `/pt-BR` — record LCP, INP, CLS, TBT; flag if &lt; 90 Performance
+- **Bundle:** `@next/bundle-analyzer` or `next build` output — large client chunks, duplicate deps
+- **React Doctor:** `yarn doctor --verbose` — Performance category rules
+- **React Scan:** dev toolbar + `yarn doctor scan <url>` on hot interactions (timeline, search, locale)
+- **Images:** `next/image` sizes, priority only above fold, remote patterns
+- **Caching:** `unstable_cache` TTL; no client fetch for page data
+- **Fonts / CSS:** Poppins subset; unused CSS
+- **RSC vs client:** audit `"use client"` boundaries
+
+**Deliverables:**
+1. Findings in [Audit remediation queue](#audit-remediation-queue) (`type: perf`)
+2. One fix task per regression with measurable target
+3. Baseline metrics in PR (before numbers)
+
+**Out of scope:** CDN/edge tuning (deferred with hosting)
+
+**Done when:**
+- [ ] Audit checklist completed; queue populated
+- [ ] Fix tasks created for regressions or scores &lt; 90
+- [ ] Quality gate (build, lint, doctor full, playwright e2e green)
+
+---
+
+## Audit remediation queue
+
+_Populated by **032** and **033**. Fix in tasks **034+**._
+
+| Fix ID | Type | Sev | Finding (short) | Fix task |
+|--------|------|-----|-----------------|----------|
+| _(empty)_ | | | | |
+
+**Templates** — add `### 034 · Security fix — …` or `### 035 · Performance fix — …` below this table when auditing.
+
+---
+
+~~**019** — superseded by **024** (Matheus approved new layout as default)~~
 
 ---
 
@@ -143,13 +379,16 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
        └─ 013 ─── 014
 
 004 ─── 015 ✓
-006,010,012 ─── 016 ✓ ─── 017 ✓ ─── 018 ✓ ─┬─ 019 (if approved)
-                                            └─ 020 ✓ ─┬─ 021 ✓
-                                                      ├─ 022 ✓
-                                                      └─ 023 ✓
+006,010,012 ─── 016 ✓ ─── 017 ✓ ─── 018 ✓ ─── 020–023 ✓
+                                                      └── 024 ─┬─ 025
+                                                               ├─ 026
+                                                               ├─ 027
+                                                               └─ 028 ─┬─ 029
+                                                                       └─ 030 ─── 031 ─┬─ 032 ─── 034+ (security fixes)
+                                                                                      └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** none. **019** blocked on approval.
+**Next ready:** 024 → … → 031 → **032** and **033** (can run in parallel after 031).
 
 ---
 
@@ -170,5 +409,15 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **021** — About + skills icon grid (no bars)
 - [x] **022** — Timeline cards
 - [x] **023** — Projects flat zone bg
-- [ ] **019** — Promote C to default _(only if Matheus approves)_
+- [ ] **024** — New layout default (no preview)
+- [ ] **025** — Stack icons from library
+- [ ] **026** — About title spacing
+- [ ] **027** — Timeline dot alignment
+- [ ] **028** — Skills + timeline hover lift (like Medium)
+- [ ] **029** — Projects full layout alignment
+- [ ] **030** — Admin layout alignment
+- [ ] **031** — Full QA (Playwright + Doctor + Scan)
+- [ ] **032** — Security audit + remediation queue
+- [ ] **033** — Performance audit + remediation queue
+- [ ] **034+** — Fixes from audits _(created by 032/033)_
 - [ ] ~~Production deploy + DNS~~ (deferred)

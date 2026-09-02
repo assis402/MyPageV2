@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { selectedTagsFromFilter } from "@/lib/github/filters";
 import { Link } from "@/lib/i18n/navigation";
@@ -26,16 +26,12 @@ export function ProjectsSearch({
   searchLabel,
   clearLabel,
 }: ProjectsSearchProps) {
-  const [tagFilter, setTagFilter] = useState(tag);
-
-  useEffect(() => {
-    setTagFilter(tag);
-  }, [tag]);
-
+  const [tagFilter, setTagFilter] = useState(() => tag);
   const selected = selectedTagsFromFilter(tagFilter);
+  const selectedSet = new Set(selected);
 
   function toggleTag(name: string) {
-    const next = selected.includes(name) ? selected.filter((item) => item !== name) : [...selected, name];
+    const next = selectedSet.has(name) ? selected.filter((item) => item !== name) : [...selected, name];
     setTagFilter(next.length > 0 ? `${next.join(";")};` : "");
   }
 
@@ -61,7 +57,7 @@ export function ProjectsSearch({
           <Tag
             key={item.name}
             interactive
-            selected={selected.includes(item.name)}
+            selected={selectedSet.has(item.name)}
             className="project-tag-search"
             onClick={() => toggleTag(item.name)}
           >
