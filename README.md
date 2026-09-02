@@ -94,12 +94,11 @@ MyPageV2
 - Redirects das URLs do site legado (`/Projects`, `/Courses`, `/Admin`) para rotas `en-US`
 - Performance e acessibilidade (Lighthouse mobile ≥ 90 na home e em projects)
 - Layout modernizado com primitives em `components/ui/` (Poppins, fundo preto e gradiente roxo mantidos)
-- Preview reversível da **Direção C** (CTAs invertidos, faixa Destaques, cards mais calmos) — desligado por padrão; ative com `?ux_preview=c` ou `UX_PREVIEW_DIRECTION=c`
+- Layout Direção C como default (hero com Destaques, CTAs invertidos, cards mais calmos) — sem toggle de preview
 <br>
 
 ## Próximo (backlog)
 
-- **024** — Layout novo como default (remove preview)
 - **025** — Ícones Hard Skills via biblioteca (`react-icons`)
 - **026** — Espaçamento título About
 - **027** — Alinhar bolinhas da timeline com a linha
@@ -130,7 +129,6 @@ MyPageV2
 
 - Variáveis ficam em `.env` (não versionado). O modelo está em `.env.example`.
 - `NEXT_PUBLIC_SITE_URL` alimenta `metadataBase`, sitemap e robots.
-- Preview da Direção C (opcional): `UX_PREVIEW_DIRECTION=c` no `.env.local`, ou `?ux_preview=c` / `?ux_preview=off` na URL (cookie). Sem isso, o layout atual permanece o default.
 - Bookmarks do ASP.NET (`/Projects`, `/Courses`, `/Admin`, e as variantes em minúsculas) redirecionam para o locale padrão **en-US**, não para o cookie `NEXT_LOCALE`.
 - Tokens de GitHub e Google **não** devem ser reaproveitados do repositório legado.
 <br>

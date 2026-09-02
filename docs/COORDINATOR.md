@@ -17,7 +17,7 @@ Rebuilding **matheusassis.dev**: legacy C# → Next.js.
 | **Projects** | Personal GitHub repos only (tag `mypage`, same as legacy) — no other project sources for now |
 | **Nav** | About (home) + Projects only — remove Courses from menu |
 | **Deploy / hosting** | Out of scope until provider is chosen |
-| **Layout** | New v2 + Direction C promoted to default (024); quality gate: Playwright + React Doctor + React Scan on tasks 024+ |
+| **Layout** | New v2 + Direction C is the default (024 ✓); quality gate: Playwright + React Doctor + React Scan on tasks 024+ |
 | **Hardening** | Security audit (032) and performance audit (033) after 031; fixes tracked as 034+ in remediation queue |
 
 ---
