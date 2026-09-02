@@ -39,9 +39,7 @@ export default async function AdminPage({
   setRequestLocale(locale);
   await connection();
 
-  const query = await searchParams;
-  const session = await getAdminSession();
-  const t = await getTranslations();
+  const [query, session, t] = await Promise.all([searchParams, getAdminSession(), getTranslations()]);
   const rejected = query.error === "owner" || query.error === "AccessDenied";
   const feedback =
     session && query.message && query.message in CACHE_FEEDBACK

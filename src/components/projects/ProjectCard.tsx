@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import { VideoButton } from "@/components/projects/VideoModal";
 import { Card, Tag } from "@/components/ui";
 import type { Project } from "@/types";
@@ -24,22 +26,26 @@ export function ProjectCard({ project, videoLabel }: ProjectCardProps) {
           <div className="project-links">
             <a className="project-link" href={project.url} target="_blank" rel="noreferrer">
               <span>github</span>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="project-link-img project-link-img-invert" src="/images/github.svg" alt="" />
+              <Image
+                className="project-link-img project-link-img-invert"
+                src="/images/github.svg"
+                alt=""
+                width={18}
+                height={18}
+                unoptimized
+              />
             </a>
             {project.nuGetUrl ? (
               <a className="project-link" href={project.nuGetUrl} target="_blank" rel="noreferrer">
                 <span>nuget</span>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="project-link-img-nuget" src="/images/nuget.webp" alt="" />
+                <Image className="project-link-img-nuget" src="/images/nuget.webp" alt="" width={32} height={18} />
               </a>
             ) : null}
             {project.videoUrl ? <VideoButton url={project.videoUrl} label={videoLabel} /> : null}
             {project.swaggerUrl ? (
               <a className="project-link" href={project.swaggerUrl} target="_blank" rel="noreferrer">
                 <span>swagger</span>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img className="project-link-img" src="/images/swagger.png" alt="" />
+                <Image className="project-link-img" src="/images/swagger.png" alt="" width={18} height={18} />
               </a>
             ) : null}
           </div>

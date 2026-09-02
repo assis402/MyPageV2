@@ -49,6 +49,7 @@ export default async function ProjectsPage({
       <VideoModalProvider>
         <div className="projects-external-container">
           <ProjectsSearch
+            key={tag}
             locale={locale}
             tags={tags}
             search={search}

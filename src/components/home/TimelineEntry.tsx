@@ -18,7 +18,7 @@ type TimelineEntryProps = {
   };
   resume: string;
   techs?: string;
-  attributionsHtml: string;
+  attributions: string[];
   technologiesLabel: string;
   attributionsLabel: string;
   seeMore: string;
@@ -37,7 +37,7 @@ export function TimelineEntry({
   allocation,
   resume,
   techs,
-  attributionsHtml,
+  attributions,
   technologiesLabel,
   attributionsLabel,
   seeMore,
@@ -86,7 +86,11 @@ export function TimelineEntry({
           ) : null}
           <div className="timeline-exp-div">
             <p className="timeline-exp-p">{attributionsLabel}:</p>
-            <ul dangerouslySetInnerHTML={{ __html: attributionsHtml }} />
+            <ul>
+              {attributions.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
           </div>
           <button
             type="button"

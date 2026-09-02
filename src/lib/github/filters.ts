@@ -24,7 +24,8 @@ export function filterProjectsByTag(projects: Project[], tagFilter: string) {
   const selected = selectedTagsFromFilter(tagFilter);
   if (selected.length === 0) return projects;
 
-  return projects.filter((project) => project.tags.some((tag) => selected.includes(tag)));
+  const selectedSet = new Set(selected);
+  return projects.filter((project) => project.tags.some((tag) => selectedSet.has(tag)));
 }
 
 export function descriptionForLocale(dictionary: Record<string, string> | undefined, locale: Locale) {

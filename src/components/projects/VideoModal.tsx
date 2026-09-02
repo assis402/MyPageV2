@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 
 type VideoModalContextValue = {
@@ -11,9 +11,11 @@ const VideoModalContext = createContext<VideoModalContextValue | null>(null);
 
 export function VideoModalProvider({ children }: { children: ReactNode }) {
   const t = useTranslations();
+  const dialogRef = useRef<HTMLDialogElement>(null);
   const [url, setUrl] = useState("");
   const [visible, setVisible] = useState(false);
   const [open, setOpen] = useState(false);
+  const value = useMemo(() => ({ open: setUrl }), []);
 
   useEffect(() => {
     if (url) {
@@ -28,29 +30,32 @@ export function VideoModalProvider({ children }: { children: ReactNode }) {
   }, [url]);
 
   useEffect(() => {
-    function onKey(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setUrl("");
-      }
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+
+    if (visible) {
+      if (!dialog.open) dialog.showModal();
+      return;
     }
 
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, []);
+    if (dialog.open) dialog.close();
+  }, [visible]);
 
   function close() {
     setUrl("");
   }
 
   return (
-    <VideoModalContext.Provider value={{ open: setUrl }}>
+    <VideoModalContext.Provider value={value}>
       {children}
-      <div
+      <dialog
+        ref={dialogRef}
         className={`modal${visible ? " is-visible" : ""}${open ? " is-open" : ""}`}
-        role="dialog"
-        aria-modal={visible}
-        aria-hidden={!visible}
         aria-label={t("ProjectVideo")}
+        onCancel={(event) => {
+          event.preventDefault();
+          close();
+        }}
       >
         <div className="modal-internal" onClick={close} onKeyDown={() => undefined} role="presentation">
           {url ? (
@@ -65,7 +70,7 @@ export function VideoModalProvider({ children }: { children: ReactNode }) {
             />
           ) : null}
         </div>
-      </div>
+      </dialog>
     </VideoModalContext.Provider>
   );
 }

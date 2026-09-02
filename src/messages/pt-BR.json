@@ -33,8 +33,18 @@
   "Email": "contato@matheusassis.dev",
   "FeaturedProjectsLabel": "Destaques",
   "FeaturedProjectsViewAll": "ver todos",
-  "Company01Attri_01": "<li>Testes manuais em APIs, Workers e UI Admin;</li>\n<li>Documentação de testes e detalhamento de fluxos do software;</li>\n<li>Colaboração com a equipe de desenvolvimento, fornecendo feedback sobre a qualidade do software;</li>",
-  "Company01Attri_02": "<li>Desenvolvimento de novas funcionalidades em projetos diversos;</li>\n<li>Correção de bugs e implementações pontuais;</li>\n<li>Elaboração de documentação para orientação e para novas entregas;</li>\n<li>Revisões de código (code reviews), oferecendo feedback construtivo aos colegas de equipe;</li>\n<li>Manutenção de APIs e Workers para integração de sistemas e serviços;</li>",
+  "Company01Attri_01": [
+    "Testes manuais em APIs, Workers e UI Admin;",
+    "Documentação de testes e detalhamento de fluxos do software;",
+    "Colaboração com a equipe de desenvolvimento, fornecendo feedback sobre a qualidade do software;"
+  ],
+  "Company01Attri_02": [
+    "Desenvolvimento de novas funcionalidades em projetos diversos;",
+    "Correção de bugs e implementações pontuais;",
+    "Elaboração de documentação para orientação e para novas entregas;",
+    "Revisões de código (code reviews), oferecendo feedback construtivo aos colegas de equipe;",
+    "Manutenção de APIs e Workers para integração de sistemas e serviços;"
+  ],
   "Company01Date_01": "abr 2021",
   "Company01Date_01_1": "nov 2020",
   "Company01Date_02": "ago 2021",
@@ -46,7 +56,17 @@
   "Company01Title_02": "Desenvolvedor Backend Junior",
   "HardSkillsObs": "Esta é uma representação meramente ilustrativa de uma autoavaliação das minhas habilidades técnicas.",
   "IntegrationTest": "Testes Integrados",
-  "Company02Attri_01": "<li>Desenvolvimento de novas funcionalidades em projetos diversos;</li>\n<li>Investigação e diagnóstico de erros em ambiente de produção;</li>\n<li>Correção de bugs e implementações pontuais;</li>\n<li>Criação e acompanhamento de processos de mudança (GMUD) em ambiente de produção;</li>\n<li>Elaboração de documentação para orientação e para novas entregas;</li>\n<li>Atuação em equipes de sustentação em projetos diversos;</li>\n<li>Revisões de código (code reviews), oferecendo feedback construtivo aos colegas de equipe;</li>\n<li>Criação e manutenção de APIs, Workers e Consumers para integração de sistemas e serviços;</li>\n<li>Participação do processo de planejamento de novos projetos, auxiliando nas definições técnicas.</li>",
+  "Company02Attri_01": [
+    "Desenvolvimento de novas funcionalidades em projetos diversos;",
+    "Investigação e diagnóstico de erros em ambiente de produção;",
+    "Correção de bugs e implementações pontuais;",
+    "Criação e acompanhamento de processos de mudança (GMUD) em ambiente de produção;",
+    "Elaboração de documentação para orientação e para novas entregas;",
+    "Atuação em equipes de sustentação em projetos diversos;",
+    "Revisões de código (code reviews), oferecendo feedback construtivo aos colegas de equipe;",
+    "Criação e manutenção de APIs, Workers e Consumers para integração de sistemas e serviços;",
+    "Participação do processo de planejamento de novos projetos, auxiliando nas definições técnicas."
+  ],
   "Company02Date_01": "ago 2021",
   "Company02Date_01_1": "atualmente",
   "Company02Resume_01": "Backend com C# .NET e frontend com Angular (UI Admin's).",

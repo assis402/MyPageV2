@@ -15,7 +15,12 @@ const PAGE_PATH: Record<SeoPage, string> = {
 };
 
 export function getSiteUrl(): URL {
-  return new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000");
+  const fallback = "http://localhost:3000";
+  try {
+    return new URL(process.env.NEXT_PUBLIC_SITE_URL ?? fallback);
+  } catch {
+    return new URL(fallback);
+  }
 }
 
 function pageUrl(locale: Locale, path: string): string {

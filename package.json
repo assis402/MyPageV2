@@ -11,7 +11,8 @@
     "verify:github": "node scripts/verify-github.mjs",
     "verify:medium": "node scripts/verify-medium.mjs",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "doctor": "npx react-doctor@latest"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -33,6 +34,8 @@
     "eslint-config-prettier": "^10.1.8",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
+    "react-doctor": "^0.9.13",
+    "react-scan": "^0.5.7",
     "tailwindcss": "^4.1.12",
     "typescript": "^5.9.2"
   }
