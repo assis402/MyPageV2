@@ -99,7 +99,6 @@ MyPageV2
 
 ## Próximo (backlog)
 
-- **025** — Ícones Hard Skills via biblioteca (`react-icons`)
 - **026** — Espaçamento título About
 - **027** — Alinhar bolinhas da timeline com a linha
 - **028** — Hover lift em skills + timeline (igual Medium)

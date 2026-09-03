@@ -32,10 +32,10 @@
 | `react.svg` | React | React |
 | `devops.svg` | DevOps | DevOps |
 
-**Produção:** `public/images/stacks/`  
-**Cópia de referência UX:** `docs/ux/assets/stacks/` (mesmos arquivos)
+**Produção (025):** `react-icons` components on `STACK_ITEMS.Icon` — not `public/images/stacks/`.  
+**Cópia de referência UX:** `docs/ux/assets/stacks/` (line-icon prototypes; not shipped).
 
-**Manifesto sugerido:** `src/lib/stacks.ts` — array `STACK_ITEMS` com `id`, `label`, `iconSrc`, `iconAlt`.
+**Manifesto:** `src/lib/stacks.ts` — array `STACK_ITEMS` com `id`, `label`, `Icon`.
 
 ---
 

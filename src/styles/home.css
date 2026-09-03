@@ -328,10 +328,11 @@
 }
 
 .stack-tile__icon {
+  display: block;
+  flex-shrink: 0;
   width: 1.75rem;
   height: 1.75rem;
-  filter: brightness(0) invert(1);
-  opacity: 0.82;
+  color: currentColor;
 }
 
 .stack-tile__label {
