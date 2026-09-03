@@ -18,8 +18,10 @@ export async function MediumSection() {
 
   return (
     <Section>
-      <SectionTitle as="h2">{t("MediumTitle")}</SectionTitle>
-      {locale === "pt-BR" ? <div className="mini-sub-title">{t("MediumEnglishOnly")}</div> : null}
+      <div className="ui-section-heading">
+        <SectionTitle as="h2">{t("MediumTitle")}</SectionTitle>
+        {locale === "pt-BR" ? <div className="mini-sub-title">{t("MediumEnglishOnly")}</div> : null}
+      </div>
       <div className="medium-body">
         {preview.map((publication) => (
           <Card as="a" className="medium-card" href={publication.url} target="_blank" rel="noreferrer" key={publication.id}>

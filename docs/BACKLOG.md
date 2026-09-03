@@ -51,22 +51,6 @@ _(none)_
 
 ## Next (ready)
 
-### 026 · About — section title spacing
-**Status:** todo | **Dep:** 024 ✓ | **UX:** stakeholder feedback
-
-**Goal:** `AboutTitle` spacing matches **Background**, **Medium**, and other sections — title not glued to body text.
-
-**Scope:**
-- Audit `SectionTitle` + `#about-body-container` / `.about-copy` margins vs `.medium-body`, `.timeline-body`
-- Fix: add consistent gap below `ui-section-title` (prefer shared token/class on `Section` inner, not one-off hack)
-- Verify desktop + mobile; PT-BR / EN-US
-
-**Done when:**
-- [ ] Visual parity of title→content rhythm with Medium/Timeline sections
-- [ ] Quality gate passed
-
----
-
 ### 027 · Background — timeline dot / rail alignment
 **Status:** todo | **Dep:** 024 ✓ | **UX:** stakeholder feedback
 
@@ -317,6 +301,9 @@ Direction C is the only UI: hero (eyebrow, name, tagline, Projects primary + Abo
 ### 025 · Hard Skills — icons from library
 `STACK_ITEMS` now map to `react-icons` components (`currentColor`). Simple Icons for .NET, TypeScript, Angular, React, Jest, Postman, Docker. C# and Azure fall back to Tabler (`TbBrandCSharp`, `TbBrandAzure`) because `react-icons` 5.7.0 `si` has no those marks. React Native reuses `SiReact`. Removed `public/images/stacks/*.svg`. Playwright covers `#about-skills`. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
 
+### 026 · About — section title spacing
+`.ui-section-inner` now has a shared `3rem` gap so About matches Background and Medium. Removed per-body `margin-top` on `.timeline-body` / `.medium-body`. Medium PT subtitle stays in `.ui-section-heading`. Playwright asserts title→content gaps. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
+
 ---
 
 ## Removed from scope
@@ -351,7 +338,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
                                                                                       └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** 026 → … → 031 → **032** and **033** (can run in parallel after 031).
+**Next ready:** 027 → … → 031 → **032** and **033** (can run in parallel after 031).
 
 ---
 
@@ -374,7 +361,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **023** — Projects flat zone bg
 - [x] **024** — New layout default (no preview)
 - [x] **025** — Stack icons from library
-- [ ] **026** — About title spacing
+- [x] **026** — About title spacing
 - [ ] **027** — Timeline dot alignment
 - [ ] **028** — Skills + timeline hover lift (like Medium)
 - [ ] **029** — Projects full layout alignment

@@ -28,3 +28,31 @@ test("home skills section shows library icons", async ({ page }) => {
   await expect(skills.getByText("TypeScript")).toBeVisible();
   await expect(skills.getByText("React Native")).toBeVisible();
 });
+
+test("home section titles share the same content gap", async ({ page }) => {
+  await page.goto("/en-US", { waitUntil: "domcontentloaded" });
+
+  const gaps = await page.evaluate(() => {
+    const gapAfter = (titleName: string, contentSelector: string) => {
+      const titles = [...document.querySelectorAll("h2")];
+      const title = titles.find((node) => node.textContent?.trim() === titleName);
+      const content = document.querySelector(contentSelector);
+      if (!title || !content) return null;
+      const titleBox = title.getBoundingClientRect();
+      const contentBox = content.getBoundingClientRect();
+      return contentBox.top - titleBox.bottom;
+    };
+
+    return {
+      about: gapAfter("ABOUT", "#about-body-container"),
+      background: gapAfter("BACKGROUND", ".timeline-body"),
+      medium: gapAfter("MEDIUM ARTICLES", ".medium-body"),
+    };
+  });
+
+  expect(gaps.about).toBeGreaterThanOrEqual(40);
+  expect(gaps.background).toBeGreaterThanOrEqual(40);
+  expect(gaps.medium).toBeGreaterThanOrEqual(40);
+  expect(Math.abs((gaps.about ?? 0) - (gaps.background ?? 0))).toBeLessThan(2);
+  expect(Math.abs((gaps.about ?? 0) - (gaps.medium ?? 0))).toBeLessThan(2);
+});
