@@ -1,32 +1,44 @@
 /**
- * Stack icons for the Hard Skills grid. Labels stay English until i18n is added.
+ * Hard Skills tiles. Labels stay English until i18n is added.
+ *
+ * Icons: `react-icons/si` (tree-shaken per named import).
+ *
+ * react-icons 5.7.0 Simple Icons has no C# or Azure marks — fallback to Tabler
+ * (`react-icons/tb`) so tiles stay `currentColor` components from the same library.
+ *
+ * Stand-in brands (no generic Simple Icons glyph for the skill name):
+ * - Unit tests → SiJest
+ * - Integration tests → SiPostman
+ * - DevOps → SiDocker
+ * - React Native → SiReact (same mark as React)
  */
+import type { IconType } from "react-icons";
+import {
+  SiAngular,
+  SiDocker,
+  SiDotnet,
+  SiJest,
+  SiPostman,
+  SiReact,
+  SiTypescript,
+} from "react-icons/si";
+import { TbBrandAzure, TbBrandCSharp } from "react-icons/tb";
+
 export type StackItem = {
   id: string;
   label: string;
-  iconSrc: string;
-  iconAlt: string;
+  Icon: IconType;
 };
 
 export const STACK_ITEMS: StackItem[] = [
-  { id: "csharp", label: "C#", iconSrc: "/images/stacks/csharp.svg", iconAlt: "C#" },
-  { id: "dotnet", label: ".NET", iconSrc: "/images/stacks/dotnet.svg", iconAlt: ".NET" },
-  { id: "unit-test", label: "Unit tests", iconSrc: "/images/stacks/unit-test.svg", iconAlt: "Unit tests" },
-  {
-    id: "integration-test",
-    label: "Integration tests",
-    iconSrc: "/images/stacks/integration-test.svg",
-    iconAlt: "Integration tests",
-  },
-  { id: "typescript", label: "TypeScript", iconSrc: "/images/stacks/typescript.svg", iconAlt: "TypeScript" },
-  { id: "angular", label: "Angular", iconSrc: "/images/stacks/angular.svg", iconAlt: "Angular" },
-  {
-    id: "react-native",
-    label: "React Native",
-    iconSrc: "/images/stacks/react-native.svg",
-    iconAlt: "React Native",
-  },
-  { id: "azure", label: "Azure", iconSrc: "/images/stacks/azure.svg", iconAlt: "Microsoft Azure" },
-  { id: "react", label: "React", iconSrc: "/images/stacks/react.svg", iconAlt: "React" },
-  { id: "devops", label: "DevOps", iconSrc: "/images/stacks/devops.svg", iconAlt: "DevOps" },
+  { id: "csharp", label: "C#", Icon: TbBrandCSharp },
+  { id: "dotnet", label: ".NET", Icon: SiDotnet },
+  { id: "unit-test", label: "Unit tests", Icon: SiJest },
+  { id: "integration-test", label: "Integration tests", Icon: SiPostman },
+  { id: "typescript", label: "TypeScript", Icon: SiTypescript },
+  { id: "angular", label: "Angular", Icon: SiAngular },
+  { id: "react-native", label: "React Native", Icon: SiReact },
+  { id: "azure", label: "Azure", Icon: TbBrandAzure },
+  { id: "react", label: "React", Icon: SiReact },
+  { id: "devops", label: "DevOps", Icon: SiDocker },
 ];

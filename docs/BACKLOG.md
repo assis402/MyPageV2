@@ -51,27 +51,6 @@ _(none)_
 
 ## Next (ready)
 
-### 025 · Hard Skills — icons from library
-**Status:** todo | **Dep:** 024 ✓ | **UX:** [`assets/README.md`](ux/assets/README.md)
-
-**Goal:** Replace custom `public/images/stacks/*.svg` tiles with **consistent brand icons** from an icon library.
-
-**Scope:**
-- Add **`react-icons`** (use `react-icons/si` Simple Icons — tree-shaken per import)
-- Map `STACK_ITEMS` → icon components (C#, .NET, TypeScript, Angular, React, React Native, Azure, DevOps, test icons)
-- Update `StackIcon` / `SkillsSection` — render `<Icon />` instead of `<Image src=...>`
-- Remove or archive unused stack SVGs from `public/images/stacks/` if no longer referenced
-- Fallback icon if a brand is missing in Simple Icons (document choice)
-
-**Out of scope:** changing skill list or labels
-
-**Done when:**
-- [ ] Icons visually consistent (size, color via `currentColor`)
-- [ ] No broken tiles; accessible names kept
-- [ ] Quality gate + Playwright home spec covers skills section
-
----
-
 ### 026 · About — section title spacing
 **Status:** todo | **Dep:** 024 ✓ | **UX:** stakeholder feedback
 
@@ -335,6 +314,9 @@ Projects route uses `--color-content-zone-bg` (`#0a0a0f`); no nebula. Card surfa
 ### 024 · Promote new layout as default (remove preview)
 Direction C is the only UI: hero (eyebrow, name, tagline, Projects primary + About secondary, featured strip), nebula background, calmer cards. Removed `ux-preview*` libs, query/cookie/env toggle, and the legacy hero branch. Theme CSS in `src/styles/theme.css`. Playwright smoke: `e2e/home.spec.ts`, `e2e/projects.spec.ts`. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
 
+### 025 · Hard Skills — icons from library
+`STACK_ITEMS` now map to `react-icons` components (`currentColor`). Simple Icons for .NET, TypeScript, Angular, React, Jest, Postman, Docker. C# and Azure fall back to Tabler (`TbBrandCSharp`, `TbBrandAzure`) because `react-icons` 5.7.0 `si` has no those marks. React Native reuses `SiReact`. Removed `public/images/stacks/*.svg`. Playwright covers `#about-skills`. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
+
 ---
 
 ## Removed from scope
@@ -369,7 +351,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
                                                                                       └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** 025 → … → 031 → **032** and **033** (can run in parallel after 031).
+**Next ready:** 026 → … → 031 → **032** and **033** (can run in parallel after 031).
 
 ---
 
@@ -391,7 +373,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **022** — Timeline cards
 - [x] **023** — Projects flat zone bg
 - [x] **024** — New layout default (no preview)
-- [ ] **025** — Stack icons from library
+- [x] **025** — Stack icons from library
 - [ ] **026** — About title spacing
 - [ ] **027** — Timeline dot alignment
 - [ ] **028** — Skills + timeline hover lift (like Medium)

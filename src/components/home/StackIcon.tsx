@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import type { StackItem } from "@/lib/stacks";
 
 type StackIconProps = {
@@ -7,17 +5,12 @@ type StackIconProps = {
 };
 
 export function StackIcon({ item }: StackIconProps) {
+  const { Icon, label } = item;
+
   return (
     <div className="stack-tile">
-      <Image
-        className="stack-tile__icon"
-        src={item.iconSrc}
-        alt={item.iconAlt}
-        width={28}
-        height={28}
-        unoptimized
-      />
-      <span className="stack-tile__label">{item.label}</span>
+      <Icon className="stack-tile__icon" aria-hidden />
+      <span className="stack-tile__label">{label}</span>
     </div>
   );
 }
