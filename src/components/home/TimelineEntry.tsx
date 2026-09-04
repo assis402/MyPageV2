@@ -1,3 +1,4 @@
+import { Card } from "@/components/ui";
 import { cn } from "@/lib/cn";
 
 export type TimelineId = "exp1" | "exp2" | "exp3";
@@ -50,7 +51,7 @@ export function TimelineEntry({
 
   return (
     <article className="timeline-exp">
-      <div className="timeline-card">
+      <Card className="timeline-card">
         <p className="timeline-exp-date">
           {dateFrom} – {dateTo}
         </p>
@@ -102,7 +103,7 @@ export function TimelineEntry({
             {seeLess}
           </button>
         </div>
-      </div>
+      </Card>
     </article>
   );
 }

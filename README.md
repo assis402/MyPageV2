@@ -99,9 +99,6 @@ MyPageV2
 
 ## Próximo (backlog)
 
-- **027** — Alinhar bolinhas da timeline com a linha
-- **028** — Hover lift em skills + timeline (igual Medium)
-- **029** — Projects alinhado ao layout novo
 - **030** — Admin alinhado ao layout novo
 - **031** — QA completo (Playwright + React Doctor + React Scan)
 - **032** — Auditoria de segurança → fila de correções (034+)

@@ -4,7 +4,7 @@ import { cn } from "@/lib/cn";
 
 type SectionTitleProps = HTMLAttributes<HTMLParagraphElement> & {
   children: ReactNode;
-  as?: "p" | "h2";
+  as?: "p" | "h1" | "h2";
 };
 
 export function SectionTitle({ children, className, as: Tag = "p", ...props }: SectionTitleProps) {
