@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { ProjectCard } from "@/components/projects/ProjectCard";
 import { ProjectsSearch } from "@/components/projects/ProjectsSearch";
 import { VideoModalProvider } from "@/components/projects/VideoModal";
+import { Section, SectionTitle } from "@/components/ui";
 import { getProjectsPageData } from "@/lib/github";
 import { isValidLocale, type Locale } from "@/lib/i18n/locale";
 import { localePageMetadata } from "@/lib/seo";
@@ -47,7 +48,8 @@ export default async function ProjectsPage({
   return (
     <main id="main-content" className="projects-page">
       <VideoModalProvider>
-        <div className="projects-external-container">
+        <Section className="projects-section">
+          <SectionTitle as="h1">{t("ProjectsTitle")}</SectionTitle>
           <ProjectsSearch
             key={tag}
             locale={locale}
@@ -67,7 +69,7 @@ export default async function ProjectsPage({
               ))}
             </div>
           )}
-        </div>
+        </Section>
       </VideoModalProvider>
     </main>
   );

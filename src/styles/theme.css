@@ -250,12 +250,20 @@
   background-color: rgb(5 5 8 / 0.7);
 }
 
-.projects-external-container {
-  gap: 2.5rem;
+.search-container {
+  border-bottom-color: rgb(255 255 255 / 12%);
 }
 
-.search-container {
-  border-bottom-color: rgb(192 132 252 / 0.25);
+.search-button,
+.clear-filter-button {
+  background-color: rgb(255 255 255 / 45%);
+}
+
+.search-button:hover,
+.search-button:focus-visible,
+.clear-filter-button:hover,
+.clear-filter-button:focus-visible {
+  background-color: #c084fc;
 }
 
 .project.ui-card {
@@ -264,10 +272,20 @@
 }
 
 .project.ui-card:hover,
-.project.ui-card:focus-visible {
+.project.ui-card:focus-visible,
+.project.ui-card:focus-within {
   transform: translateY(-2px);
   border-color: rgb(192 132 252 / 0.35);
   box-shadow: none;
+}
+
+@media (hover: none) {
+  .project.ui-card:hover,
+  .project.ui-card:focus-visible,
+  .project.ui-card:focus-within {
+    transform: none;
+    box-shadow: none;
+  }
 }
 
 .project-title {
@@ -281,6 +299,17 @@
   padding: 0.15rem 0.55rem;
   font-size: 0.6875rem;
   opacity: 0.7;
+}
+
+.project-tag-search:hover,
+.project-tag-search:focus-visible {
+  border-color: rgb(192 132 252 / 0.4);
+  opacity: 1;
+}
+
+.project-tag-search:focus-visible {
+  outline: 2px solid #c084fc;
+  outline-offset: 3px;
 }
 
 .project-tag-search.is-selected,

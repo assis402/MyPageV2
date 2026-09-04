@@ -51,34 +51,6 @@ _(none)_
 
 ## Next (ready)
 
-### 029 · Projects page — full new layout alignment
-**Status:** todo | **Dep:** 024 ✓, 028
-
-**Goal:** `/projects` feels like the same design system as the new home — not just flat bg (023).
-
-**Scope:**
-- Section title + toolbar (search + tags) spacing/typography aligned with home Zone B
-- Project cards: same `ui-card` lift/hover as Medium (028)
-- Search input + tag chips: consistent borders, focus rings, muted colors
-- Page padding/max-width matches `ui-section-inner`
-- Remove any leftover preview-only or legacy project styles
-- Both locales; empty state styled
-
-**Done when:**
-- [ ] Side-by-side with home feels cohesive
-- [ ] Quality gate + Playwright projects spec green
-
----
-
-## Queue
-
-| ID | Title | Dep |
-|----|-------|-----|
-| 030 | Admin pages — new layout alignment | 024 |
-| 031 | Full layout QA + Playwright baseline | 029, 030 |
-| 032 | Security audit & remediation queue | 031 |
-| 033 | Performance audit & remediation queue | 031 |
-
 ### 030 · Admin pages — new layout alignment
 **Status:** todo | **Dep:** 024 ✓
 
@@ -95,6 +67,14 @@ _(none)_
 - [ ] Quality gate + Playwright admin smoke (login UI, no auth required for layout assertions)
 
 ---
+
+## Queue
+
+| ID | Title | Dep |
+|----|-------|-----|
+| 031 | Full layout QA + Playwright baseline | 029, 030 |
+| 032 | Security audit & remediation queue | 031 |
+| 033 | Performance audit & remediation queue | 031 |
 
 ### 031 · Full layout QA + Playwright baseline
 **Status:** todo | **Dep:** 029, 030
@@ -276,6 +256,9 @@ Rail and dots share `--timeline-rail-x` with `translateX(-50%)` so the purple do
 ### 028 · Card lift hover — Skills + Background (match Medium)
 Skills tiles and timeline cards reuse `Card` / `.ui-card`. Hover/focus matches Direction C Medium: `translateY(-2px)`, purple border, no shadow, `0.2s` transition. Lift is off on `@media (hover: none)`. Medium section unchanged. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
 
+### 029 · Projects page — full new layout alignment
+Projects uses `Section` + `SectionTitle` (PROJECTS / PROJETOS) with `ui-section-inner` width and the 3rem title gap. Search/tags are a Zone B toolbar (no legacy min-widths). Cards lift like Medium (`-2px`). Empty state styled. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
+
 ---
 
 ## Removed from scope
@@ -310,7 +293,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
                                                                                       └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** 029 → … → 031 → **032** and **033** (can run in parallel after 031).
+**Next ready:** 030 → 031 → **032** and **033** (can run in parallel after 031).
 
 ---
 
@@ -336,7 +319,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **026** — About title spacing
 - [x] **027** — Timeline dot alignment
 - [x] **028** — Skills + timeline hover lift (like Medium)
-- [ ] **029** — Projects full layout alignment
+- [x] **029** — Projects full layout alignment
 - [ ] **030** — Admin layout alignment
 - [ ] **031** — Full QA (Playwright + Doctor + Scan)
 - [ ] **032** — Security audit + remediation queue
