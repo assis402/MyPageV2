@@ -99,7 +99,6 @@ MyPageV2
 
 ## Próximo (backlog)
 
-- **028** — Hover lift em skills + timeline (igual Medium)
 - **029** — Projects alinhado ao layout novo
 - **030** — Admin alinhado ao layout novo
 - **031** — QA completo (Playwright + React Doctor + React Scan)

@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Locator } from "@playwright/test";
 
 test("home shows Direction C hero without a preview flag", async ({ page }) => {
   await page.goto("/en-US", { waitUntil: "domcontentloaded" });
@@ -106,4 +106,23 @@ test("home timeline dots are centered on the rail", async ({ page }) => {
     expect(Math.abs(dot.x - (after?.railX ?? 0))).toBeLessThan(1);
   }
   expect(Math.abs((after?.dots[0]?.top ?? 0) - (before?.dots[0]?.top ?? 0))).toBeLessThan(1);
+});
+
+test("home skills and timeline cards lift like Medium on hover", async ({ page }) => {
+  await page.goto("/en-US", { waitUntil: "domcontentloaded" });
+
+  const medium = page.locator(".medium-card").first();
+  const skill = page.locator(".stack-tile").first();
+  const timelineCard = page.locator(".timeline-card").first();
+
+  await expect(skill).toHaveClass(/ui-card/);
+  await expect(timelineCard).toHaveClass(/ui-card/);
+
+  const lift = "matrix(1, 0, 0, 1, 0, -2)";
+  const transformOf = (locator: Locator) => locator.evaluate((el) => getComputedStyle(el).transform);
+
+  for (const card of [medium, skill, timelineCard]) {
+    await card.hover();
+    await expect.poll(() => transformOf(card)).toBe(lift);
+  }
 });

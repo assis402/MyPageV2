@@ -51,33 +51,6 @@ _(none)_
 
 ## Next (ready)
 
-### 028 · Card lift hover — Skills + Background (match Medium)
-**Status:** todo | **Dep:** 024 ✓ | **UX:** Medium `.ui-card` behavior
-
-**Goal:** `.stack-tile` and `.timeline-card` use the **same lift** as Medium cards: `translateY(-4px)`, border highlight, subtle shadow (`ui.css`).
-
-**Scope:**
-- Prefer reusing `Card` component or shared `.ui-card` class on stack tiles + timeline cards
-- Keep hover disabled on `@media (hover: none)` like existing `ui-card`
-- Match transition timing to Medium
-- Do **not** change Medium section itself
-
-**Done when:**
-- [ ] Hover/focus lift feels identical to Medium cards
-- [ ] Quality gate passed
-
----
-
-## Queue
-
-| ID | Title | Dep |
-|----|-------|-----|
-| 029 | Projects page — full new layout alignment | 024, 028 |
-| 030 | Admin pages — new layout alignment | 024 |
-| 031 | Full layout QA + Playwright baseline | 029, 030 |
-| 032 | Security audit & remediation queue | 031 |
-| 033 | Performance audit & remediation queue | 031 |
-
 ### 029 · Projects page — full new layout alignment
 **Status:** todo | **Dep:** 024 ✓, 028
 
@@ -96,6 +69,15 @@ _(none)_
 - [ ] Quality gate + Playwright projects spec green
 
 ---
+
+## Queue
+
+| ID | Title | Dep |
+|----|-------|-----|
+| 030 | Admin pages — new layout alignment | 024 |
+| 031 | Full layout QA + Playwright baseline | 029, 030 |
+| 032 | Security audit & remediation queue | 031 |
+| 033 | Performance audit & remediation queue | 031 |
 
 ### 030 · Admin pages — new layout alignment
 **Status:** todo | **Dep:** 024 ✓
@@ -291,6 +273,9 @@ Direction C is the only UI: hero (eyebrow, name, tagline, Projects primary + Abo
 ### 027 · Background — timeline dot / rail alignment
 Rail and dots share `--timeline-rail-x` with `translateX(-50%)` so the purple dots sit on the vertical line. Mobile updates `--timeline-gutter` instead of a hard-coded `padding-left`. Playwright checks all 3 entries before/after expand. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
 
+### 028 · Card lift hover — Skills + Background (match Medium)
+Skills tiles and timeline cards reuse `Card` / `.ui-card`. Hover/focus matches Direction C Medium: `translateY(-2px)`, purple border, no shadow, `0.2s` transition. Lift is off on `@media (hover: none)`. Medium section unchanged. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
+
 ---
 
 ## Removed from scope
@@ -325,7 +310,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
                                                                                       └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** 028 → … → 031 → **032** and **033** (can run in parallel after 031).
+**Next ready:** 029 → … → 031 → **032** and **033** (can run in parallel after 031).
 
 ---
 
@@ -350,7 +335,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **025** — Stack icons from library
 - [x] **026** — About title spacing
 - [x] **027** — Timeline dot alignment
-- [ ] **028** — Skills + timeline hover lift (like Medium)
+- [x] **028** — Skills + timeline hover lift (like Medium)
 - [ ] **029** — Projects full layout alignment
 - [ ] **030** — Admin layout alignment
 - [ ] **031** — Full QA (Playwright + Doctor + Scan)

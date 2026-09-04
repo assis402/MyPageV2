@@ -1,3 +1,4 @@
+import { Card } from "@/components/ui";
 import type { StackItem } from "@/lib/stacks";
 
 type StackIconProps = {
@@ -8,9 +9,9 @@ export function StackIcon({ item }: StackIconProps) {
   const { Icon, label } = item;
 
   return (
-    <div className="stack-tile">
+    <Card className="stack-tile">
       <Icon className="stack-tile__icon" aria-hidden />
       <span className="stack-tile__label">{label}</span>
-    </div>
+    </Card>
   );
 }

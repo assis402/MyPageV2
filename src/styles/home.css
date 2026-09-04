@@ -316,15 +316,6 @@
   border-radius: 0.75rem;
   background: rgb(255 255 255 / 4%);
   color: rgb(255 255 255 / 82%);
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.stack-tile:hover,
-.stack-tile:focus-visible {
-  border-color: rgb(192 132 252 / 35%);
-  background: rgb(192 132 252 / 8%);
 }
 
 .stack-tile__icon {
@@ -441,15 +432,6 @@
   border-radius: 0.75rem;
   background: rgb(255 255 255 / 3%);
   padding: 1.25rem 1.35rem 1.35rem;
-  transition:
-    border-color 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.timeline-card:hover,
-.timeline-card:focus-within {
-  border-color: rgb(192 132 252 / 35%);
-  background: rgb(192 132 252 / 6%);
 }
 
 .timeline-exp-date {
