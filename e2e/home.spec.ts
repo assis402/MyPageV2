@@ -56,3 +56,54 @@ test("home section titles share the same content gap", async ({ page }) => {
   expect(Math.abs((gaps.about ?? 0) - (gaps.background ?? 0))).toBeLessThan(2);
   expect(Math.abs((gaps.about ?? 0) - (gaps.medium ?? 0))).toBeLessThan(2);
 });
+
+test("home timeline dots are centered on the rail", async ({ page }) => {
+  await page.goto("/en-US", { waitUntil: "domcontentloaded" });
+
+  const timeline = page.locator(".timeline");
+  await expect(timeline.locator(".timeline-exp")).toHaveCount(3);
+
+  const alignment = () =>
+    page.evaluate(() => {
+      const pseudoCenterX = (el: Element, pseudo: "::before") => {
+        const style = getComputedStyle(el, pseudo);
+        const box = el.getBoundingClientRect();
+        const left = Number.parseFloat(style.left);
+        const width = Number.parseFloat(style.width);
+        let translateX = 0;
+        const matrix = style.transform.match(/matrix\(([^)]+)\)/);
+        if (matrix) {
+          translateX = Number.parseFloat(matrix[1].split(",")[4] ?? "0");
+        }
+        return box.left + left + width / 2 + translateX;
+      };
+
+      const root = document.querySelector(".timeline");
+      if (!root) return null;
+      const railX = pseudoCenterX(root, "::before");
+      const entries = [...root.querySelectorAll(".timeline-exp")];
+      return {
+        railX,
+        dots: entries.map((entry) => ({
+          x: pseudoCenterX(entry, "::before"),
+          top: entry.getBoundingClientRect().top + window.scrollY,
+        })),
+      };
+    });
+
+  const before = await alignment();
+  expect(before).not.toBeNull();
+  for (const dot of before?.dots ?? []) {
+    expect(Math.abs(dot.x - (before?.railX ?? 0))).toBeLessThan(1);
+  }
+
+  await timeline.getByRole("button", { name: "see more" }).first().click();
+  await expect(timeline.locator(".timeline-exp-details.is-open")).toBeVisible();
+
+  const after = await alignment();
+  expect(after).not.toBeNull();
+  for (const dot of after?.dots ?? []) {
+    expect(Math.abs(dot.x - (after?.railX ?? 0))).toBeLessThan(1);
+  }
+  expect(Math.abs((after?.dots[0]?.top ?? 0) - (before?.dots[0]?.top ?? 0))).toBeLessThan(1);
+});

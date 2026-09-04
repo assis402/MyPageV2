@@ -51,22 +51,6 @@ _(none)_
 
 ## Next (ready)
 
-### 027 · Background — timeline dot / rail alignment
-**Status:** todo | **Dep:** 024 ✓ | **UX:** stakeholder feedback
-
-**Goal:** Purple dots on the left are **centered on the vertical line** (`.timeline::before`).
-
-**Scope:**
-- Fix `.timeline-exp::before` position relative to `.timeline::before` (adjust `left` / `top` / `transform: translateX(-50%)` as needed)
-- Verify all 3 entries + expanded state; desktop and ~375px
-- No layout shift on expand/collapse
-
-**Done when:**
-- [ ] Dots visually centered on rail in screenshots
-- [ ] Quality gate passed
-
----
-
 ### 028 · Card lift hover — Skills + Background (match Medium)
 **Status:** todo | **Dep:** 024 ✓ | **UX:** Medium `.ui-card` behavior
 
@@ -304,6 +288,9 @@ Direction C is the only UI: hero (eyebrow, name, tagline, Projects primary + Abo
 ### 026 · About — section title spacing
 `.ui-section-inner` now has a shared `3rem` gap so About matches Background and Medium. Removed per-body `margin-top` on `.timeline-body` / `.medium-body`. Medium PT subtitle stays in `.ui-section-heading`. Playwright asserts title→content gaps. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
 
+### 027 · Background — timeline dot / rail alignment
+Rail and dots share `--timeline-rail-x` with `translateX(-50%)` so the purple dots sit on the vertical line. Mobile updates `--timeline-gutter` instead of a hard-coded `padding-left`. Playwright checks all 3 entries before/after expand. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
+
 ---
 
 ## Removed from scope
@@ -338,7 +325,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
                                                                                       └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** 027 → … → 031 → **032** and **033** (can run in parallel after 031).
+**Next ready:** 028 → … → 031 → **032** and **033** (can run in parallel after 031).
 
 ---
 
@@ -362,7 +349,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **024** — New layout default (no preview)
 - [x] **025** — Stack icons from library
 - [x] **026** — About title spacing
-- [ ] **027** — Timeline dot alignment
+- [x] **027** — Timeline dot alignment
 - [ ] **028** — Skills + timeline hover lift (like Medium)
 - [ ] **029** — Projects full layout alignment
 - [ ] **030** — Admin layout alignment
