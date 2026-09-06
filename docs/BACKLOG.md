@@ -51,31 +51,6 @@ _(none)_
 
 ## Next (ready)
 
-### 030 · Admin pages — new layout alignment
-**Status:** todo | **Dep:** 024 ✓
-
-**Goal:** `/admin` matches Zone B + shared UI primitives (cards, buttons, spacing).
-
-**Scope:**
-- Flat content zone bg (`#0a0a0f`), consistent with home/projects
-- `admin.css` → use `ui-card`, `gradient-button` / `outlined-button` patterns where possible
-- Login panel + cache buttons: spacing, hover, focus states aligned with new layout
-- English-only UI preserved
-
-**Done when:**
-- [ ] Admin visually consistent with public pages
-- [ ] Quality gate + Playwright admin smoke (login UI, no auth required for layout assertions)
-
----
-
-## Queue
-
-| ID | Title | Dep |
-|----|-------|-----|
-| 031 | Full layout QA + Playwright baseline | 029, 030 |
-| 032 | Security audit & remediation queue | 031 |
-| 033 | Performance audit & remediation queue | 031 |
-
 ### 031 · Full layout QA + Playwright baseline
 **Status:** todo | **Dep:** 029, 030
 
@@ -97,6 +72,13 @@ _(none)_
 - [ ] Lighthouse mobile home + projects still ≥ 90
 
 ---
+
+## Queue
+
+| ID | Title | Dep |
+|----|-------|-----|
+| 032 | Security audit & remediation queue | 031 |
+| 033 | Performance audit & remediation queue | 031 |
 
 ### 032 · Security audit & remediation queue
 **Status:** todo | **Dep:** 031
@@ -259,6 +241,9 @@ Skills tiles and timeline cards reuse `Card` / `.ui-card`. Hover/focus matches D
 ### 029 · Projects page — full new layout alignment
 Projects uses `Section` + `SectionTitle` (PROJECTS / PROJETOS) with `ui-section-inner` width and the 3rem title gap. Search/tags are a Zone B toolbar (no legacy min-widths). Cards lift like Medium (`-2px`). Empty state styled. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
 
+### 030 · Admin pages — new layout alignment
+Admin uses `Section` + `SectionTitle` (ADMIN, English-only) on the shared `#0a0a0f` zone. Login panel is `ui-card` without lift; Google login is `GradientButton`; cache/logout are `OutlinedButton`. Playwright smokes the signed-out login UI. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
+
 ---
 
 ## Removed from scope
@@ -293,7 +278,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
                                                                                       └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** 030 → 031 → **032** and **033** (can run in parallel after 031).
+**Next ready:** 031 → **032** and **033** (can run in parallel after 031).
 
 ---
 
@@ -320,7 +305,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **027** — Timeline dot alignment
 - [x] **028** — Skills + timeline hover lift (like Medium)
 - [x] **029** — Projects full layout alignment
-- [ ] **030** — Admin layout alignment
+- [x] **030** — Admin layout alignment
 - [ ] **031** — Full QA (Playwright + Doctor + Scan)
 - [ ] **032** — Security audit + remediation queue
 - [ ] **033** — Performance audit + remediation queue

@@ -99,7 +99,6 @@ MyPageV2
 
 ## Próximo (backlog)
 
-- **030** — Admin alinhado ao layout novo
 - **031** — QA completo (Playwright + React Doctor + React Scan)
 - **032** — Auditoria de segurança → fila de correções (034+)
 - **033** — Auditoria de performance → fila de correções (034+)

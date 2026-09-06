@@ -4,7 +4,7 @@ import { connection } from "next/server";
 import { notFound } from "next/navigation";
 
 import { clearArticlesCache, clearProjectsCache, loginWithGoogle, logoutAdmin } from "./actions";
-import { Card } from "@/components/ui";
+import { Card, GradientButton, OutlinedButton, Section, SectionTitle } from "@/components/ui";
 import { getAdminSession } from "@/lib/auth/session";
 import { isValidLocale } from "@/lib/i18n/locale";
 import { localePageMetadata } from "@/lib/seo";
@@ -47,63 +47,73 @@ export default async function AdminPage({
       : null;
 
   return (
-    <main id="main-content">
-      <div className="admin-external-container">
-        <Card className="admin-container">
-          <div className="admin-gradient-bar" />
-          <div className="admin-first-div">
-            <span>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/admin.svg" alt="" />
-              <h1>{t("AdminTitle")}</h1>
-            </span>
-            <h5>{t("AdminEnglishOnly")}</h5>
+    <main id="main-content" className="admin-page">
+      <Section className="admin-section">
+        <SectionTitle as="h1">{t("AdminTitle")}</SectionTitle>
+        <Card className="admin-panel">
+          <div className="admin-copy">
+            <p className="admin-kicker">{t("AdminEnglishOnly")}</p>
             <p>{t("AdminOwnerOnly")}</p>
             {rejected ? <p className="admin-error">{t("AdminOwnerRejected")}</p> : null}
             {feedback ? (
               <p className={feedback.tone === "ok" ? "admin-success" : "admin-error"}>{t(feedback.key)}</p>
             ) : null}
           </div>
-          <div className="admin-divisor" />
           {session ? (
-            <div className="admin-options">
+            <div className="admin-actions">
               <form action={clearProjectsCache}>
                 <input type="hidden" name="locale" value={locale} />
-                <button type="submit" className="option-button">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/clear-cache.svg" alt="" />
+                <OutlinedButton
+                  type="submit"
+                  icon={
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src="/images/clear-cache.svg" alt="" />
+                  }
+                >
                   {t("AdminClearProjects")}
-                </button>
+                </OutlinedButton>
               </form>
               <form action={clearArticlesCache}>
                 <input type="hidden" name="locale" value={locale} />
-                <button type="submit" className="option-button">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/clear-cache.svg" alt="" />
+                <OutlinedButton
+                  type="submit"
+                  icon={
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src="/images/clear-cache.svg" alt="" />
+                  }
+                >
                   {t("AdminClearArticles")}
-                </button>
+                </OutlinedButton>
               </form>
               <form action={logoutAdmin}>
                 <input type="hidden" name="locale" value={locale} />
-                <button type="submit" className="option-button">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src="/images/logout.svg" alt="" />
+                <OutlinedButton
+                  type="submit"
+                  icon={
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img src="/images/logout.svg" alt="" />
+                  }
+                >
                   {t("AdminLogout")}
-                </button>
+                </OutlinedButton>
               </form>
             </div>
           ) : (
-            <form action={loginWithGoogle}>
+            <form className="admin-login" action={loginWithGoogle}>
               <input type="hidden" name="locale" value={locale} />
-              <button type="submit" className="google-button">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/google.svg" alt="" />
+              <GradientButton
+                type="submit"
+                icon={
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img src="/images/google.svg" alt="" />
+                }
+              >
                 {t("AdminLoginGoogle")}
-              </button>
+              </GradientButton>
             </form>
           )}
         </Card>
-      </div>
+      </Section>
     </main>
   );
 }
