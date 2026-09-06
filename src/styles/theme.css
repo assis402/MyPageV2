@@ -319,6 +319,23 @@
   opacity: 1;
 }
 
+.admin-panel.ui-card {
+  border-color: rgb(255 255 255 / 8%);
+  background-color: rgb(255 255 255 / 3%);
+}
+
+.admin-panel.ui-card:hover,
+.admin-panel.ui-card:focus-visible,
+.admin-panel.ui-card:focus-within {
+  border-color: rgb(255 255 255 / 8%);
+}
+
+.admin-panel .gradient-button:focus-visible,
+.admin-panel .outlined-button:focus-visible {
+  outline: 2px solid #c084fc;
+  outline-offset: 3px;
+}
+
 @media (max-width: 768px) {
   .about-container {
     margin-top: 0;
