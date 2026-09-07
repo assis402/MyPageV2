@@ -51,34 +51,7 @@ _(none)_
 
 ## Next (ready)
 
-### 031 · Full layout QA + Playwright baseline
-**Status:** todo | **Dep:** 029, 030
-
-**Goal:** Automated regression + manual sweep — **no layout bugs** across the app.
-
-**Scope:**
-- **Playwright:** install `@playwright/test`, `playwright.config.ts`, scripts `yarn test:e2e`, `yarn test:e2e:ui`
-- E2e coverage: `/en-US`, `/pt-BR`, `/projects`, `/admin`, locale switch, legacy redirects (`/Projects` → `/en-US/projects`), mobile viewport smoke
-- Optional: screenshot comparison for home hero + about + timeline (baseline in `e2e/snapshots/`)
-- **React Doctor:** `yarn doctor --verbose` full scan — score documented in PR
-- **React Scan:** checklist for header, timeline expand, projects search, copy-email — no render storms
-- Manual matrix: 375px / 768px / 1440px on all public routes + admin
-- Fix any layout issues found (or open follow-up IDs in PR description)
-
-**Done when:**
-- [ ] `yarn test:e2e` passes in CI-ready config
-- [ ] Doctor full scan — no errors
-- [ ] Layout checklist signed off in PR body
-- [ ] Lighthouse mobile home + projects still ≥ 90
-
----
-
-## Queue
-
-| ID | Title | Dep |
-|----|-------|-----|
-| 032 | Security audit & remediation queue | 031 |
-| 033 | Performance audit & remediation queue | 031 |
+032 and 033 can run in parallel.
 
 ### 032 · Security audit & remediation queue
 **Status:** todo | **Dep:** 031
@@ -244,6 +217,9 @@ Projects uses `Section` + `SectionTitle` (PROJECTS / PROJETOS) with `ui-section-
 ### 030 · Admin pages — new layout alignment
 Admin uses `Section` + `SectionTitle` (ADMIN, English-only) on the shared `#0a0a0f` zone. Login panel is `ui-card` without lift; Google login is `GradientButton`; cache/logout are `OutlinedButton`. Playwright smokes the signed-out login UI. `yarn build` + `yarn lint` + `yarn doctor --verbose --scope changed` + `yarn test:e2e`.
 
+### 031 · Full layout QA + Playwright baseline
+Playwright baseline: `workers: 1`, `yarn test:e2e` / `yarn test:e2e:ui`, locale switch, legacy redirects, mobile 375px smoke, copy-email. Doctor full scan **100**. React Scan on header, timeline, projects search, copy-email — no storms. Viewport matrix 375/768/1440 with no overflow. Lighthouse mobile: home Performance **96** / a11y **96**; projects Performance **90** / a11y **100**. `yarn build` + `yarn lint` + `yarn doctor --verbose` + `yarn test:e2e`.
+
 ---
 
 ## Removed from scope
@@ -278,7 +254,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
                                                                                       └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** 031 → **032** and **033** (can run in parallel after 031).
+**Next ready:** **032** and **033** (can run in parallel).
 
 ---
 
@@ -306,7 +282,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **028** — Skills + timeline hover lift (like Medium)
 - [x] **029** — Projects full layout alignment
 - [x] **030** — Admin layout alignment
-- [ ] **031** — Full QA (Playwright + Doctor + Scan)
+- [x] **031** — Full QA (Playwright + Doctor + Scan)
 - [ ] **032** — Security audit + remediation queue
 - [ ] **033** — Performance audit + remediation queue
 - [ ] **034+** — Fixes from audits _(created by 032/033)_
