@@ -16,10 +16,13 @@ O site ao vivo continua sendo o legado até o cutover de DNS (ainda não dispon�
 ```bash
 yarn install
 yarn dev
+yarn test:e2e
+yarn test:e2e:ui
 ```
 
 - App: [http://localhost:3000](http://localhost:3000) (redireciona para `/en-US`)
 - Português: [http://localhost:3000/pt-BR](http://localhost:3000/pt-BR)
+- E2e: Playwright sobe `http://127.0.0.1:3010` (`workers: 1`; no CI usa reporter GitHub + retries)
 
 Variáveis de ambiente estão descritas em `.env.example`. Integrações (GitHub na listagem de projetos; Medium na home; Google Auth no admin — preencha `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET` / `AUTH_SECRET`).
 
@@ -99,9 +102,8 @@ MyPageV2
 
 ## Próximo (backlog)
 
-- **031** — QA completo (Playwright + React Doctor + React Scan)
 - **032** — Auditoria de segurança → fila de correções (034+)
-- **033** — Auditoria de performance → fila de correções (034+)
+- **033** — Auditoria de performance → fila de correções (034+) (pode rodar em paralelo com 032)
 - Deploy / DNS — adiado
 
 ## Ainda não disponível
