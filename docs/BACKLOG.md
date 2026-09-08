@@ -51,38 +51,6 @@ _(none)_
 
 ## Next (ready)
 
-032 and 033 can run in parallel.
-
-### 032 · Security audit & remediation queue
-**Status:** todo | **Dep:** 031
-
-**Goal:** Identify security risks in MyPageV2, **document each finding**, and **open fix tasks** in the remediation queue (034+). Do not leave findings only in chat.
-
-**Audit scope (checklist):**
-- **Secrets:** no tokens/keys in repo; `.env.example` complete; `GITHUB_TOKEN` server-only; rotate if legacy secrets were reused
-- **Auth (admin):** Auth.js config, `ADMIN_EMAIL` allowlist, session cookie flags, CSRF on server actions, cache-clear routes guarded
-- **Input / output:** `dangerouslySetInnerHTML` (About i18n), URL params (`search`, `tag`), external links `rel` attributes
-- **Headers:** CSP, `X-Frame-Options`, `Referrer-Policy`, HSTS (document what prod host must set)
-- **Dependencies:** `yarn npm audit` (or `npm audit`) — triage high/critical
-- **API routes:** `/api/auth`, `/api/locale`, admin actions — method allowlist, rate-limit notes
-- **Third-party:** GitHub/Medium fetch — SSRF surface, timeout, no token leak to client
-- **Playwright:** optional security smoke (admin blocked without auth, no secret in HTML)
-
-**Deliverables:**
-1. Findings table in [Audit remediation queue](#audit-remediation-queue)
-2. One **fix backlog row per item** severity ≥ medium (034, 035, …); critical/high fixed immediately **or** first fix task
-3. PR summary: risk summary + what was fixed vs deferred
-
-**Out of scope:** pen-test / paid tooling; hosting WAF (deferred with deploy)
-
-**Done when:**
-- [ ] Audit checklist completed; queue populated
-- [ ] At least one fix task (034+) exists if any medium+ finding
-- [ ] `yarn build` + `yarn lint` + `yarn doctor --verbose --scope full`
-- [ ] No new secrets committed
-
----
-
 ### 033 · Performance audit & remediation queue
 **Status:** todo | **Dep:** 031
 
@@ -118,9 +86,70 @@ _Populated by **032** and **033**. Fix in tasks **034+**._
 
 | Fix ID | Type | Sev | Finding (short) | Fix task |
 |--------|------|-----|-----------------|----------|
-| _(empty)_ | | | | |
+| 034 | sec | high | `videoUrl` / `nuGetUrl` / `swaggerUrl` from GitHub JSON used as iframe `src` or `href` with no https/host allowlist | 034 |
+| 035 | sec | medium | No CSP, `frame-ancestors` / XFO, Referrer-Policy, or Permissions-Policy in the app | 035 |
+| 036 | sec | medium | GitHub/Medium `fetch` has no timeout; env URLs are not host-allowlisted | 036 |
+| 037 | sec | medium | Auth.js `trustHost: true`; production can boot without `AUTH_SECRET`; locale cookie missing `Secure`/`SameSite` | 037 |
 
-**Templates** — add `### 034 · Security fix — …` or `### 035 · Performance fix — …` below this table when auditing.
+**Accepted / deferred (not a 034+ row):**
+- Secrets: `.env` gitignored; not in git history; `GITHUB_TOKEN` only in `server-only` GitHub client; `.env.example` complete. **Rotate** GitHub/Google tokens when wiring prod (pending decision) — do not reuse legacy repo secrets.
+- About `dangerouslySetInnerHTML` is static `src/messages` plus numeric `{years}`/`{months}` — no user HTML.
+- `search` / `tag` query params are string filters rendered as text.
+- Cache-clear server actions call `requireAdmin`; login/logout are public by design.
+- External links use `rel="noreferrer"` (noopener in modern browsers). Featured strip already has `noopener noreferrer`.
+- `yarn npm audit`: no high/critical. ESLint 9 deprecation is moderate hygiene, not a runtime vuln (leave for 033/deps if desired).
+- HSTS, WAF, and auth rate limits wait for the hosting provider.
+
+### 034 · Security fix — allowlist project media and outbound URLs
+**Status:** todo | **Dep:** 032 ✓ | **Sev:** high
+
+**Goal:** Do not load or navigate to attacker-controlled URLs from `mypage-props.json`.
+
+**Scope:**
+- Allow https iframe `src` only for known embed hosts (YouTube/Vimeo) before `VideoModal`
+- Reject `javascript:`, `data:`, and non-https `href`s for nuget/swagger (and treat empty as absent)
+- Playwright: a fixture/stub URL that is not https must not become an iframe `src`
+
+**Done when:** untrusted URL schemes cannot open the video iframe or become an `href`.
+
+### 035 · Security fix — HTTP security headers
+**Status:** todo | **Dep:** 032 ✓ | **Sev:** medium
+
+**Goal:** Ship a baseline header set in `next.config.ts` `headers()`.
+
+**Scope:**
+- `Content-Security-Policy` (start with a report-or-enforcing policy that still allows Google OAuth, Medium images, YouTube embeds after 034)
+- `X-Frame-Options: DENY` or CSP `frame-ancestors 'none'`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy` (disable unused powerful APIs)
+- Document that **HSTS** must be set on the production host (deferred with deploy)
+
+**Done when:** response headers are present on `/en-US` and `/en-US/admin`; OAuth and images still work.
+
+### 036 · Security fix — bound outbound fetches
+**Status:** todo | **Dep:** 032 ✓ | **Sev:** medium
+
+**Goal:** GitHub and Medium requests cannot hang the server or follow an arbitrary env URL.
+
+**Scope:**
+- `AbortSignal.timeout` on GitHub repo/raw and Medium integration/RSS `fetch`
+- Allowlist hosts (`api.github.com`, `raw.githubusercontent.com`, `medium.com`, the known worker) instead of fetching any `GITHUB_*` / `MEDIUM_*` URL string
+- Keep tokens out of client bundles and error messages (already true — do not regress)
+
+**Done when:** a slow or off-allowlist URL fails closed; existing portfolio/Medium happy path still works.
+
+### 037 · Security fix — harden Auth.js production config
+**Status:** todo | **Dep:** 032 ✓ | **Sev:** medium
+
+**Goal:** Admin auth fails closed in production and cookies are explicit.
+
+**Scope:**
+- Refuse to boot / sign in when `AUTH_SECRET` is missing in production
+- Revisit `trustHost: true` vs `AUTH_URL` / `AUTH_TRUST_HOST`
+- Locale cookie: `SameSite=Lax`, `Secure` in production; keep path `/`
+- Do not change the owner-email allowlist behavior
+
+**Done when:** production without `AUTH_SECRET` cannot mint sessions; locale switch still works.
 
 ---
 
@@ -220,6 +249,9 @@ Admin uses `Section` + `SectionTitle` (ADMIN, English-only) on the shared `#0a0a
 ### 031 · Full layout QA + Playwright baseline
 Playwright baseline: `workers: 1`, `yarn test:e2e` / `yarn test:e2e:ui`, locale switch, legacy redirects, mobile 375px smoke, copy-email. Doctor full scan **100**. React Scan on header, timeline, projects search, copy-email — no storms. Viewport matrix 375/768/1440 with no overflow. Lighthouse mobile: home Performance **96** / a11y **96**; projects Performance **90** / a11y **100**. `yarn build` + `yarn lint` + `yarn doctor --verbose` + `yarn test:e2e`.
 
+### 032 · Security audit & remediation queue
+Checklist complete: no secrets in git; `GITHUB_TOKEN` server-only; cache actions gated; About HTML is static i18n. Opened **034–037** (iframe/URL allowlist, security headers, fetch timeout/host allowlist, Auth.js fail-closed). Playwright `e2e/security.spec.ts`. `yarn npm audit` has no high/critical. HSTS/WAF/rate-limit deferred with hosting. `yarn build` + `yarn lint` + `yarn doctor --verbose` + `yarn test:e2e`.
+
 ---
 
 ## Removed from scope
@@ -254,7 +286,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
                                                                                       └─ 033 ─── 034+ (perf fixes)
 ```
 
-**Next ready:** **032** and **033** (can run in parallel).
+**Next ready:** **033**, then **034–037** (security fixes from 032).
 
 ---
 
@@ -283,7 +315,7 @@ Deploy / DNS — reopen with new task IDs when hosting provider is chosen.
 - [x] **029** — Projects full layout alignment
 - [x] **030** — Admin layout alignment
 - [x] **031** — Full QA (Playwright + Doctor + Scan)
-- [ ] **032** — Security audit + remediation queue
+- [x] **032** — Security audit + remediation queue
 - [ ] **033** — Performance audit + remediation queue
 - [ ] **034+** — Fixes from audits _(created by 032/033)_
 - [ ] ~~Production deploy + DNS~~ (deferred)

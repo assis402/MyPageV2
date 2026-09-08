@@ -102,8 +102,8 @@ MyPageV2
 
 ## Próximo (backlog)
 
-- **032** — Auditoria de segurança → fila de correções (034+)
-- **033** — Auditoria de performance → fila de correções (034+) (pode rodar em paralelo com 032)
+- **033** — Auditoria de performance → fila de correções (034+)
+- **034–037** — Correções de segurança (allowlist de URLs, headers, fetches, Auth.js)
 - Deploy / DNS — adiado
 
 ## Ainda não disponível
